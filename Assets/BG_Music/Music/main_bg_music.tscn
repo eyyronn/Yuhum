@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgqiioosdvr7t"]
+
+[ext_resource type="AudioStream" uid="uid://d285tn72njgwl" path="res://Assets/BG_Music/556369__nox_sound__foley_object_fridge_motor_humming_loop_mono_ntg4.wav" id="1_0h7ul"]
+
+[node name="Main BG_MUSIC" type="AudioStreamPlayer"]
+stream = ExtResource("1_0h7ul")
+autoplay = true

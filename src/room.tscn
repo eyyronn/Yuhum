@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=16 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Texture2D" uid="uid://c0halx7juwbkc" path="res://Assets/Background/wall.png" id="1_5yfoh"]
 [ext_resource type="PackedScene" uid="uid://dsj5whffd816d" path="res://src/Player/Player.tscn" id="1_j144i"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/Environment/Interactive/windows.gd" id="4_srpae"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/tv.gd" id="5_h6a77"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/door.gd" id="5_u8myj"]
+[ext_resource type="PackedScene" uid="uid://bgqiioosdvr7t" path="res://Assets/BG_Music/Music/main_bg_music.tscn" id="11_yojb6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rl617"]
 texture = ExtResource("1_5yfoh")
@@ -88,6 +89,8 @@ script = ExtResource("2_3mdw3")
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.97
 blend_mode = 1
+
+[node name="Main BG_MUSIC" parent="." instance=ExtResource("11_yojb6")]
 
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
