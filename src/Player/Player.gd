@@ -15,3 +15,4 @@ func _process(delta):
 
 	if position.x != click_position.x:
 		position = position.move_toward(Vector2(click_position.x, Global.FLOOR), delta * speed)
+		
