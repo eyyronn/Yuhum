@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8k7y3at6oeuu"]
 
-[ext_resource type="Texture2D" uid="uid://c0halx7juwbkc" path="res://Assets/Background/wall.png" id="1_5yfoh"]
+[ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="1_7mcm0"]
 [ext_resource type="PackedScene" uid="uid://dsj5whffd816d" path="res://src/Player/Player.tscn" id="1_j144i"]
 [ext_resource type="Texture2D" uid="uid://cg8odh0ifb0nl" path="res://Assets/Objects/floor.png" id="1_o4dcc"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="2_3mdw3"]
@@ -11,13 +11,13 @@
 [ext_resource type="Script" path="res://src/Environment/Interactive/tv.gd" id="5_h6a77"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/door.gd" id="5_u8myj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rl617"]
-texture = ExtResource("1_5yfoh")
-texture_region_size = Vector2i(172, 172)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_illop"]
+texture = ExtResource("1_7mcm0")
+texture_region_size = Vector2i(480, 480)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_1lwio"]
-sources/0 = SubResource("TileSetAtlasSource_rl617")
+sources/1 = SubResource("TileSetAtlasSource_illop")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43vav"]
 size = Vector2(129, 752)
@@ -26,11 +26,13 @@ size = Vector2(129, 752)
 size = Vector2(1152, 152)
 
 [node name="World" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [975.0]
 
 [node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(0.33, 1.5)
 tile_set = SubResource("TileSet_1lwio")
 format = 2
-layer_0/tile_data = PackedInt32Array(327685, 0, 0, 327695, 0, 0, 327705, 0, 0, 327714, 0, 0, 327724, 0, 0, 327734, 0, 0, 327744, 0, 0, 327754, 0, 0, 983043, 0, 0, 983053, 0, 0, 983063, 0, 0, 983073, 0, 0, 983083, 0, 0, 983093, 0, 0, 983103, 0, 0, 983109, 0, 0, 1638468, 0, 0, 1638458, 0, 0, 1638450, 0, 0, 1638440, 0, 0, 1638431, 0, 0, 1638422, 0, 0, 1638412, 0, 0, 1638403, 0, 0, 2293763, 0, 0, 2293773, 0, 0, 2293780, 0, 0, 2293790, 0, 0, 2293800, 0, 0, 2293810, 0, 0, 2293820, 0, 0, 2293830, 0, 0)
+layer_0/tile_data = PackedInt32Array(983043, 0, 0, 327685, 0, 0, 983053, 0, 0, 917518, 1, 0, 327695, 0, 0, 983063, 0, 0, 327705, 0, 0, 983073, 0, 0, 327714, 0, 0, 983083, 0, 0, 327724, 0, 0, 917548, 1, 0, 983093, 0, 0, 327734, 0, 0, 983103, 0, 0, 327744, 0, 0, 983109, 0, 0, 327754, 0, 0, 917578, 1, 0, 917608, 1, 0, 917638, 1, 0, 917668, 1, 0, 917698, 1, 0, 917728, 1, 0)
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 
