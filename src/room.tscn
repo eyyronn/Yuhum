@@ -86,6 +86,7 @@ position = Vector2(328, 600)
 [node name="CursorTooltip" parent="." instance=ExtResource("3_kli53")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(546, 328)
 energy = 0.97
 blend_mode = 1
 

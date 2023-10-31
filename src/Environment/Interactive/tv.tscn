@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7l72fji68s6v"]
 
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="1_qebv1"]
-[ext_resource type="AudioStream" uid="uid://baehncy2paduw" path="res://Assets/BG_Music/TV_STATIC.wav" id="2_5gnry"]
+[ext_resource type="AudioStream" uid="uid://baehncy2paduw" path="res://Assets/SFX/TV_STATIC.wav" id="2_0ensp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wro"]
 size = Vector2(78, 64)
@@ -33,7 +33,7 @@ energy = 0.88
 texture = SubResource("GradientTexture2D_ivo4p")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_5gnry")
+stream = ExtResource("2_0ensp")
 volume_db = -28.867
 autoplay = true
 max_distance = 300.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsj5whffd816d"]
+[gd_scene load_steps=12 format=3 uid="uid://dsj5whffd816d"]
 
 [ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="1_0c5g2"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="1_r3h2c"]
+[ext_resource type="AudioStream" uid="uid://qpbapdmiotka" path="res://Assets/SFX/Footsteps/Steps_carpet-001.ogg" id="3_08vqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cpnl"]
 size = Vector2(48, 80)
@@ -65,7 +66,7 @@ position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_5cpnl")
 
 [node name="PointLight2D" type="PointLight2D" parent="CollisionShape2D"]
-position = Vector2(1, -12)
+position = Vector2(-6, -10)
 scale = Vector2(2.7853, 3.88001)
 skew = 0.0942478
 texture = SubResource("GradientTexture2D_ioybe")
@@ -80,3 +81,10 @@ animation = &"run"
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 position = Vector2(3, -71)
 current = true
+
+[node name="Walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_08vqk")
+volume_db = -15.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
