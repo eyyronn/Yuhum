@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8k7y3at6oeuu"]
+
+[ext_resource type="PackedScene" uid="uid://dsj5whffd816d" path="res://Player/Player.tscn" id="1_j144i"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="2_3mdw3"]
+[ext_resource type="PackedScene" uid="uid://giwa2i1vrvxm" path="res://TV/TV.tscn" id="3_ya7q6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2l74"]
+size = Vector2(1152, 152)
+
+[node name="World" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 676)
+shape = SubResource("RectangleShape2D_g2l74")
+
+[node name="Panel" type="Panel" parent="StaticBody2D/CollisionShape2D"]
+offset_left = -576.0
+offset_top = -76.0
+offset_right = 576.0
+offset_bottom = 68.0
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_j144i")]
+position = Vector2(328, 600)
+script = ExtResource("2_3mdw3")
+
+[node name="TextureButton" parent="." instance=ExtResource("3_ya7q6")]
+offset_left = 496.0
+offset_top = 512.0
+offset_right = 640.0
+offset_bottom = 592.0
