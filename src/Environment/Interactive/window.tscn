@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://e8poo4d5okpr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wln2i"]
+size = Vector2(96, 128)
+
+[node name="Window" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_wln2i")
+
+[node name="Panel" type="Panel" parent="CollisionShape2D"]
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = 64.0

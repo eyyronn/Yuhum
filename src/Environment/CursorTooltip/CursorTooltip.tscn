@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://xghtbstmtywi"]
+
+[ext_resource type="Script" path="res://src/Environment/CursorTooltip/CursorTooltip.gd" id="1_o0uo4"]
+[ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="2_xd102"]
+
+[node name="CursorTooltip" type="Node2D"]
+script = ExtResource("1_o0uo4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("2_xd102")
+theme_override_font_sizes/font_size = 24

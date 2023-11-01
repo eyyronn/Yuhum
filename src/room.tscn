@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8k7y3at6oeuu"]
+
+[ext_resource type="PackedScene" uid="uid://dsj5whffd816d" path="res://src/Player/Player.tscn" id="1_j144i"]
+[ext_resource type="Script" path="res://src/Player/Player.gd" id="2_3mdw3"]
+[ext_resource type="PackedScene" uid="uid://xghtbstmtywi" path="res://src/Environment/CursorTooltip/CursorTooltip.tscn" id="3_kli53"]
+[ext_resource type="PackedScene" uid="uid://c7l72fji68s6v" path="res://src/Environment/Interactive/tv.tscn" id="3_lcwbk"]
+[ext_resource type="PackedScene" uid="uid://e8poo4d5okpr" path="res://src/Environment/Interactive/window.tscn" id="4_sim77"]
+[ext_resource type="Script" path="res://src/Environment/Interactive/windows.gd" id="4_srpae"]
+[ext_resource type="Script" path="res://src/Environment/Interactive/tv.gd" id="5_h6a77"]
+[ext_resource type="Script" path="res://src/Environment/Interactive/door.gd" id="5_u8myj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2l74"]
+size = Vector2(1152, 152)
+
+[node name="World" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="FloorShape" type="CollisionShape2D" parent="Floor"]
+position = Vector2(576, 676)
+shape = SubResource("RectangleShape2D_g2l74")
+
+[node name="Panel" type="Panel" parent="Floor/FloorShape"]
+offset_left = -576.0
+offset_top = -76.0
+offset_right = 576.0
+offset_bottom = 68.0
+
+[node name="Interactive" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TV" parent="Interactive" instance=ExtResource("3_lcwbk")]
+position = Vector2(576, 600)
+script = ExtResource("5_h6a77")
+
+[node name="Window2" parent="Interactive" instance=ExtResource("4_sim77")]
+position = Vector2(416, 536)
+script = ExtResource("4_srpae")
+
+[node name="Window" parent="Interactive" instance=ExtResource("4_sim77")]
+position = Vector2(160, 536)
+script = ExtResource("4_srpae")
+
+[node name="Window3" parent="Interactive" instance=ExtResource("4_sim77")]
+position = Vector2(992, 536)
+script = ExtResource("4_srpae")
+
+[node name="Door" parent="Interactive" instance=ExtResource("4_sim77")]
+position = Vector2(768, 600)
+script = ExtResource("5_u8myj")
+
+[node name="Player" parent="." instance=ExtResource("1_j144i")]
+position = Vector2(328, 600)
+script = ExtResource("2_3mdw3")
+
+[node name="CursorTooltip" parent="." instance=ExtResource("3_kli53")]
+
+[connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Interactive/Window" to="Interactive/Window" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Window" to="Interactive/Window" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_exited"]
