@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=5 format=3 uid="uid://dsj5whffd816d"]
+=======
+[gd_scene load_steps=13 format=3 uid="uid://dsj5whffd816d"]
+>>>>>>> Stashed changes
 
 [sub_resource type="Gradient" id="Gradient_1xjlb"]
 interpolation_mode = 2
@@ -13,8 +17,64 @@ fill_to = Vector2(0.536697, 0.770642)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cpnl"]
 size = Vector2(48, 80)
 
+<<<<<<< Updated upstream
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_72t5c"]
 polygon = PackedVector2Array(-24, 0, 24, 0, 24, 0)
+=======
+[sub_resource type="Gradient" id="Gradient_vxey0"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ioybe"]
+gradient = SubResource("Gradient_vxey0")
+fill = 1
+fill_from = Vector2(0.518349, 0.490826)
+fill_to = Vector2(0.866973, 0.146789)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qkl3o"]
+polygon = PackedVector2Array(-1.27451, 16.6667, 3.03922, 16.4286, 3.03922, 9.76191, 1.86275, 9.76191, 1.66667, 14.2857, -0.0980392, 14.5238, -0.294118, 10, -1.07843, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7khk"]
+atlas = ExtResource("1_0c5g2")
+region = Rect2(10, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2du27"]
+atlas = ExtResource("1_0c5g2")
+region = Rect2(20, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oav6p"]
+atlas = ExtResource("1_0c5g2")
+region = Rect2(30, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6hjo"]
+atlas = ExtResource("1_0c5g2")
+region = Rect2(0, 0, 10, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uhxkc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7khk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2du27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oav6p")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6hjo")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}]
+>>>>>>> Stashed changes
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 
@@ -28,11 +88,32 @@ texture = SubResource("GradientTexture2D_yqteo")
 position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_5cpnl")
 
+<<<<<<< Updated upstream
 [node name="Panel" type="Panel" parent="CollisionShape2D"]
 offset_left = -24.0
 offset_top = -40.0
 offset_right = 24.0
 offset_bottom = 40.0
+=======
+[node name="PointLight2D" type="PointLight2D" parent="CollisionShape2D"]
+position = Vector2(0, -1.90735e-06)
+scale = Vector2(3.57739, 3.65239)
+texture = SubResource("GradientTexture2D_ioybe")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CollisionShape2D"]
+position = Vector2(-1.5, -2)
+scale = Vector2(5.1, 4.2)
+occluder = SubResource("OccluderPolygon2D_qkl3o")
+sdf_collision = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+position = Vector2(-2, -2)
+scale = Vector2(5.1, 4.2)
+sprite_frames = SubResource("SpriteFrames_uhxkc")
+animation = &"stop"
+autoplay = "stop"
+>>>>>>> Stashed changes
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 

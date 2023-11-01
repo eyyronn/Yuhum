@@ -3,8 +3,13 @@
 [ext_resource type="Script" path="res://src/Environment/CursorTooltip/CursorTooltip.gd" id="1_o0uo4"]
 [ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="2_xd102"]
 
+<<<<<<< Updated upstream
 [sub_resource type="Gradient" id="Gradient_63n4d"]
 offsets = PackedFloat32Array(0.0129032, 1)
+=======
+[sub_resource type="Gradient" id="Gradient_1xjlb"]
+interpolation_mode = 2
+>>>>>>> Stashed changes
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7hk8t"]
@@ -31,3 +36,12 @@ offset_right = 192.0
 offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("2_xd102")
 theme_override_font_sizes/font_size = 40
+<<<<<<< Updated upstream
+=======
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(16, 8)
+scale = Vector2(3.64438, 3.30385)
+energy = 0.9
+texture = SubResource("GradientTexture2D_t0oga")
+>>>>>>> Stashed changes

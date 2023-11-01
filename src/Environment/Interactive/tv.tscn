@@ -1,7 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://c7l72fji68s6v"]
 
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="1_qebv1"]
+<<<<<<< Updated upstream
 [ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="2_da3l0"]
+=======
+[ext_resource type="AudioStream" uid="uid://baehncy2paduw" path="res://Assets/SFX/TV_STATIC.wav" id="2_0ensp"]
+>>>>>>> Stashed changes
 [ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="2_wmk7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wro"]
@@ -17,6 +21,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7, 0.7)
 
+<<<<<<< Updated upstream
 [sub_resource type="Gradient" id="Gradient_rnmp8"]
 colors = PackedColorArray(0.31, 0.31, 0.31, 1, 0.22, 0.21395, 0.1474, 1)
 
@@ -33,6 +38,26 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
 gradient = SubResource("Gradient_kpelk")
+=======
+[sub_resource type="Gradient" id="Gradient_rmvep"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_65g47"]
+gradient = SubResource("Gradient_rmvep")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yllli"]
+shader = ExtResource("2_wmk7y")
+shader_parameter/amount = 40.0
+
+[sub_resource type="Gradient" id="Gradient_wswvf"]
+offsets = PackedFloat32Array(0, 0.470968, 1)
+colors = PackedColorArray(0.466181, 0.466181, 0.466181, 1, 0.525101, 0.525101, 0.525101, 1, 0.493545, 0.493546, 0.493545, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_psqc8"]
+gradient = SubResource("Gradient_wswvf")
+fill_from = Vector2(0.266055, 0.954128)
+fill_to = Vector2(0.802752, 0.233945)
+>>>>>>> Stashed changes
 
 [node name="TV" type="Area2D"]
 texture_filter = 1
@@ -57,6 +82,7 @@ texture = SubResource("GradientTexture2D_ivo4p")
 stream = ExtResource("2_da3l0")
 volume_db = -28.0
 autoplay = true
+<<<<<<< Updated upstream
 max_distance = 1000.0
 attenuation = 1.68179
 
@@ -70,3 +96,17 @@ material = SubResource("ShaderMaterial_t7n40")
 position = Vector2(-4.23856e-07, -0.711109)
 scale = Vector2(1, 1.02222)
 texture = SubResource("GradientTexture2D_r0bqe")
+=======
+max_distance = 300.0
+attenuation = 1.03526
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-10, -33)
+scale = Vector2(0.75, 0.625)
+texture = SubResource("GradientTexture2D_65g47")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
+material = SubResource("ShaderMaterial_yllli")
+position = Vector2(1.40326e-06, 0)
+texture = SubResource("GradientTexture2D_psqc8")
+>>>>>>> Stashed changes
