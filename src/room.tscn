@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://src/Environment/Interactive/windows.gd" id="4_srpae"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/tv.gd" id="5_h6a77"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/door.gd" id="5_u8myj"]
-[ext_resource type="PackedScene" uid="uid://d1qa2eyinchf" path="res://src/Environment/Interactive/music_box.tscn" id="10_0auat"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rl617"]
 texture = ExtResource("1_5yfoh")
@@ -90,21 +89,7 @@ z_index = 0
 
 [node name="Player" parent="." instance=ExtResource("1_j144i")]
 position = Vector2(328, 600)
-<<<<<<< Updated upstream
 script = ExtResource("2_3mdw3")
-=======
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(546, 328)
-energy = 0.97
-blend_mode = 1
->>>>>>> Stashed changes
-
-[node name="Radio" parent="." instance=ExtResource("10_0auat")]
-position = Vector2(1112, 600)
-scale = Vector2(1.59999, 1.59999)
-
-[node name="CursorTooltip" parent="." instance=ExtResource("3_kli53")]
 
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]

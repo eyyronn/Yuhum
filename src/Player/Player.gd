@@ -16,21 +16,23 @@ func _process(delta):
 	var direction = (click_position - position).normalized()
 	velocity.x = direction.x * speed
 	
-	if position.x != click_position.x:
-		position.y = Global.FLOOR + 5
-		position = position.move_toward(Vector2(click_position.x, position.y), delta * speed)
 		
+	if position.x != click_position.x:
+		position = position.move_toward(Vector2(click_position.x, Global.FLOOR), delta * speed)
 		anim.play("run")
 		if $Timer.time_left <= 0:
 			$Walk.pitch_scale = randf_range(0.8, 1.2)
 			sfx_walk.play()
 			$Timer.start(0.5)
 		
-	else:
-		position.y = Global.FLOOR
+	if position.x == click_position.x:
 		anim.play("stop")
 		sfx_walk.stop()
 		
+		
+		
+	
+	
 	if round(direction.x) == -1:
 		anim.flip_h = true
 	elif round(direction.x) == 1:
