@@ -27,10 +27,15 @@ size = Vector2(1152, 152)
 
 [node name="World" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(576, 624)
+scale = Vector2(0.975, 0.975)
+blend_mode = 1
+
+[node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1lwio")
 format = 2
-layer_0/tile_data = PackedInt32Array(327685, 0, 0, 327695, 0, 0, 327705, 0, 0, 327714, 0, 0, 327724, 0, 0, 327734, 0, 0, 327744, 0, 0, 327754, 0, 0, 983043, 0, 0, 983053, 0, 0, 983063, 0, 0, 983073, 0, 0, 983083, 0, 0, 983093, 0, 0, 983103, 0, 0, 983109, 0, 0, 1638468, 0, 0, 1638458, 0, 0, 1638450, 0, 0, 1638440, 0, 0, 1638431, 0, 0, 1638422, 0, 0, 1638412, 0, 0, 1638403, 0, 0, 2293763, 0, 0, 2293773, 0, 0, 2293780, 0, 0, 2293790, 0, 0, 2293800, 0, 0, 2293810, 0, 0, 2293820, 0, 0, 2293830, 0, 0)
+layer_0/tile_data = PackedInt32Array(327685, 0, 0, 327695, 0, 0, 327705, 0, 0, 327714, 0, 0, 327724, 0, 0, 327734, 0, 0, 327744, 0, 0, 327754, 0, 0, 983043, 0, 0, 983053, 0, 0, 983063, 0, 0, 983073, 0, 0, 983083, 0, 0, 983093, 0, 0, 983103, 0, 0, 983109, 0, 0, 1638468, 0, 0, 1638458, 0, 0, 1638450, 0, 0, 1638440, 0, 0, 1638431, 0, 0, 1638422, 0, 0, 1638412, 0, 0, 1638403, 0, 0, 2293763, 0, 0, 2293773, 0, 0, 2293780, 0, 0, 2293790, 0, 0, 2293800, 0, 0, 2293810, 0, 0, 2293820, 0, 0, 2293830, 0, 0, 393211, 0, 0, 1048571, 0, 0)
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 
@@ -79,15 +84,12 @@ script = ExtResource("4_srpae")
 position = Vector2(768, 600)
 script = ExtResource("5_u8myj")
 
+[node name="CursorTooltip" parent="." instance=ExtResource("3_kli53")]
+z_index = 0
+
 [node name="Player" parent="." instance=ExtResource("1_j144i")]
 position = Vector2(328, 600)
 script = ExtResource("2_3mdw3")
-
-[node name="CursorTooltip" parent="." instance=ExtResource("3_kli53")]
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.97
-blend_mode = 1
 
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]

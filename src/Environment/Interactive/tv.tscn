@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7l72fji68s6v"]
+[gd_scene load_steps=12 format=3 uid="uid://c7l72fji68s6v"]
 
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="1_qebv1"]
+[ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="2_da3l0"]
+[ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="2_wmk7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wro"]
 size = Vector2(78, 64)
 
 [sub_resource type="Gradient" id="Gradient_kmcda"]
+interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ivo4p"]
@@ -14,19 +17,56 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7, 0.7)
 
+[sub_resource type="Gradient" id="Gradient_rnmp8"]
+colors = PackedColorArray(0.31, 0.31, 0.31, 1, 0.22, 0.21395, 0.1474, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g04dg"]
+gradient = SubResource("Gradient_rnmp8")
+fill = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7n40"]
+shader = ExtResource("2_wmk7y")
+shader_parameter/amount = 99.525
+
+[sub_resource type="Gradient" id="Gradient_kpelk"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
+gradient = SubResource("Gradient_kpelk")
+
 [node name="TV" type="Area2D"]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_j4wro")
 
-[node name="Tv" type="Sprite2D" parent="."]
+[node name="TV" type="Sprite2D" parent="."]
 position = Vector2(-2.23517e-08, -48)
 scale = Vector2(0.289247, 0.289247)
 texture = ExtResource("1_qebv1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(3.99997, -28.9655)
-scale = Vector2(7.375, 5.59483)
+position = Vector2(0, -32)
+scale = Vector2(8.54688, 5.59483)
 energy = 0.88
+shadow_enabled = true
 texture = SubResource("GradientTexture2D_ivo4p")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_da3l0")
+volume_db = -28.0
+autoplay = true
+max_distance = 1000.0
+attenuation = 1.68179
+
+[node name="Wall2" type="Sprite2D" parent="."]
+position = Vector2(-2.02656e-06, -32.5)
+scale = Vector2(1.09375, 0.640625)
+texture = SubResource("GradientTexture2D_g04dg")
+
+[node name="Static" type="Sprite2D" parent="Wall2"]
+material = SubResource("ShaderMaterial_t7n40")
+position = Vector2(-4.23856e-07, -0.711109)
+scale = Vector2(1, 1.02222)
+texture = SubResource("GradientTexture2D_r0bqe")

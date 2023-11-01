@@ -1,9 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsj5whffd816d"]
+[gd_scene load_steps=5 format=3 uid="uid://dsj5whffd816d"]
+
+[sub_resource type="Gradient" id="Gradient_1xjlb"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yqteo"]
+gradient = SubResource("Gradient_1xjlb")
+fill = 1
+fill_from = Vector2(0.5, 0.45)
+fill_to = Vector2(0.536697, 0.770642)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cpnl"]
 size = Vector2(48, 80)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_72t5c"]
+polygon = PackedVector2Array(-24, 0, 24, 0, 24, 0)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -40)
+scale = Vector2(6, 6.24219)
+energy = 0.66
+texture = SubResource("GradientTexture2D_yqteo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -40)
@@ -14,3 +33,10 @@ offset_left = -24.0
 offset_top = -40.0
 offset_right = 24.0
 offset_bottom = 40.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+self_modulate = Color(0.980392, 0.980392, 0.980392, 1)
+occluder = SubResource("OccluderPolygon2D_72t5c")
+sdf_collision = false
