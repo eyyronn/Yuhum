@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://xghtbstmtywi"]
+[gd_scene load_steps=5 format=3 uid="uid://xghtbstmtywi"]
 
 [ext_resource type="Script" path="res://src/Environment/CursorTooltip/CursorTooltip.gd" id="1_o0uo4"]
 [ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="2_xd102"]
+
+[sub_resource type="Gradient" id="Gradient_1xjlb"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t0oga"]
+gradient = SubResource("Gradient_1xjlb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.706422, 0.321101)
 
 [node name="CursorTooltip" type="Node2D"]
 script = ExtResource("1_o0uo4")
@@ -12,4 +21,9 @@ offset_top = 8.0
 offset_right = 192.0
 offset_bottom = 96.0
 theme_override_fonts/font = ExtResource("2_xd102")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 40
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(5.75, 4.75)
+energy = 0.9
+texture = SubResource("GradientTexture2D_t0oga")

@@ -1,6 +1,6 @@
 extends Area2D
 
-var tooltip_text = "Close"
+var tooltip_text = "close"
 @onready var tooltip = get_node("/root/World/CursorTooltip")
 
 func _on_mouse_entered():
