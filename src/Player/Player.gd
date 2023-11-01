@@ -23,15 +23,11 @@ func _process(delta):
 		if $Timer.time_left <= 0:
 			$Walk.pitch_scale = randf_range(0.8, 1.2)
 			sfx_walk.play()
-			$Timer.start(0.5)
+			$Timer.start(0.4)
 		
 	if position.x == click_position.x:
 		anim.play("stop")
 		sfx_walk.stop()
-		
-		
-		
-	
 	
 	if round(direction.x) == -1:
 		anim.flip_h = true

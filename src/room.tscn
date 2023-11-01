@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=15 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="1_7mcm0"]
 [ext_resource type="PackedScene" uid="uid://dsj5whffd816d" path="res://src/Player/Player.tscn" id="1_j144i"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/Environment/Interactive/windows.gd" id="4_srpae"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/tv.gd" id="5_h6a77"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/door.gd" id="5_u8myj"]
+[ext_resource type="AudioStream" uid="uid://2ht550t8qewo" path="res://Assets/SFX/Steve Roden - Airria (hanging garden) second version.mp3" id="10_7m6ft"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_illop"]
 texture = ExtResource("1_7mcm0")
@@ -89,6 +90,10 @@ position = Vector2(328, 600)
 position = Vector2(546, 328)
 energy = 0.97
 blend_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_7m6ft")
+autoplay = true
 
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
