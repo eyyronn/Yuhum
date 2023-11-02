@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=56 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Texture2D" uid="uid://cg8odh0ifb0nl" path="res://Assets/Objects/floor.png" id="1_o4dcc"]
@@ -13,7 +13,7 @@
 [ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="6_u64ka"]
 [ext_resource type="Texture2D" uid="uid://d00bincjt4kj1" path="res://Assets/Objects/Doors_Windows/Window2.png" id="8_lyhk0"]
 [ext_resource type="Texture2D" uid="uid://cf4vcff8w4us5" path="res://Assets/Objects/Doors_Windows/Window3.png" id="8_odd18"]
-[ext_resource type="PackedScene" uid="uid://dkhjsh7huwxdy" path="res://src/Environment/Interactive/music_box.tscn" id="8_wrrbm"]
+[ext_resource type="PackedScene" uid="uid://j4ymjxyr4wi6" path="res://src/Environment/Interactive/music_box.tscn" id="8_wrrbm"]
 [ext_resource type="Texture2D" uid="uid://py4o6nwk20h0" path="res://Assets/Objects/Doors_Windows/Window1.png" id="9_gy7wj"]
 [ext_resource type="Texture2D" uid="uid://bp4sy4jkaqfoq" path="res://Assets/Objects/Doors_Windows/Door3.png" id="10_rap4l"]
 [ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="11_4ccbv"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://3vcueyaycf2n" path="res://Assets/Objects/Doors_Windows/Door1.png" id="12_r6hhf"]
 [ext_resource type="AudioStream" uid="uid://bm0g4bop73uif" path="res://Assets/SFX/creak.wav" id="16_iosfm"]
 [ext_resource type="AudioStream" uid="uid://cslms3uv6ac2m" path="res://Assets/SFX/shut.wav" id="17_eebf0"]
+[ext_resource type="AudioStream" uid="uid://b03mr5a61h2ta" path="res://Assets/SFX/Steve Roden - Airria (hanging garden) second version.mp3" id="24_duyu8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -513,6 +514,10 @@ position = Vector2(576, 624)
 scale = Vector2(0.975, 0.975)
 energy = 0.94
 blend_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_duyu8")
+autoplay = true
 
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
