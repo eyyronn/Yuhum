@@ -27,7 +27,7 @@ func _process(delta):
 		if $Timer.time_left <= 0:
 			$Run.pitch_scale = randf_range(0.8, 1.2)
 			sfx_run.play()
-			$Timer.start(0.5)
+			$Timer.start(0.3)
 		
 	if abs(position.x - click_position.x) < 0.01:
 		anim.play("Idle")

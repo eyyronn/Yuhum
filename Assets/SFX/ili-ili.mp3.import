@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/ili-ili.mp3-68e1cad30b2c0947f32877fcc3e10ce5.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

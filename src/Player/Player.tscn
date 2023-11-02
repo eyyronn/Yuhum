@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnbkahxbq5kt2"]
+[gd_scene load_steps=14 format=3 uid="uid://dsj5whffd816d"]
 
 [ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="1_7kkk3"]
+[ext_resource type="Script" path="res://src/Player/Player.gd" id="1_7ls1h"]
 [ext_resource type="AudioStream" uid="uid://qpbapdmiotka" path="res://Assets/SFX/Footsteps/Steps_carpet-001.ogg" id="2_7lib4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cpnl"]
@@ -73,6 +74,7 @@ fill_to = Vector2(0.536697, 0.770642)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
+script = ExtResource("1_7ls1h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -32.5)
@@ -98,11 +100,12 @@ energy = 0.7
 texture = SubResource("GradientTexture2D_yqteo")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(-1, -22)
 current = true
 
 [node name="Run" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -9)
 stream = ExtResource("2_7lib4")
-volume_db = -15.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
