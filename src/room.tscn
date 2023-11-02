@@ -1,23 +1,36 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=55 format=3 uid="uid://b8k7y3at6oeuu"]
 
-[ext_resource type="Texture2D" uid="uid://c0halx7juwbkc" path="res://Assets/Background/wall.png" id="1_5yfoh"]
-[ext_resource type="PackedScene" uid="uid://dsj5whffd816d" path="res://src/Player/Player.tscn" id="1_j144i"]
+[ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Texture2D" uid="uid://cg8odh0ifb0nl" path="res://Assets/Objects/floor.png" id="1_o4dcc"]
+[ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="1_wj3vc"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="2_3mdw3"]
 [ext_resource type="PackedScene" uid="uid://xghtbstmtywi" path="res://src/Environment/CursorTooltip/CursorTooltip.tscn" id="3_kli53"]
-[ext_resource type="PackedScene" uid="uid://c7l72fji68s6v" path="res://src/Environment/Interactive/tv.tscn" id="3_lcwbk"]
-[ext_resource type="PackedScene" uid="uid://e8poo4d5okpr" path="res://src/Environment/Interactive/window.tscn" id="4_sim77"]
+[ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="4_sr1gg"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/windows.gd" id="4_srpae"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/tv.gd" id="5_h6a77"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/door.gd" id="5_u8myj"]
+[ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="5_vem14"]
+[ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="6_u64ka"]
+[ext_resource type="Texture2D" uid="uid://d00bincjt4kj1" path="res://Assets/Objects/Doors_Windows/Window2.png" id="8_lyhk0"]
+[ext_resource type="Texture2D" uid="uid://cf4vcff8w4us5" path="res://Assets/Objects/Doors_Windows/Window3.png" id="8_odd18"]
+[ext_resource type="PackedScene" uid="uid://dkhjsh7huwxdy" path="res://src/Environment/Interactive/music_box.tscn" id="8_wrrbm"]
+[ext_resource type="Texture2D" uid="uid://py4o6nwk20h0" path="res://Assets/Objects/Doors_Windows/Window1.png" id="9_gy7wj"]
+[ext_resource type="Texture2D" uid="uid://bp4sy4jkaqfoq" path="res://Assets/Objects/Doors_Windows/Door3.png" id="10_rap4l"]
+[ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="11_4ccbv"]
+[ext_resource type="Texture2D" uid="uid://bf7ktj848ti2y" path="res://Assets/Objects/Doors_Windows/Door2.png" id="11_6daxe"]
+[ext_resource type="AudioStream" uid="uid://cf2lpl6vww4bj" path="res://Assets/SFX/window_close.wav" id="11_tceh5"]
+[ext_resource type="AudioStream" uid="uid://qpbapdmiotka" path="res://Assets/SFX/Footsteps/Steps_carpet-001.ogg" id="12_de7t3"]
+[ext_resource type="Texture2D" uid="uid://3vcueyaycf2n" path="res://Assets/Objects/Doors_Windows/Door1.png" id="12_r6hhf"]
+[ext_resource type="AudioStream" uid="uid://bm0g4bop73uif" path="res://Assets/SFX/creak.wav" id="16_iosfm"]
+[ext_resource type="AudioStream" uid="uid://cslms3uv6ac2m" path="res://Assets/SFX/shut.wav" id="17_eebf0"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rl617"]
-texture = ExtResource("1_5yfoh")
-texture_region_size = Vector2i(172, 172)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
+texture = ExtResource("1_wj3vc")
+texture_region_size = Vector2i(480, 480)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_1lwio"]
-sources/0 = SubResource("TileSetAtlasSource_rl617")
+sources/0 = SubResource("TileSetAtlasSource_dwf0m")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43vav"]
 size = Vector2(129, 752)
@@ -25,17 +38,247 @@ size = Vector2(129, 752)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2l74"]
 size = Vector2(1152, 152)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wro"]
+size = Vector2(78, 64)
+
+[sub_resource type="Gradient" id="Gradient_kmcda"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.593548, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.341891, 0.341891, 0.341891, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ivo4p"]
+gradient = SubResource("Gradient_kmcda")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.7)
+
+[sub_resource type="Gradient" id="Gradient_rnmp8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g04dg"]
+gradient = SubResource("Gradient_rnmp8")
+fill = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7n40"]
+shader = ExtResource("6_u64ka")
+shader_parameter/amount = 99.525
+
+[sub_resource type="Gradient" id="Gradient_kpelk"]
+offsets = PackedFloat32Array(0, 0.451613, 1)
+colors = PackedColorArray(0.435192, 0.435192, 0.435192, 1, 0.408329, 0.408329, 0.408329, 1, 0.332881, 0.332881, 0.332881, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
+gradient = SubResource("Gradient_kpelk")
+fill_from = Vector2(0, 0.481651)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wln2i"]
+size = Vector2(96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eiycq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_odd18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyhk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gy7wj")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gy7wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyhk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_odd18")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guv8b"]
+size = Vector2(96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4kjs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_odd18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyhk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gy7wj")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gy7wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyhk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_odd18")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4le1x"]
+size = Vector2(20, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vwt31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rap4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6daxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_r6hhf")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_r6hhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6daxe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rap4l")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4ckt"]
+size = Vector2(29, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cpnl"]
+size = Vector2(29, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhk6g"]
+atlas = ExtResource("11_4ccbv")
+region = Rect2(40, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qejv7"]
+atlas = ExtResource("11_4ccbv")
+region = Rect2(50, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htg1r"]
+atlas = ExtResource("11_4ccbv")
+region = Rect2(10, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gok6i"]
+atlas = ExtResource("11_4ccbv")
+region = Rect2(40, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nggr4"]
+atlas = ExtResource("11_4ccbv")
+region = Rect2(30, 0, 10, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qs66"]
+animations = [{
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_nhk6g")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_qejv7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htg1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gok6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nggr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gok6i")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 4.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ouvvt"]
+polygon = PackedVector2Array(-2.12526, 9.69697, -2.12526, 16.0606, 3.03609, 15.7576, 3.03609, 9.69697, 2.12526, 9.69697, 2.12526, 14.2424, -1.21443, 14.5455, -0.910826, 9.69697)
+
+[sub_resource type="Gradient" id="Gradient_1xjlb"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.341935, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.712129, 0.712129, 0.712129, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yqteo"]
+gradient = SubResource("Gradient_1xjlb")
+fill = 1
+fill_from = Vector2(0.5, 0.45)
+fill_to = Vector2(0.536697, 0.770642)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7sg7m"]
+shader = ExtResource("1_0hrf7")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.056
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1152, 600)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = -4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.006
+shader_parameter/noise_opacity = 0.654
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.179
+shader_parameter/aberration = -0.00999995
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.494
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hmxhg"]
+blend_mode = 1
+light_mode = 1
+
 [node name="World" type="Node2D"]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-position = Vector2(576, 624)
-scale = Vector2(0.975, 0.975)
-blend_mode = 1
-
 [node name="Background" type="TileMap" parent="."]
+scale = Vector2(0.5, 1.5)
 tile_set = SubResource("TileSet_1lwio")
 format = 2
-layer_0/tile_data = PackedInt32Array(327685, 0, 0, 327695, 0, 0, 327705, 0, 0, 327714, 0, 0, 327724, 0, 0, 327734, 0, 0, 327744, 0, 0, 327754, 0, 0, 983043, 0, 0, 983053, 0, 0, 983063, 0, 0, 983073, 0, 0, 983083, 0, 0, 983093, 0, 0, 983103, 0, 0, 983109, 0, 0, 1638468, 0, 0, 1638458, 0, 0, 1638450, 0, 0, 1638440, 0, 0, 1638431, 0, 0, 1638422, 0, 0, 1638412, 0, 0, 1638403, 0, 0, 2293763, 0, 0, 2293773, 0, 0, 2293780, 0, 0, 2293790, 0, 0, 2293800, 0, 0, 2293810, 0, 0, 2293820, 0, 0, 2293830, 0, 0, 393211, 0, 0, 1048571, 0, 0)
+layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 917608, 0, 0, 917638, 0, 0)
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 
@@ -64,40 +307,231 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TV" parent="Interactive" instance=ExtResource("3_lcwbk")]
+[node name="TV" type="Area2D" parent="Interactive"]
+texture_filter = 1
 position = Vector2(576, 600)
 script = ExtResource("5_h6a77")
 
-[node name="Window2" parent="Interactive" instance=ExtResource("4_sim77")]
-position = Vector2(416, 536)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/TV"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_j4wro")
+
+[node name="TV" type="Sprite2D" parent="Interactive/TV"]
+position = Vector2(-2.23517e-08, -48)
+scale = Vector2(0.289247, 0.289247)
+texture = ExtResource("4_sr1gg")
+
+[node name="PointLight2D" type="PointLight2D" parent="Interactive/TV"]
+position = Vector2(0, -48)
+scale = Vector2(12.875, 11.629)
+energy = 0.88
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_ivo4p")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactive/TV"]
+stream = ExtResource("5_vem14")
+volume_db = -28.0
+autoplay = true
+max_distance = 1000.0
+attenuation = 1.68179
+
+[node name="Wall2" type="Sprite2D" parent="Interactive/TV"]
+position = Vector2(-10, -33)
+scale = Vector2(0.75, 0.625)
+texture = SubResource("GradientTexture2D_g04dg")
+
+[node name="Static" type="Sprite2D" parent="Interactive/TV/Wall2"]
+material = SubResource("ShaderMaterial_t7n40")
+position = Vector2(-4.23856e-07, -3.27229e-05)
+scale = Vector2(1, 0.999999)
+texture = SubResource("GradientTexture2D_r0bqe")
+
+[node name="Window1" type="Area2D" parent="Interactive"]
+position = Vector2(176, 549)
 script = ExtResource("4_srpae")
 
-[node name="Window" parent="Interactive" instance=ExtResource("4_sim77")]
-position = Vector2(160, 536)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Window1"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_wln2i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interactive/Window1/CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_eiycq")
+animation = &"Close"
+autoplay = "Open"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactive/Window1"]
+position = Vector2(0, -29)
+stream = ExtResource("11_tceh5")
+volume_db = -9.8
+
+[node name="Timer" type="Timer" parent="Interactive/Window1"]
+wait_time = 30.0
+autostart = true
+
+[node name="Window2" type="Area2D" parent="Interactive"]
+position = Vector2(448, 549)
 script = ExtResource("4_srpae")
 
-[node name="Window3" parent="Interactive" instance=ExtResource("4_sim77")]
-position = Vector2(992, 536)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Window2"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_guv8b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interactive/Window2/CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_a4kjs")
+animation = &"Close"
+autoplay = "Open"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactive/Window2"]
+position = Vector2(0, -29)
+stream = ExtResource("11_tceh5")
+volume_db = -9.8
+
+[node name="Timer" type="Timer" parent="Interactive/Window2"]
+wait_time = 30.0
+autostart = true
+
+[node name="Window3" type="Area2D" parent="Interactive"]
+position = Vector2(1008, 549)
 script = ExtResource("4_srpae")
 
-[node name="Door" parent="Interactive" instance=ExtResource("4_sim77")]
-position = Vector2(768, 600)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Window3"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_guv8b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interactive/Window3/CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_a4kjs")
+animation = &"Close"
+autoplay = "Open"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactive/Window3"]
+position = Vector2(0, -29)
+stream = ExtResource("11_tceh5")
+volume_db = -9.8
+
+[node name="Timer" type="Timer" parent="Interactive/Window3"]
+wait_time = 30.0
+autostart = true
+
+[node name="Door" type="Area2D" parent="Interactive"]
+position = Vector2(776, 600)
+scale = Vector2(5, 5)
 script = ExtResource("5_u8myj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Door"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_4le1x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interactive/Door/CollisionShape2D"]
+scale = Vector2(0.217742, 0.217742)
+sprite_frames = SubResource("SpriteFrames_vwt31")
+animation = &"Open"
+autoplay = "Open"
+
+[node name="Creak" type="AudioStreamPlayer2D" parent="Interactive/Door"]
+position = Vector2(-155.2, -120)
+scale = Vector2(0.2, 0.2)
+stream = ExtResource("16_iosfm")
+volume_db = -4.953
+
+[node name="Shut" type="AudioStreamPlayer2D" parent="Interactive/Door"]
+position = Vector2(-155.2, -120)
+scale = Vector2(0.2, 0.2)
+stream = ExtResource("17_eebf0")
+volume_db = -0.897
+
+[node name="Timer" type="Timer" parent="Interactive/Door"]
+wait_time = 30.0
+autostart = true
+
+[node name="Radio" parent="." instance=ExtResource("8_wrrbm")]
+position = Vector2(1112, 600)
+scale = Vector2(2, 2)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+texture_filter = 1
+position = Vector2(328, 600)
+scale = Vector2(1.56, 1.56)
+script = ExtResource("2_3mdw3")
+
+[node name="ObjectDetection" type="Area2D" parent="Player"]
+position = Vector2(0.5, -32.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/ObjectDetection"]
+shape = SubResource("RectangleShape2D_b4ckt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, -32.5)
+shape = SubResource("RectangleShape2D_5cpnl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/CollisionShape2D"]
+texture_filter = 1
+position = Vector2(-0.5, -0.500004)
+scale = Vector2(3.29371, 3.3)
+sprite_frames = SubResource("SpriteFrames_5qs66")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.59017
+speed_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Player/CollisionShape2D/AnimatedSprite2D"]
+occluder = SubResource("OccluderPolygon2D_ouvvt")
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+position = Vector2(0, -32)
+scale = Vector2(4.5, 4.17857)
+energy = 0.7
+texture = SubResource("GradientTexture2D_yqteo")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
+current = true
+
+[node name="Run" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("12_de7t3")
+volume_db = -15.0
+
+[node name="Timer" type="Timer" parent="Player"]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_7sg7m")
+offset_left = -0.00012207
+offset_top = -0.00012207
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
 
 [node name="CursorTooltip" parent="." instance=ExtResource("3_kli53")]
 z_index = 0
+z_as_relative = true
+material = SubResource("CanvasItemMaterial_hmxhg")
+position = Vector2(-0.000244141, -0.000244141)
 
-[node name="Player" parent="." instance=ExtResource("1_j144i")]
-position = Vector2(328, 600)
-script = ExtResource("2_3mdw3")
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(576, 624)
+scale = Vector2(0.975, 0.975)
+energy = 0.94
+blend_mode = 1
 
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Interactive/Window" to="Interactive/Window" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Interactive/Window" to="Interactive/Window" method="_on_mouse_exited"]
+[connection signal="timeout" from="Interactive/Window2/Timer" to="Interactive/Window2" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_exited"]
+[connection signal="timeout" from="Interactive/Window3/Timer" to="Interactive/Window3" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Interactive/Door" to="Interactive/Door" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Interactive/Door" to="Interactive/Door" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_exited"]
+[connection signal="timeout" from="Interactive/Door/Timer" to="Interactive/Door" method="_on_timer_timeout"]

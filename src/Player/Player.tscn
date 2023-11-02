@@ -1,8 +1,69 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsj5whffd816d"]
+[gd_scene load_steps=13 format=3 uid="uid://bnbkahxbq5kt2"]
+
+[ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="1_7kkk3"]
+[ext_resource type="AudioStream" uid="uid://qpbapdmiotka" path="res://Assets/SFX/Footsteps/Steps_carpet-001.ogg" id="2_7lib4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cpnl"]
+size = Vector2(29, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhk6g"]
+atlas = ExtResource("1_7kkk3")
+region = Rect2(40, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qejv7"]
+atlas = ExtResource("1_7kkk3")
+region = Rect2(50, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htg1r"]
+atlas = ExtResource("1_7kkk3")
+region = Rect2(10, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gok6i"]
+atlas = ExtResource("1_7kkk3")
+region = Rect2(40, 0, 10, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nggr4"]
+atlas = ExtResource("1_7kkk3")
+region = Rect2(30, 0, 10, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qs66"]
+animations = [{
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_nhk6g")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_qejv7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htg1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gok6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nggr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gok6i")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 4.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ouvvt"]
+polygon = PackedVector2Array(-2.12526, 9.69697, -2.12526, 16.0606, 3.03609, 15.7576, 3.03609, 9.69697, 2.12526, 9.69697, 2.12526, 14.2424, -1.21443, 14.5455, -0.910826, 9.69697)
 
 [sub_resource type="Gradient" id="Gradient_1xjlb"]
 interpolation_mode = 2
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.341935, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.712129, 0.712129, 0.712129, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yqteo"]
 gradient = SubResource("Gradient_1xjlb")
@@ -10,33 +71,38 @@ fill = 1
 fill_from = Vector2(0.5, 0.45)
 fill_to = Vector2(0.536697, 0.770642)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cpnl"]
-size = Vector2(48, 80)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_72t5c"]
-polygon = PackedVector2Array(-24, 0, 24, 0, 24, 0)
-
 [node name="CharacterBody2D" type="CharacterBody2D"]
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, -40)
-scale = Vector2(6, 6.24219)
-energy = 0.66
-texture = SubResource("GradientTexture2D_yqteo")
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -40)
+position = Vector2(0.5, -32.5)
 shape = SubResource("RectangleShape2D_5cpnl")
 
-[node name="Panel" type="Panel" parent="CollisionShape2D"]
-offset_left = -24.0
-offset_top = -40.0
-offset_right = 24.0
-offset_bottom = 40.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+position = Vector2(-0.5, -0.500004)
+scale = Vector2(3.29371, 3.3)
+sprite_frames = SubResource("SpriteFrames_5qs66")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.863915
+speed_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CollisionShape2D/AnimatedSprite2D"]
+occluder = SubResource("OccluderPolygon2D_ouvvt")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(4.5, 4.17857)
+energy = 0.7
+texture = SubResource("GradientTexture2D_yqteo")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-self_modulate = Color(0.980392, 0.980392, 0.980392, 1)
-occluder = SubResource("OccluderPolygon2D_72t5c")
-sdf_collision = false
+[node name="Run" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_7lib4")
+volume_db = -15.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

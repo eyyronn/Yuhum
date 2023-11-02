@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7l72fji68s6v"]
+[gd_scene load_steps=12 format=3 uid="uid://birjts40afsgm"]
 
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="1_qebv1"]
 [ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="2_da3l0"]
@@ -9,7 +9,8 @@ size = Vector2(78, 64)
 
 [sub_resource type="Gradient" id="Gradient_kmcda"]
 interpolation_mode = 2
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.593548, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.341891, 0.341891, 0.341891, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ivo4p"]
 gradient = SubResource("Gradient_kmcda")
@@ -18,7 +19,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7, 0.7)
 
 [sub_resource type="Gradient" id="Gradient_rnmp8"]
-colors = PackedColorArray(0.31, 0.31, 0.31, 1, 0.22, 0.21395, 0.1474, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g04dg"]
 gradient = SubResource("Gradient_rnmp8")
@@ -29,10 +30,12 @@ shader = ExtResource("2_wmk7y")
 shader_parameter/amount = 99.525
 
 [sub_resource type="Gradient" id="Gradient_kpelk"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.451613, 1)
+colors = PackedColorArray(0.435192, 0.435192, 0.435192, 1, 0.408329, 0.408329, 0.408329, 1, 0.332881, 0.332881, 0.332881, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
 gradient = SubResource("Gradient_kpelk")
+fill_from = Vector2(0, 0.481651)
 
 [node name="TV" type="Area2D"]
 texture_filter = 1
@@ -47,10 +50,11 @@ scale = Vector2(0.289247, 0.289247)
 texture = ExtResource("1_qebv1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, -32)
-scale = Vector2(8.54688, 5.59483)
+position = Vector2(0, -48)
+scale = Vector2(12.875, 11.629)
 energy = 0.88
 shadow_enabled = true
+shadow_filter = 2
 texture = SubResource("GradientTexture2D_ivo4p")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -61,12 +65,12 @@ max_distance = 1000.0
 attenuation = 1.68179
 
 [node name="Wall2" type="Sprite2D" parent="."]
-position = Vector2(-2.02656e-06, -32.5)
-scale = Vector2(1.09375, 0.640625)
+position = Vector2(-10, -33)
+scale = Vector2(0.75, 0.625)
 texture = SubResource("GradientTexture2D_g04dg")
 
 [node name="Static" type="Sprite2D" parent="Wall2"]
 material = SubResource("ShaderMaterial_t7n40")
-position = Vector2(-4.23856e-07, -0.711109)
-scale = Vector2(1, 1.02222)
+position = Vector2(-4.23856e-07, -3.27229e-05)
+scale = Vector2(1, 0.999999)
 texture = SubResource("GradientTexture2D_r0bqe")

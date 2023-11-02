@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpi1qibyvga88"]
+
+[ext_resource type="Texture2D" uid="uid://bp4sy4jkaqfoq" path="res://Assets/Objects/Doors_Windows/Door3.png" id="1_dhkva"]
+[ext_resource type="Texture2D" uid="uid://3vcueyaycf2n" path="res://Assets/Objects/Doors_Windows/Door1.png" id="1_vx1sb"]
+[ext_resource type="Texture2D" uid="uid://bf7ktj848ti2y" path="res://Assets/Objects/Doors_Windows/Door2.png" id="2_gsmug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4le1x"]
+size = Vector2(20, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vwt31"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dhkva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gsmug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_vx1sb")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vx1sb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gsmug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_dhkva")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[node name="Door" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_4le1x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.217742, 0.217742)
+sprite_frames = SubResource("SpriteFrames_vwt31")
+animation = &"Open"
+autoplay = "Open"
+
+[node name="Timer" type="Timer" parent="."]

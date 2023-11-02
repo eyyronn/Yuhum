@@ -1,7 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://e8poo4d5okpr"]
+[gd_scene load_steps=6 format=3 uid="uid://e8poo4d5okpr"]
+
+[ext_resource type="Texture2D" uid="uid://cf4vcff8w4us5" path="res://Assets/Objects/Doors_Windows/Window3.png" id="1_vi0bt"]
+[ext_resource type="Texture2D" uid="uid://d00bincjt4kj1" path="res://Assets/Objects/Doors_Windows/Window2.png" id="2_6jtjm"]
+[ext_resource type="Texture2D" uid="uid://py4o6nwk20h0" path="res://Assets/Objects/Doors_Windows/Window1.png" id="3_5r37d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wln2i"]
 size = Vector2(96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eiycq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vi0bt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6jtjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5r37d")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5r37d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6jtjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_vi0bt")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
 
 [node name="Window" type="Area2D"]
 
@@ -9,8 +44,11 @@ size = Vector2(96, 128)
 position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_wln2i")
 
-[node name="Panel" type="Panel" parent="CollisionShape2D"]
-offset_left = -48.0
-offset_top = -64.0
-offset_right = 48.0
-offset_bottom = 64.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_eiycq")
+animation = &"Close"
+autoplay = "Open"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true

@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Steps_carpet-001.ogg-cfb4d7ab8f1b61609e7759f6
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=500.0
+bpm=0.0
 beat_count=0
 bar_beats=4

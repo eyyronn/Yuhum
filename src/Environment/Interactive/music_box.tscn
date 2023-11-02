@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkhjsh7huwxdy"]
+
+[ext_resource type="Texture2D" uid="uid://cwot4omibii35" path="res://Assets/Objects/radio.png" id="1_y35sf"]
+[ext_resource type="AudioStream" uid="uid://duuttbi15dwty" path="res://Assets/SFX/ili-ili.mp3" id="2_ti06u"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jc63r"]
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg1hl"]
+size = Vector2(20, 15)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vcwws"]
+
+[node name="Radio" type="Area2D"]
+material = SubResource("CanvasItemMaterial_jc63r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_sg1hl")
+
+[node name="Radio" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_vcwws")
+position = Vector2(0, -11.9025)
+scale = Vector2(0.212237, 0.212237)
+texture = ExtResource("1_y35sf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ti06u")
+volume_db = -25.937
+autoplay = true
