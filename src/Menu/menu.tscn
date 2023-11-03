@@ -1,15 +1,280 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3faceq82vcje"]
+[gd_scene load_steps=30 format=3 uid="uid://c3faceq82vcje"]
 
 [ext_resource type="Script" path="res://src/Menu/menu.gd" id="1_phxts"]
+[ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="2_7llur"]
+[ext_resource type="Texture2D" uid="uid://caas2fth5py1l" path="res://Assets/PLAY_BUTTON.png" id="3_8eon3"]
+[ext_resource type="AudioStream" uid="uid://b1fjhrjadycb" path="res://Assets/SFX/creepy_bg_menu.mp3" id="3_uiyl4"]
+[ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="3_vhy0u"]
+[ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="4_84wh2"]
+[ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="5_ocv3l"]
+[ext_resource type="Texture2D" uid="uid://b2k0jly80j8ff" path="res://Assets/Objects/Menu_Objects/signboard.png" id="8_bsca3"]
+[ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/YUHUM-removebg-preview.png" id="9_ftrwp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocglv"]
+texture = ExtResource("2_7llur")
+texture_region_size = Vector2i(480, 480)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_u016e"]
+sources/0 = SubResource("TileSetAtlasSource_ocglv")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wro"]
+size = Vector2(78, 64)
+
+[sub_resource type="Gradient" id="Gradient_kmcda"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.593548, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.341891, 0.341891, 0.341891, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ivo4p"]
+gradient = SubResource("Gradient_kmcda")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.7)
+
+[sub_resource type="Gradient" id="Gradient_rnmp8"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g04dg"]
+gradient = SubResource("Gradient_rnmp8")
+fill = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7n40"]
+shader = ExtResource("5_ocv3l")
+shader_parameter/amount = 99.525
+
+[sub_resource type="Gradient" id="Gradient_kpelk"]
+offsets = PackedFloat32Array(0, 0.451613, 1)
+colors = PackedColorArray(0.91664, 0.91664, 0.91664, 1, 1, 1, 1, 1, 0.589096, 0.589096, 0.589095, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
+gradient = SubResource("Gradient_kpelk")
+fill_from = Vector2(0, 0.481651)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_anv4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaka1"]
-size = Vector2(360, 126.5)
+size = Vector2(335.681, 157.308)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4hpc5"]
+
+[sub_resource type="Animation" id="Animation_bul2j"]
+resource_name = "POP_OUT"
+
+[sub_resource type="Animation" id="Animation_njlwt"]
+resource_name = "Pop"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.513726, 0.513726, 0.513726, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tay0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.513726, 0.513726, 0.513726, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_on7oh"]
+resource_name = "Retract"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.513726, 0.513726, 0.513726, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amgr0"]
+_data = {
+"POP_OUT": SubResource("Animation_bul2j"),
+"Pop": SubResource("Animation_njlwt"),
+"RESET": SubResource("Animation_tay0a"),
+"Retract": SubResource("Animation_on7oh")
+}
+
+[sub_resource type="Gradient" id="Gradient_hc08n"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oar3m"]
+gradient = SubResource("Gradient_hc08n")
+fill = 1
+fill_from = Vector2(0.495413, 0.5)
+fill_to = Vector2(0.885321, 0.188073)
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_phxts")
 
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(4.3, 1.5)
+tile_set = SubResource("TileSet_u016e")
+format = 2
+layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 917608, 0, 0)
+
+[node name="TV" type="Area2D" parent="."]
+texture_filter = 1
+position = Vector2(842, 648)
+scale = Vector2(8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TV"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_j4wro")
+metadata/_edit_lock_ = true
+
+[node name="TV" type="Sprite2D" parent="TV"]
+position = Vector2(-2.23517e-08, -48)
+scale = Vector2(0.289247, 0.289247)
+texture = ExtResource("3_vhy0u")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="TV"]
+position = Vector2(1.66667, -39.3333)
+scale = Vector2(12.875, 11.629)
+energy = 0.88
+shadow_enabled = true
+shadow_filter = 2
+texture = SubResource("GradientTexture2D_ivo4p")
+metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TV"]
+stream = ExtResource("4_84wh2")
+volume_db = -27.071
+autoplay = true
+max_distance = 400.0
+attenuation = 1.68179
+metadata/_edit_lock_ = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="TV/AudioStreamPlayer2D"]
+current = true
+
+[node name="Wall2" type="Sprite2D" parent="TV"]
+position = Vector2(-10, -33)
+scale = Vector2(0.75, 0.625)
+texture = SubResource("GradientTexture2D_g04dg")
+
+[node name="Static" type="Sprite2D" parent="TV/Wall2"]
+material = SubResource("ShaderMaterial_t7n40")
+position = Vector2(-4.23856e-07, -3.27229e-05)
+scale = Vector2(1, 0.999999)
+texture = SubResource("GradientTexture2D_r0bqe")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="TV"]
+position = Vector2(-105.25, -81)
+scale = Vector2(0.0875, 0.1875)
+stream = ExtResource("3_uiyl4")
+volume_db = 9.432
+autoplay = true
+
 [node name="Area2D" type="Area2D" parent="."]
+material = SubResource("CanvasItemMaterial_anv4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(567, 286)
+position = Vector2(247, 325)
 shape = SubResource("RectangleShape2D_xaka1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+modulate = Color(0.513726, 0.513726, 0.513726, 1)
+material = SubResource("CanvasItemMaterial_4hpc5")
+position = Vector2(0.113418, 1.38123)
+scale = Vector2(0.443616, 0.359678)
+texture = ExtResource("3_8eon3")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/CollisionShape2D"]
+libraries = {
+"": SubResource("AnimationLibrary_amgr0")
+}
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+blend_mode = 1
+
+[node name="Signboard" type="Sprite2D" parent="."]
+modulate = Color(0.560784, 0.560784, 0.560784, 1)
+position = Vector2(244, 83.4375)
+scale = Vector2(0.761925, 0.713235)
+texture = ExtResource("8_bsca3")
+
+[node name="Yuhum-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(247.5, 129.5)
+scale = Vector2(0.60396, 0.552408)
+texture = ExtResource("9_ftrwp")
+
+[node name="PointLight2D" type="PointLight2D" parent="Yuhum-removebg-preview"]
+position = Vector2(-7.45081, -6.3359)
+scale = Vector2(11.9524, 6.27933)
+texture = SubResource("GradientTexture2D_oar3m")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
