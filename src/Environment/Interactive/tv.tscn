@@ -61,7 +61,7 @@ texture = SubResource("GradientTexture2D_ivo4p")
 stream = ExtResource("2_da3l0")
 volume_db = -28.0
 autoplay = true
-max_distance = 400.0
+max_distance = 300.0
 attenuation = 1.68179
 
 [node name="Wall2" type="Sprite2D" parent="."]

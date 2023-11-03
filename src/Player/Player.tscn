@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnbkahxbq5kt2"]
+[gd_scene load_steps=14 format=3 uid="uid://bnbkahxbq5kt2"]
 
 [ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="1_7kkk3"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="1_7ls1h"]
 [ext_resource type="AudioStream" uid="uid://qpbapdmiotka" path="res://Assets/SFX/Footsteps/Steps_carpet-001.ogg" id="2_7lib4"]
+[ext_resource type="Texture2D" uid="uid://cnry1lsdtp1ne" path="res://Assets/Objects/light.png" id="3_cxs8d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cpnl"]
 size = Vector2(29, 65)
@@ -62,18 +63,6 @@ animations = [{
 polygon = PackedVector2Array(-2.12526, 9.69697, -2.12526, 16.0606, 3.03609, 15.7576, 3.03609, 9.69697, 2.12526, 9.69697, 2.12526, 14.2424, -1.21443, 14.5455, -0.910826, 9.69697)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wvel1"]
-light_mode = 2
-
-[sub_resource type="Gradient" id="Gradient_1xjlb"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.341935, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.712129, 0.712129, 0.712129, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yqteo"]
-gradient = SubResource("Gradient_1xjlb")
-fill = 1
-fill_from = Vector2(0.5, 0.45)
-fill_to = Vector2(0.536697, 0.770642)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
@@ -101,7 +90,7 @@ material = SubResource("CanvasItemMaterial_wvel1")
 position = Vector2(0, -32)
 scale = Vector2(4.5, 4.17857)
 energy = 0.7
-texture = SubResource("GradientTexture2D_yqteo")
+texture = ExtResource("3_cxs8d")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 position = Vector2(-1, -22)
