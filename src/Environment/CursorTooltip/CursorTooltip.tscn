@@ -1,17 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://xghtbstmtywi"]
+[gd_scene load_steps=5 format=3 uid="uid://xghtbstmtywi"]
 
 [ext_resource type="Script" path="res://src/Environment/CursorTooltip/CursorTooltip.gd" id="1_o0uo4"]
+[ext_resource type="Texture2D" uid="uid://cnry1lsdtp1ne" path="res://Assets/Objects/light.png" id="2_kao8a"]
 [ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="2_xd102"]
-
-[sub_resource type="Gradient" id="Gradient_63n4d"]
-offsets = PackedFloat32Array(0.0129032, 0.683871, 1)
-colors = PackedColorArray(0.868985, 0.868985, 0.868985, 1, 0.304178, 0.304178, 0.304178, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7hk8t"]
-gradient = SubResource("Gradient_63n4d")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.738532, 0.220183)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y6g83"]
 light_mode = 1
@@ -24,9 +15,9 @@ script = ExtResource("1_o0uo4")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1.90735e-06, -1.90735e-06)
-scale = Vector2(2.65625, 2.65625)
-energy = 0.85
-texture = SubResource("GradientTexture2D_7hk8t")
+blend_mode = 2
+texture = ExtResource("2_kao8a")
+texture_scale = 0.5
 
 [node name="Label" type="Label" parent="."]
 z_as_relative = false
