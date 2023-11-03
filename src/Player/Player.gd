@@ -4,14 +4,18 @@ var click_position = Vector2.AXIS_X
 var speed = Global.SPEED
 @onready var anim = get_node("CollisionShape2D/AnimatedSprite2D")
 @onready var sfx_run = get_node("Run")
+@onready var can_move = 0
 @onready var interactive = get_node("../Interactive")
 
 func _ready():
 	click_position = Vector2(position.x, 0)
 	anim.play("Idle")
-	
+	for child in interactive.get_children():
+		child.mouse_entered.connect(_on_mouse_entered.bind(child))
+		child.mouse_exited.connect(_on_mouse_exited.bind(child))
+
 func _process(delta):
-	if Input.is_action_just_pressed("left_click") and in_interactive():
+	if Input.is_action_just_pressed("left_click") and can_move:
 		click_position = get_global_mouse_position()
 		sfx_run.play()
 
@@ -39,16 +43,10 @@ func _process(delta):
 	elif round(direction.x) == 1:
 		anim.flip_h = false	
 
-func in_interactive():
-	var mouse_position = get_global_mouse_position()
-	for child in interactive.get_children():
-		if child is Area2D:
-			var collision_shape = child.get_node("CollisionShape2D")
-			if collision_shape and collision_shape.shape:
-				print(collision_shape)
-				var global_rect = Rect2(child.global_position - collision_shape.shape.extents, collision_shape.shape.extents * 2)
-				if global_rect.has_point(mouse_position):
-					return true
-	return false
+func _on_mouse_entered(node):
+	can_move += 1
+
+func _on_mouse_exited(node):
+	can_move -= 1
 
 

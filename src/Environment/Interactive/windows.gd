@@ -1,6 +1,11 @@
 extends Area2D
 
-var tooltip_text = "close"
+const PLAYER = "Player"
+const TIMER_PREFIX = "Timer"
+const TOOLTIP_CLOSE = "close"
+const TOOLTIP_CLOSED = "closed"
+
+var tooltip_text = TOOLTIP_CLOSE
 @onready var tooltip = get_node("/root/World/Post-Process/CursorTooltip")
 @onready var anim = get_node("CollisionShape2D/AnimatedSprite2D") 
 @onready var sfx_slide = get_node("AudioStreamPlayer2D")
@@ -13,11 +18,14 @@ var window_open = true
 
 func _ready():
 	open_window("First")
-	
+	for child in get_children():
+		if child.name.begins_with(TIMER_PREFIX):
+			child.timeout.connect(_on_timeout.bind())
+
 func change_tooltip():
 	if mouse_in_area:
 		tooltip.set_tooltip_text(tooltip_text)
-		
+
 func _on_mouse_entered():
 	tooltip.set_tooltip_text(tooltip_text)
 	mouse_in_area = true
@@ -31,57 +39,39 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
-#
-#	for child in get_children():
-#		if child.name == "TimerW1":
-#			print("Window1:", $TimerW1.time_left)
-#		if child.name == "TimerW2":
-#			print("Window2:", $TimerW2.time_left)
-#		if child.name == "TimerW3":
-#			print("Window3:", $TimerW3.time_left)
-#
+
 	if area_clicked and player_in_area and can_close:
 		close_window()
-		
+
 func _on_body_entered(body):
-	if body.name == "Player":
+	if body.name == PLAYER:
 		player_in_area = true
 
 func _on_body_exited(body):
-	if body.name == "Player":
+	if body.name == PLAYER:
 		player_in_area = false
-	
-func _on_TimerW1_timeout():
-	open_window("_")
-	
-func _on_TimerW2_timeout():
-	open_window("_")
 
-func _on_TimerW3_timeout():
+func _on_timeout():
 	open_window("_")
 
 func open_window(state):
-	tooltip_text = "close"
+	tooltip_text = TOOLTIP_CLOSE
 	anim.play("Open")
 	if state != "First":
 		sfx_slide.play()
 	window_open = true
 	can_close = true
-	
+
 func close_window():
-	tooltip_text = "closed"
+	tooltip_text = TOOLTIP_CLOSED
 	sfx_slide.play()
 	anim.play("Close")
 	window_open = false
 	area_clicked = false
 	can_close = false
-	
+	start_timers()
+
+func start_timers():
 	for child in get_children():
-		if child.name == "TimerW1":
+		if child.name.begins_with(TIMER_PREFIX):
 			child.start()
-		if child.name == "TimerW2":
-			child.start()
-		if child.name == "TimerW3":
-			child.start()
-	
-	

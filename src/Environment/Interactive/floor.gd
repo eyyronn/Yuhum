@@ -21,5 +21,3 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	tooltip.set_tooltip_text("")
 	mouse_in_area = false
-	
-

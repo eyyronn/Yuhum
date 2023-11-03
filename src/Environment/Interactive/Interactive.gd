@@ -1,5 +1,5 @@
 extends Control
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	print_tree_pretty()
+#func _ready():
+#	print_tree_pretty()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=58 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://src/Environment/Interactive/tv.gd" id="5_h6a77"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/door.gd" id="5_u8myj"]
 [ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="5_vem14"]
+[ext_resource type="Script" path="res://src/Environment/Interactive/floor.gd" id="6_5dms3"]
 [ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="6_u64ka"]
 [ext_resource type="Texture2D" uid="uid://d00bincjt4kj1" path="res://Assets/Objects/Doors_Windows/Window2.png" id="8_lyhk0"]
 [ext_resource type="Texture2D" uid="uid://cf4vcff8w4us5" path="res://Assets/Objects/Doors_Windows/Window3.png" id="8_odd18"]
@@ -26,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://bm0g4bop73uif" path="res://Assets/SFX/creak.wav" id="16_iosfm"]
 [ext_resource type="AudioStream" uid="uid://cslms3uv6ac2m" path="res://Assets/SFX/shut.wav" id="17_eebf0"]
 [ext_resource type="AudioStream" uid="uid://b03mr5a61h2ta" path="res://Assets/SFX/Steve Roden - Airria (hanging garden) second version.mp3" id="24_duyu8"]
+[ext_resource type="Texture2D" uid="uid://cnry1lsdtp1ne" path="res://Assets/Objects/light.png" id="25_3i0kg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -35,25 +37,17 @@ texture_region_size = Vector2i(480, 480)
 [sub_resource type="TileSet" id="TileSet_1lwio"]
 sources/0 = SubResource("TileSetAtlasSource_dwf0m")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_43vav"]
-size = Vector2(129, 752)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2l74"]
 size = Vector2(1152, 152)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43vav"]
+size = Vector2(129, 752)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p8bl"]
+size = Vector2(1148, 39)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wro"]
-size = Vector2(78, 64)
-
-[sub_resource type="Gradient" id="Gradient_kmcda"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.593548, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.341891, 0.341891, 0.341891, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ivo4p"]
-gradient = SubResource("Gradient_kmcda")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.7, 0.7)
+size = Vector2(80, 64)
 
 [sub_resource type="Gradient" id="Gradient_rnmp8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -236,17 +230,6 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ouvvt"]
 polygon = PackedVector2Array(-2.12526, 9.69697, -2.12526, 16.0606, 3.03609, 15.7576, 3.03609, 9.69697, 2.12526, 9.69697, 2.12526, 14.2424, -1.21443, 14.5455, -0.910826, 9.69697)
 
-[sub_resource type="Gradient" id="Gradient_1xjlb"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.341935, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.712129, 0.712129, 0.712129, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yqteo"]
-gradient = SubResource("Gradient_1xjlb")
-fill = 1
-fill_from = Vector2(0.5, 0.45)
-fill_to = Vector2(0.536697, 0.770642)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sg7m"]
 shader = ExtResource("1_0hrf7")
 shader_parameter/overlay = true
@@ -297,16 +280,6 @@ layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 9
 stream = ExtResource("24_duyu8")
 autoplay = true
 
-[node name="Boundary" type="StaticBody2D" parent="Static"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/Boundary"]
-position = Vector2(-64.5, 376)
-shape = SubResource("RectangleShape2D_43vav")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Static/Boundary"]
-position = Vector2(1216, 376)
-shape = SubResource("RectangleShape2D_43vav")
-
 [node name="Floor" type="StaticBody2D" parent="Static"]
 
 [node name="FloorShape" type="CollisionShape2D" parent="Static/Floor"]
@@ -318,12 +291,30 @@ position = Vector2(2.28882e-05, -52)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_o4dcc")
 
+[node name="Boundary" type="StaticBody2D" parent="Static"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/Boundary"]
+position = Vector2(-64.5, 376)
+shape = SubResource("RectangleShape2D_43vav")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Static/Boundary"]
+position = Vector2(1216, 376)
+shape = SubResource("RectangleShape2D_43vav")
+
 [node name="Interactive" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_yoror")
+
+[node name="Floor" type="Area2D" parent="Interactive"]
+position = Vector2(576, 600)
+script = ExtResource("6_5dms3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Floor"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_4p8bl")
 
 [node name="TV" type="Area2D" parent="Interactive"]
 texture_filter = 1
@@ -343,9 +334,11 @@ texture = ExtResource("4_sr1gg")
 position = Vector2(0, -48)
 scale = Vector2(12.875, 11.629)
 energy = 0.88
+blend_mode = 2
 shadow_enabled = true
 shadow_filter = 2
-texture = SubResource("GradientTexture2D_ivo4p")
+texture = ExtResource("25_3i0kg")
+texture_scale = 0.08
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactive/TV"]
 stream = ExtResource("5_vem14")
@@ -499,7 +492,9 @@ occluder = SubResource("OccluderPolygon2D_ouvvt")
 position = Vector2(0, -32)
 scale = Vector2(4.5, 4.17857)
 energy = 0.7
-texture = SubResource("GradientTexture2D_yqteo")
+blend_mode = 2
+texture = ExtResource("25_3i0kg")
+texture_scale = 0.12
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Player"]
 current = true
@@ -547,6 +542,8 @@ offset_right = 1127.0
 offset_bottom = 51.0
 text = "QUIT"
 
+[connection signal="mouse_entered" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_entered"]

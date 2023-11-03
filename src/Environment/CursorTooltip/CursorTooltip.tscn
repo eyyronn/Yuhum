@@ -17,15 +17,13 @@ script = ExtResource("1_o0uo4")
 position = Vector2(1.90735e-06, -1.90735e-06)
 blend_mode = 2
 texture = ExtResource("2_kao8a")
-texture_scale = 0.5
+texture_scale = 0.33
 
 [node name="Label" type="Label" parent="."]
 z_as_relative = false
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_y6g83")
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 192.0
-offset_bottom = 96.0
+offset_right = 184.0
+offset_bottom = 88.0
 theme_override_fonts/font = ExtResource("2_xd102")
 theme_override_font_sizes/font_size = 40
