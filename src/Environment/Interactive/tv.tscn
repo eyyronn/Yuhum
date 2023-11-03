@@ -31,7 +31,7 @@ shader_parameter/amount = 99.525
 
 [sub_resource type="Gradient" id="Gradient_kpelk"]
 offsets = PackedFloat32Array(0, 0.451613, 1)
-colors = PackedColorArray(0.435192, 0.435192, 0.435192, 1, 0.408329, 0.408329, 0.408329, 1, 0.332881, 0.332881, 0.332881, 1)
+colors = PackedColorArray(0.91664, 0.91664, 0.91664, 1, 1, 1, 1, 1, 0.589096, 0.589096, 0.589095, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
 gradient = SubResource("Gradient_kpelk")
@@ -61,7 +61,7 @@ texture = SubResource("GradientTexture2D_ivo4p")
 stream = ExtResource("2_da3l0")
 volume_db = -28.0
 autoplay = true
-max_distance = 1000.0
+max_distance = 400.0
 attenuation = 1.68179
 
 [node name="Wall2" type="Sprite2D" parent="."]

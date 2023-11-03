@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnbkahxbq5kt2"]
+[gd_scene load_steps=15 format=3 uid="uid://bnbkahxbq5kt2"]
 
 [ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="1_7kkk3"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="1_7ls1h"]
@@ -61,6 +61,9 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ouvvt"]
 polygon = PackedVector2Array(-2.12526, 9.69697, -2.12526, 16.0606, 3.03609, 15.7576, 3.03609, 9.69697, 2.12526, 9.69697, 2.12526, 14.2424, -1.21443, 14.5455, -0.910826, 9.69697)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wvel1"]
+light_mode = 2
+
 [sub_resource type="Gradient" id="Gradient_1xjlb"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.341935, 1)
@@ -94,6 +97,7 @@ speed_scale = 2.0
 occluder = SubResource("OccluderPolygon2D_ouvvt")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_wvel1")
 position = Vector2(0, -32)
 scale = Vector2(4.5, 4.17857)
 energy = 0.7

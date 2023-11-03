@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://3vcueyaycf2n" path="res://Assets/Objects/Doors_Windows/Door1.png" id="12_r6hhf"]
 [ext_resource type="AudioStream" uid="uid://bm0g4bop73uif" path="res://Assets/SFX/creak.wav" id="16_iosfm"]
 [ext_resource type="AudioStream" uid="uid://cslms3uv6ac2m" path="res://Assets/SFX/shut.wav" id="17_eebf0"]
-[ext_resource type="AudioStream" path="res://Assets/SFX/Steve Roden - Airria (hanging garden) second version.mp3" id="24_duyu8"]
+[ext_resource type="AudioStream" uid="uid://b03mr5a61h2ta" path="res://Assets/SFX/Steve Roden - Airria (hanging garden) second version.mp3" id="24_duyu8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -68,7 +68,7 @@ shader_parameter/amount = 99.525
 
 [sub_resource type="Gradient" id="Gradient_kpelk"]
 offsets = PackedFloat32Array(0, 0.451613, 1)
-colors = PackedColorArray(0.435192, 0.435192, 0.435192, 1, 0.408329, 0.408329, 0.408329, 1, 0.332881, 0.332881, 0.332881, 1)
+colors = PackedColorArray(0.435192, 0.435192, 0.435192, 1, 1, 1, 1, 1, 0.332881, 0.332881, 0.332881, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
 gradient = SubResource("Gradient_kpelk")
@@ -278,33 +278,39 @@ light_mode = 1
 [node name="World" type="Node2D"]
 script = ExtResource("1_lspb6")
 
-[node name="Background" type="TileMap" parent="."]
+[node name="Static" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TileMap" parent="Static"]
 scale = Vector2(0.5, 1.5)
 tile_set = SubResource("TileSet_1lwio")
 format = 2
 layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 917608, 0, 0, 917638, 0, 0)
 
-[node name="BG Music" type="AudioStreamPlayer" parent="."]
+[node name="BG Music" type="AudioStreamPlayer" parent="Static"]
 stream = ExtResource("24_duyu8")
 autoplay = true
 
-[node name="Boundary" type="StaticBody2D" parent="."]
+[node name="Boundary" type="StaticBody2D" parent="Static"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static/Boundary"]
 position = Vector2(-64.5, 376)
 shape = SubResource("RectangleShape2D_43vav")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Static/Boundary"]
 position = Vector2(1216, 376)
 shape = SubResource("RectangleShape2D_43vav")
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="Static"]
 
-[node name="FloorShape" type="CollisionShape2D" parent="Floor"]
+[node name="FloorShape" type="CollisionShape2D" parent="Static/Floor"]
 position = Vector2(576, 676)
 shape = SubResource("RectangleShape2D_g2l74")
 
-[node name="Floor" type="Sprite2D" parent="Floor/FloorShape"]
+[node name="Floor" type="Sprite2D" parent="Static/Floor/FloorShape"]
 position = Vector2(2.28882e-05, -52)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_o4dcc")
@@ -453,7 +459,7 @@ volume_db = -0.897
 wait_time = 30.0
 one_shot = true
 
-[node name="Radio" parent="." instance=ExtResource("8_wrrbm")]
+[node name="Radio" parent="Interactive" instance=ExtResource("8_wrrbm")]
 position = Vector2(1112, 600)
 scale = Vector2(2, 2)
 
@@ -502,25 +508,32 @@ volume_db = -18.0
 [node name="Timer" type="Timer" parent="Player"]
 one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Post-Process" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Post-Process"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_7sg7m")
+layout_mode = 0
 offset_left = -0.00012207
 offset_top = -0.00012207
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
-[node name="CursorTooltip" parent="." instance=ExtResource("3_kli53")]
+[node name="CursorTooltip" parent="Post-Process" instance=ExtResource("3_kli53")]
 z_index = 0
 z_as_relative = true
 material = SubResource("CanvasItemMaterial_hmxhg")
 position = Vector2(-0.000244141, -0.000244141)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Post-Process"]
 position = Vector2(576, 624)
 scale = Vector2(0.975, 0.975)
-energy = 0.94
+energy = 0.92
 blend_mode = 1
 
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]

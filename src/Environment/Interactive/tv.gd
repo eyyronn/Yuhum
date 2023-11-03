@@ -1,7 +1,7 @@
 extends Area2D
 
 var tooltip_text = "watch"
-@onready var tooltip = get_node("/root/World/CursorTooltip")
+@onready var tooltip = get_node("/root/World/Post-Process/CursorTooltip")
 
 func _on_mouse_entered():
 	tooltip.set_tooltip_text(tooltip_text)
