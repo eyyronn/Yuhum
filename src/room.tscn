@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=59 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -275,6 +275,9 @@ shader_parameter/vignette_opacity = 0.0
 blend_mode = 1
 light_mode = 1
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqsvb"]
+light_mode = 1
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_lspb6")
 
@@ -536,6 +539,14 @@ scale = Vector2(0.975, 0.975)
 energy = 0.92
 blend_mode = 1
 
+[node name="Button" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_sqsvb")
+offset_left = 1067.0
+offset_top = 20.0
+offset_right = 1127.0
+offset_bottom = 51.0
+text = "QUIT"
+
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_entered"]
@@ -558,3 +569,4 @@ blend_mode = 1
 [connection signal="mouse_entered" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_exited"]
 [connection signal="timeout" from="Interactive/Door/TimerDoor" to="Interactive/Door" method="_on_TimerDoor_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
