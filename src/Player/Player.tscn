@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsj5whffd816d"]
+[gd_scene load_steps=14 format=3 uid="uid://bnbkahxbq5kt2"]
 
 [ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="1_7kkk3"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="1_7ls1h"]
@@ -106,6 +106,7 @@ current = true
 [node name="Run" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -9)
 stream = ExtResource("2_7lib4")
+volume_db = -10.895
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

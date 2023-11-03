@@ -1,19 +1,21 @@
-[gd_scene load_steps=56 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=58 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
+[ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
 [ext_resource type="Texture2D" uid="uid://cg8odh0ifb0nl" path="res://Assets/Objects/floor.png" id="1_o4dcc"]
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="1_wj3vc"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="2_3mdw3"]
 [ext_resource type="PackedScene" uid="uid://xghtbstmtywi" path="res://src/Environment/CursorTooltip/CursorTooltip.tscn" id="3_kli53"]
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="4_sr1gg"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/windows.gd" id="4_srpae"]
+[ext_resource type="Script" path="res://src/Environment/Interactive/Interactive.gd" id="4_yoror"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/tv.gd" id="5_h6a77"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/door.gd" id="5_u8myj"]
 [ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="5_vem14"]
 [ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="6_u64ka"]
 [ext_resource type="Texture2D" uid="uid://d00bincjt4kj1" path="res://Assets/Objects/Doors_Windows/Window2.png" id="8_lyhk0"]
 [ext_resource type="Texture2D" uid="uid://cf4vcff8w4us5" path="res://Assets/Objects/Doors_Windows/Window3.png" id="8_odd18"]
-[ext_resource type="PackedScene" uid="uid://j4ymjxyr4wi6" path="res://src/Environment/Interactive/music_box.tscn" id="8_wrrbm"]
+[ext_resource type="PackedScene" uid="uid://dkhjsh7huwxdy" path="res://src/Environment/Interactive/music_box.tscn" id="8_wrrbm"]
 [ext_resource type="Texture2D" uid="uid://py4o6nwk20h0" path="res://Assets/Objects/Doors_Windows/Window1.png" id="9_gy7wj"]
 [ext_resource type="Texture2D" uid="uid://bp4sy4jkaqfoq" path="res://Assets/Objects/Doors_Windows/Door3.png" id="10_rap4l"]
 [ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="11_4ccbv"]
@@ -23,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://3vcueyaycf2n" path="res://Assets/Objects/Doors_Windows/Door1.png" id="12_r6hhf"]
 [ext_resource type="AudioStream" uid="uid://bm0g4bop73uif" path="res://Assets/SFX/creak.wav" id="16_iosfm"]
 [ext_resource type="AudioStream" uid="uid://cslms3uv6ac2m" path="res://Assets/SFX/shut.wav" id="17_eebf0"]
-[ext_resource type="AudioStream" uid="uid://b03mr5a61h2ta" path="res://Assets/SFX/Steve Roden - Airria (hanging garden) second version.mp3" id="24_duyu8"]
+[ext_resource type="AudioStream" path="res://Assets/SFX/Steve Roden - Airria (hanging garden) second version.mp3" id="24_duyu8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -274,12 +276,17 @@ blend_mode = 1
 light_mode = 1
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_lspb6")
 
 [node name="Background" type="TileMap" parent="."]
 scale = Vector2(0.5, 1.5)
 tile_set = SubResource("TileSet_1lwio")
 format = 2
 layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 917608, 0, 0, 917638, 0, 0)
+
+[node name="BG Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_duyu8")
+autoplay = true
 
 [node name="Boundary" type="StaticBody2D" parent="."]
 
@@ -307,6 +314,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("4_yoror")
 
 [node name="TV" type="Area2D" parent="Interactive"]
 texture_filter = 1
@@ -366,9 +374,9 @@ position = Vector2(0, -29)
 stream = ExtResource("11_tceh5")
 volume_db = -9.8
 
-[node name="Timer" type="Timer" parent="Interactive/Window1"]
+[node name="TimerW1" type="Timer" parent="Interactive/Window1"]
 wait_time = 30.0
-autostart = true
+one_shot = true
 
 [node name="Window2" type="Area2D" parent="Interactive"]
 position = Vector2(448, 549)
@@ -388,9 +396,9 @@ position = Vector2(0, -29)
 stream = ExtResource("11_tceh5")
 volume_db = -9.8
 
-[node name="Timer" type="Timer" parent="Interactive/Window2"]
+[node name="TimerW2" type="Timer" parent="Interactive/Window2"]
 wait_time = 30.0
-autostart = true
+one_shot = true
 
 [node name="Window3" type="Area2D" parent="Interactive"]
 position = Vector2(1008, 549)
@@ -410,9 +418,9 @@ position = Vector2(0, -29)
 stream = ExtResource("11_tceh5")
 volume_db = -9.8
 
-[node name="Timer" type="Timer" parent="Interactive/Window3"]
+[node name="TimerW3" type="Timer" parent="Interactive/Window3"]
 wait_time = 30.0
-autostart = true
+one_shot = true
 
 [node name="Door" type="Area2D" parent="Interactive"]
 position = Vector2(776, 600)
@@ -441,9 +449,9 @@ scale = Vector2(0.2, 0.2)
 stream = ExtResource("17_eebf0")
 volume_db = -0.897
 
-[node name="Timer" type="Timer" parent="Interactive/Door"]
+[node name="TimerDoor" type="Timer" parent="Interactive/Door"]
 wait_time = 30.0
-autostart = true
+one_shot = true
 
 [node name="Radio" parent="." instance=ExtResource("8_wrrbm")]
 position = Vector2(1112, 600)
@@ -489,7 +497,7 @@ current = true
 
 [node name="Run" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("12_de7t3")
-volume_db = -15.0
+volume_db = -18.0
 
 [node name="Timer" type="Timer" parent="Player"]
 one_shot = true
@@ -515,28 +523,25 @@ scale = Vector2(0.975, 0.975)
 energy = 0.94
 blend_mode = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_duyu8")
-autoplay = true
-
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_exited"]
+[connection signal="timeout" from="Interactive/Window1/TimerW1" to="Interactive/Window1" method="_on_TimerW1_timeout"]
 [connection signal="body_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Window2/Timer" to="Interactive/Window2" method="_on_timer_timeout"]
+[connection signal="timeout" from="Interactive/Window2/TimerW2" to="Interactive/Window2" method="_on_TimerW2_timeout"]
 [connection signal="body_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Window3/Timer" to="Interactive/Window3" method="_on_timer_timeout"]
+[connection signal="timeout" from="Interactive/Window3/TimerW3" to="Interactive/Window3" method="_on_TimerW3_timeout"]
 [connection signal="body_entered" from="Interactive/Door" to="Interactive/Door" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="Interactive/Door" to="Interactive/Door" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Door/Timer" to="Interactive/Door" method="_on_timer_timeout"]
+[connection signal="timeout" from="Interactive/Door/TimerDoor" to="Interactive/Door" method="_on_TimerDoor_timeout"]

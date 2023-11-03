@@ -14,7 +14,7 @@ var door_open = true
 
 
 func _ready():
-	anim.play("Open")
+	open_door("First")
 
 func _on_mouse_entered():
 	tooltip.set_tooltip_text(tooltip_text)
@@ -27,20 +27,11 @@ func _on_mouse_exited():
 func _process(delta):
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
-
-	if area_clicked and player_in_area and can_close:
-		anim.play("Close")
-		sfx_shut.play()
-		door_open = false
-		area_clicked = false
 		
-	if not door_open:
-		tooltip_text = "closed"
-		can_close = false
+	print($TimerDoor.time_left)
 	
-	elif door_open:
-		can_close = true
-		tooltip_text = "close"
+	if area_clicked and player_in_area and can_close:
+		close_door()
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -50,8 +41,22 @@ func _on_body_exited(body):
 	if body.name == "Player":
 		player_in_area = false
 
-func _on_timer_timeout():
-	anim.play("Open")
-	sfx_creak.play()
-	door_open = true
+func _on_TimerDoor_timeout():
+	open_door("_")
 	
+func open_door(state):
+	anim.play("Open")
+	if state != "First":
+		sfx_creak.play()
+	door_open = true
+	can_close = true
+	tooltip_text = "close"
+	
+func close_door():
+	sfx_shut.play()
+	anim.play("Close")
+	door_open = false
+	area_clicked = false
+	tooltip_text = "closed"
+	can_close = false
+	$TimerDoor.start()

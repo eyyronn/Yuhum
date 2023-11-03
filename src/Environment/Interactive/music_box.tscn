@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://j4ymjxyr4wi6"]
+[gd_scene load_steps=6 format=3 uid="uid://dkhjsh7huwxdy"]
 
 [ext_resource type="Texture2D" uid="uid://cwot4omibii35" path="res://Assets/Objects/radio.png" id="1_y35sf"]
 [ext_resource type="AudioStream" uid="uid://duuttbi15dwty" path="res://Assets/SFX/ili-ili.mp3" id="2_ti06u"]
@@ -26,7 +26,7 @@ texture = ExtResource("1_y35sf")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ti06u")
-volume_db = -5.0
+volume_db = -16.243
 autoplay = true
-max_distance = 400.0
+max_distance = 755.0
 attenuation = 1.68179

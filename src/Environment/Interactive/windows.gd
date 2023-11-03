@@ -12,7 +12,7 @@ var area_clicked = false
 var window_open = true
 
 func _ready():
-	anim.play("Open")
+	open_window("First")
 
 func _on_mouse_entered():
 	tooltip.set_tooltip_text(tooltip_text)
@@ -26,21 +26,17 @@ func _process(delta):
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
 
-	if area_clicked and player_in_area and can_close:
-		sfx_slide.play()
-		anim.play("Close")
-		window_open = false
-		area_clicked = false
-	
-	if not window_open:
-		tooltip_text = "closed"
-		can_close = false
-	
-	elif window_open:
-		can_close = true
-		tooltip_text = "close"
+	for child in get_children():
+		if child.name == "TimerW1":
+			print("Window1:", $TimerW1.time_left)
+		if child.name == "TimerW2":
+			print("Window2:", $TimerW2.time_left)
+		if child.name == "TimerW3":
+			print("Window3:", $TimerW3.time_left)
 		
-
+	if area_clicked and player_in_area and can_close:
+		close_window()
+		
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_in_area = true
@@ -48,9 +44,38 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.name == "Player":
 		player_in_area = false
+	
+func _on_TimerW1_timeout():
+	open_window("_")
+	
+func _on_TimerW2_timeout():
+	open_window("_")
 
-func _on_timer_timeout():
+func _on_TimerW3_timeout():
+	open_window("_")
+
+func open_window(state):
 	anim.play("Open")
-	sfx_slide.play()
+	if state != "First":
+		sfx_slide.play()
 	window_open = true
+	can_close = true
+	tooltip_text = "close"
+	
+func close_window():
+	sfx_slide.play()
+	anim.play("Close")
+	window_open = false
+	area_clicked = false
+	tooltip_text = "closed"
+	can_close = false
+	
+	for child in get_children():
+		if child.name == "TimerW1":
+			child.start()
+		if child.name == "TimerW2":
+			child.start()
+		if child.name == "TimerW3":
+			child.start()
+	
 	
