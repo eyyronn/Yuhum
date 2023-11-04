@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://st27cb0iku32"
-path="res://.godot/imported/YUHUM-removebg-preview.png-aedfd2922d728f27d1558e28d32b22c3.ctex"
+uid="uid://b74k8lx1mqdo5"
+path="res://.godot/imported/PLAY_BUTTON1.png-0572b6169d9a3715042b94c58d4f7c52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://YUHUM-removebg-preview.png"
-dest_files=["res://.godot/imported/YUHUM-removebg-preview.png-aedfd2922d728f27d1558e28d32b22c3.ctex"]
+source_file="res://Assets/Icons/PLAY_BUTTON1.png"
+dest_files=["res://.godot/imported/PLAY_BUTTON1.png-0572b6169d9a3715042b94c58d4f7c52.ctex"]
 
 [params]
 

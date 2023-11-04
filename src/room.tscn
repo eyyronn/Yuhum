@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=59 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -28,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://cslms3uv6ac2m" path="res://Assets/SFX/shut.wav" id="17_eebf0"]
 [ext_resource type="AudioStream" uid="uid://b03mr5a61h2ta" path="res://Assets/SFX/Steve Roden - Airria (hanging garden) second version.mp3" id="24_duyu8"]
 [ext_resource type="Texture2D" uid="uid://cnry1lsdtp1ne" path="res://Assets/Objects/light.png" id="25_3i0kg"]
+[ext_resource type="Texture2D" uid="uid://durishaueidx6" path="res://Assets/Background/_3adb6daf-0223-471b-972f-e6a01eb755d4.jpg" id="27_mrtg7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -230,6 +231,9 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ouvvt"]
 polygon = PackedVector2Array(-2.12526, 9.69697, -2.12526, 16.0606, 3.03609, 15.7576, 3.03609, 9.69697, 2.12526, 9.69697, 2.12526, 14.2424, -1.21443, 14.5455, -0.910826, 9.69697)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqsvb"]
+light_mode = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sg7m"]
 shader = ExtResource("1_0hrf7")
 shader_parameter/overlay = true
@@ -256,9 +260,6 @@ shader_parameter/vignette_opacity = 0.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hmxhg"]
 blend_mode = 1
-light_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqsvb"]
 light_mode = 1
 
 [node name="World" type="Node2D"]
@@ -333,7 +334,7 @@ texture = ExtResource("4_sr1gg")
 [node name="PointLight2D" type="PointLight2D" parent="Interactive/TV"]
 position = Vector2(0, -48)
 scale = Vector2(12.875, 11.629)
-energy = 0.88
+energy = 1.1
 blend_mode = 2
 shadow_enabled = true
 shadow_filter = 2
@@ -376,7 +377,10 @@ position = Vector2(0, -29)
 stream = ExtResource("11_tceh5")
 volume_db = -9.8
 
-[node name="TimerW1" type="Timer" parent="Interactive/Window1"]
+[node name="TimerOpenW1" type="Timer" parent="Interactive/Window1"]
+one_shot = true
+
+[node name="TimerClosedW1" type="Timer" parent="Interactive/Window1"]
 wait_time = 30.0
 one_shot = true
 
@@ -398,7 +402,10 @@ position = Vector2(0, -29)
 stream = ExtResource("11_tceh5")
 volume_db = -9.8
 
-[node name="TimerW2" type="Timer" parent="Interactive/Window2"]
+[node name="TimerOpenW2" type="Timer" parent="Interactive/Window2"]
+one_shot = true
+
+[node name="TimerClosedW2" type="Timer" parent="Interactive/Window2"]
 wait_time = 30.0
 one_shot = true
 
@@ -420,7 +427,10 @@ position = Vector2(0, -29)
 stream = ExtResource("11_tceh5")
 volume_db = -9.8
 
-[node name="TimerW3" type="Timer" parent="Interactive/Window3"]
+[node name="TimerOpenW3" type="Timer" parent="Interactive/Window3"]
+one_shot = true
+
+[node name="TimerClosedW3" type="Timer" parent="Interactive/Window3"]
 wait_time = 30.0
 one_shot = true
 
@@ -451,7 +461,10 @@ scale = Vector2(0.2, 0.2)
 stream = ExtResource("17_eebf0")
 volume_db = -0.897
 
-[node name="TimerDoor" type="Timer" parent="Interactive/Door"]
+[node name="TimerOpenDoor" type="Timer" parent="Interactive/Door"]
+one_shot = true
+
+[node name="TimerClosedDoor" type="Timer" parent="Interactive/Door"]
 wait_time = 30.0
 one_shot = true
 
@@ -491,7 +504,6 @@ occluder = SubResource("OccluderPolygon2D_ouvvt")
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
 position = Vector2(0, -32)
 scale = Vector2(4.5, 4.17857)
-energy = 0.7
 blend_mode = 2
 texture = ExtResource("25_3i0kg")
 texture_scale = 0.12
@@ -505,6 +517,20 @@ volume_db = -18.0
 
 [node name="Timer" type="Timer" parent="Player"]
 one_shot = true
+
+[node name="Button" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_sqsvb")
+offset_left = 1067.0
+offset_top = 20.0
+offset_right = 1127.0
+offset_bottom = 51.0
+text = "QUIT"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(576, 178)
+scale = Vector2(0.56, 0.28)
+texture = ExtResource("27_mrtg7")
 
 [node name="Post-Process" type="Control" parent="."]
 layout_mode = 3
@@ -534,14 +560,6 @@ scale = Vector2(0.975, 0.975)
 energy = 0.92
 blend_mode = 1
 
-[node name="Button" type="Button" parent="."]
-material = SubResource("CanvasItemMaterial_sqsvb")
-offset_left = 1067.0
-offset_top = 20.0
-offset_right = 1127.0
-offset_bottom = 51.0
-text = "QUIT"
-
 [connection signal="mouse_entered" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
@@ -550,20 +568,21 @@ text = "QUIT"
 [connection signal="body_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Window1/TimerW1" to="Interactive/Window1" method="_on_TimerW1_timeout"]
+[connection signal="timeout" from="Interactive/Window1/TimerClosedW1" to="Interactive/Window1" method="_on_TimerW1_timeout"]
 [connection signal="body_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Window2/TimerW2" to="Interactive/Window2" method="_on_TimerW2_timeout"]
+[connection signal="timeout" from="Interactive/Window2/TimerClosedW2" to="Interactive/Window2" method="_on_TimerW2_timeout"]
 [connection signal="body_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Window3/TimerW3" to="Interactive/Window3" method="_on_TimerW3_timeout"]
+[connection signal="timeout" from="Interactive/Window3/TimerClosedW3" to="Interactive/Window3" method="_on_TimerW3_timeout"]
 [connection signal="body_entered" from="Interactive/Door" to="Interactive/Door" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="Interactive/Door" to="Interactive/Door" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Door/TimerDoor" to="Interactive/Door" method="_on_TimerDoor_timeout"]
+[connection signal="timeout" from="Interactive/Door/TimerOpenDoor" to="Interactive/Door" method="_on_timeout_open"]
+[connection signal="timeout" from="Interactive/Door/TimerClosedDoor" to="Interactive/Door" method="_on_timeout_closed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

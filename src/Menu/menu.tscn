@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://src/Menu/menu.gd" id="1_phxts"]
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="2_7llur"]
-[ext_resource type="Texture2D" uid="uid://caas2fth5py1l" path="res://Assets/PLAY_BUTTON.png" id="3_8eon3"]
 [ext_resource type="AudioStream" uid="uid://b1fjhrjadycb" path="res://Assets/SFX/creepy_bg_menu.mp3" id="3_uiyl4"]
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="3_vhy0u"]
 [ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="4_84wh2"]
 [ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="5_ocv3l"]
+[ext_resource type="Texture2D" uid="uid://caas2fth5py1l" path="res://Assets/Icons/PLAY_BUTTON.png" id="7_ibl4f"]
 [ext_resource type="Texture2D" uid="uid://b2k0jly80j8ff" path="res://Assets/Objects/Menu_Objects/signboard.png" id="8_bsca3"]
-[ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/YUHUM-removebg-preview.png" id="9_ftrwp"]
+[ext_resource type="Texture2D" uid="uid://st27cb0iku32" path="res://YUHUM-removebg-preview.png" id="9_nf815"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocglv"]
 texture = ExtResource("2_7llur")
@@ -248,7 +248,7 @@ modulate = Color(0.513726, 0.513726, 0.513726, 1)
 material = SubResource("CanvasItemMaterial_4hpc5")
 position = Vector2(0.113418, 1.38123)
 scale = Vector2(0.443616, 0.359678)
-texture = ExtResource("3_8eon3")
+texture = ExtResource("7_ibl4f")
 metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/CollisionShape2D"]
@@ -268,7 +268,7 @@ texture = ExtResource("8_bsca3")
 [node name="Yuhum-removebg-preview" type="Sprite2D" parent="."]
 position = Vector2(247.5, 129.5)
 scale = Vector2(0.60396, 0.552408)
-texture = ExtResource("9_ftrwp")
+texture = ExtResource("9_nf815")
 
 [node name="PointLight2D" type="PointLight2D" parent="Yuhum-removebg-preview"]
 position = Vector2(-7.45081, -6.3359)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://st27cb0iku32"
-path="res://.godot/imported/YUHUM-removebg-preview.png-aedfd2922d728f27d1558e28d32b22c3.ctex"
+uid="uid://c8mw80ovgynak"
+path="res://.godot/imported/YUHUM-removebg-preview.png-8a74f2d0c739e8712a7640554ed2115e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://YUHUM-removebg-preview.png"
-dest_files=["res://.godot/imported/YUHUM-removebg-preview.png-aedfd2922d728f27d1558e28d32b22c3.ctex"]
+source_file="res://Assets/Icons/YUHUM-removebg-preview.png"
+dest_files=["res://.godot/imported/YUHUM-removebg-preview.png-8a74f2d0c739e8712a7640554ed2115e.ctex"]
 
 [params]
 

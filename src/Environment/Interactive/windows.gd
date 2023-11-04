@@ -1,7 +1,8 @@
 extends Area2D
 
 const PLAYER = "Player"
-const TIMER_PREFIX = "Timer"
+const TIMER_CLOSED_PREFIX = "TimerClosed"
+const TIMER_OPEN_PREFIX = "TimerOpen"
 const TOOLTIP_CLOSE = "close"
 const TOOLTIP_CLOSED = "closed"
 
@@ -17,10 +18,16 @@ var area_clicked = false
 var window_open = true
 
 func _ready():
-	open_window("First")
 	for child in get_children():
-		if child.name.begins_with(TIMER_PREFIX):
-			child.timeout.connect(_on_timeout.bind())
+		if child.name.begins_with(TIMER_CLOSED_PREFIX):
+			child.timeout.connect(_on_timeout_closed.bind())
+			
+	for child in get_children():
+		if child.name.begins_with(TIMER_OPEN_PREFIX):
+			child.timeout.connect(_on_timeout_open.bind())
+			
+	open_window("First")
+
 
 func change_tooltip():
 	if mouse_in_area:
@@ -51,27 +58,42 @@ func _on_body_exited(body):
 	if body.name == PLAYER:
 		player_in_area = false
 
-func _on_timeout():
+func _on_timeout_closed():
 	open_window("_")
 
+func _on_timeout_open():
+	print("Game Over")
+
 func open_window(state):
+	for child in get_children():
+		if child.name.begins_with(TIMER_OPEN_PREFIX):
+			child.set_wait_time(randf_range(15, 30))
 	tooltip_text = TOOLTIP_CLOSE
 	anim.play("Open")
 	if state != "First":
 		sfx_slide.play()
 	window_open = true
 	can_close = true
+	start_timer_open()
 
 func close_window():
+	for child in get_children():
+			if child.name.begins_with(TIMER_CLOSED_PREFIX):
+				child.set_wait_time(randf_range(30, 100))
 	tooltip_text = TOOLTIP_CLOSED
 	sfx_slide.play()
 	anim.play("Close")
 	window_open = false
 	area_clicked = false
 	can_close = false
-	start_timers()
+	start_timer_closed()
 
-func start_timers():
+func start_timer_closed():
 	for child in get_children():
-		if child.name.begins_with(TIMER_PREFIX):
+		if child.name.begins_with(TIMER_CLOSED_PREFIX):
+			child.start()
+			
+func start_timer_open():
+	for child in get_children():
+		if child.name.begins_with(TIMER_OPEN_PREFIX):
 			child.start()

@@ -30,10 +30,10 @@ func _on_mouse_exited():
 
 func _process(delta):
 	change_tooltip()
+	
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
-#	print("Door", $TimerDoor.time_left)
-	
+		
 	if area_clicked and player_in_area and can_close:
 		close_door()
 
@@ -45,22 +45,28 @@ func _on_body_exited(body):
 	if body.name == "Player":
 		player_in_area = false
 
-func _on_TimerDoor_timeout():
+func _on_timeout_closed():
 	open_door("_")
 	
+func _on_timeout_open():
+	print("Game Over Door")
+	
 func open_door(state):
+	$TimerOpenDoor.set_wait_time(randf_range(15, 30))
 	anim.play("Open")
 	if state != "First":
 		sfx_creak.play()
 	door_open = true
 	can_close = true
 	tooltip_text = "close"
+	$TimerOpenDoor.start()
 	
 func close_door():
+	$TimerClosedDoor.set_wait_time(randf_range(30, 100))
 	sfx_shut.play()
 	anim.play("Close")
 	door_open = false
 	area_clicked = false
 	tooltip_text = "closed"
 	can_close = false
-	$TimerDoor.start()
+	$TimerClosedDoor.start()
