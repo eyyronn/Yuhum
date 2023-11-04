@@ -55,7 +55,7 @@ fill_from = Vector2(0, 0.481651)
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_anv4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaka1"]
-size = Vector2(335.681, 157.308)
+size = Vector2(335.681, 129.654)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4hpc5"]
 
@@ -166,7 +166,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rnig"]
-size = Vector2(251, 86)
+size = Vector2(251, 77)
 
 [sub_resource type="Gradient" id="Gradient_hc08n"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -244,7 +244,7 @@ autoplay = true
 material = SubResource("CanvasItemMaterial_anv4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(247, 325)
+position = Vector2(247, 311.173)
 shape = SubResource("RectangleShape2D_xaka1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
@@ -263,7 +263,7 @@ libraries = {
 [node name="Area2D2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(246, 458)
+position = Vector2(248, 420.5)
 shape = SubResource("RectangleShape2D_0rnig")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D2/CollisionShape2D"]
