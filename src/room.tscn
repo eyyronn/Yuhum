@@ -558,7 +558,7 @@ offset_left = 1067.0
 offset_top = 20.0
 offset_right = 1127.0
 offset_bottom = 51.0
-text = "QUIT"
+text = "MENU"
 
 [connection signal="mouse_entered" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
