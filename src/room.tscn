@@ -231,9 +231,6 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ouvvt"]
 polygon = PackedVector2Array(-2.12526, 9.69697, -2.12526, 16.0606, 3.03609, 15.7576, 3.03609, 9.69697, 2.12526, 9.69697, 2.12526, 14.2424, -1.21443, 14.5455, -0.910826, 9.69697)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqsvb"]
-light_mode = 1
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sg7m"]
 shader = ExtResource("1_0hrf7")
 shader_parameter/overlay = true
@@ -260,6 +257,9 @@ shader_parameter/vignette_opacity = 0.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hmxhg"]
 blend_mode = 1
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqsvb"]
 light_mode = 1
 
 [node name="World" type="Node2D"]
@@ -518,14 +518,6 @@ volume_db = -18.0
 [node name="Timer" type="Timer" parent="Player"]
 one_shot = true
 
-[node name="Button" type="Button" parent="."]
-material = SubResource("CanvasItemMaterial_sqsvb")
-offset_left = 1067.0
-offset_top = 20.0
-offset_right = 1127.0
-offset_bottom = 51.0
-text = "QUIT"
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(576, 178)
@@ -559,6 +551,14 @@ position = Vector2(576, 624)
 scale = Vector2(0.975, 0.975)
 energy = 0.92
 blend_mode = 1
+
+[node name="Button" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_sqsvb")
+offset_left = 1067.0
+offset_top = 20.0
+offset_right = 1127.0
+offset_bottom = 51.0
+text = "QUIT"
 
 [connection signal="mouse_entered" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
