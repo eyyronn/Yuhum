@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c3faceq82vcje"]
+[gd_scene load_steps=32 format=3 uid="uid://c3faceq82vcje"]
 
 [ext_resource type="Script" path="res://src/Menu/menu.gd" id="1_phxts"]
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="2_7llur"]
@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="3_vhy0u"]
 [ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="4_84wh2"]
 [ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="5_ocv3l"]
+[ext_resource type="Texture2D" uid="uid://bqoq0e7frhe6h" path="res://Assets/QUIT_BUTTON.png" id="8_36vc8"]
 [ext_resource type="Texture2D" uid="uid://b2k0jly80j8ff" path="res://Assets/Objects/Menu_Objects/signboard.png" id="8_bsca3"]
-[ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/YUHUM-removebg-preview.png" id="9_ftrwp"]
+[ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/YUHUM.png" id="10_7cgei"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocglv"]
 texture = ExtResource("2_7llur")
@@ -164,6 +165,9 @@ _data = {
 "Retract": SubResource("Animation_on7oh")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rnig"]
+size = Vector2(251, 86)
+
 [sub_resource type="Gradient" id="Gradient_hc08n"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
@@ -256,6 +260,22 @@ libraries = {
 "": SubResource("AnimationLibrary_amgr0")
 }
 
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(246, 458)
+shape = SubResource("RectangleShape2D_0rnig")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2/CollisionShape2D"]
+modulate = Color(0.513726, 0.513726, 0.513726, 1)
+scale = Vector2(0.251061, 0.239377)
+texture = ExtResource("8_36vc8")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Area2D2/CollisionShape2D"]
+libraries = {
+"": SubResource("AnimationLibrary_amgr0")
+}
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
 
@@ -268,7 +288,7 @@ texture = ExtResource("8_bsca3")
 [node name="Yuhum-removebg-preview" type="Sprite2D" parent="."]
 position = Vector2(247.5, 129.5)
 scale = Vector2(0.60396, 0.552408)
-texture = ExtResource("9_ftrwp")
+texture = ExtResource("10_7cgei")
 
 [node name="PointLight2D" type="PointLight2D" parent="Yuhum-removebg-preview"]
 position = Vector2(-7.45081, -6.3359)
@@ -278,3 +298,6 @@ texture = SubResource("GradientTexture2D_oar3m")
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="input_event" from="Area2D2" to="." method="_on_area_2d_2_input_event"]
+[connection signal="mouse_entered" from="Area2D2" to="." method="_on_area_2d_2_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D2" to="." method="_on_area_2d_2_mouse_exited"]

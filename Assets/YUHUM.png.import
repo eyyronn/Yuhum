@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8mw80ovgynak"
-path="res://.godot/imported/YUHUM-removebg-preview.png-c0b4faff84ef49d7128e7ba0f3ec42f6.ctex"
+path="res://.godot/imported/YUHUM.png-19d68ff79fc10a66a671868b2524fe00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/YUHUM-removebg-preview.png"
-dest_files=["res://.godot/imported/YUHUM-removebg-preview.png-c0b4faff84ef49d7128e7ba0f3ec42f6.ctex"]
+source_file="res://Assets/YUHUM.png"
+dest_files=["res://.godot/imported/YUHUM.png-19d68ff79fc10a66a671868b2524fe00.ctex"]
 
 [params]
 
