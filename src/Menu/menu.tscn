@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://src/Menu/menu.gd" id="1_phxts"]
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="2_7llur"]
-[ext_resource type="Texture2D" uid="uid://caas2fth5py1l" path="res://Assets/PLAY_BUTTON.png" id="3_8eon3"]
+[ext_resource type="Texture2D" uid="uid://caas2fth5py1l" path="res://Assets/Icons/PLAY_BUTTON.png" id="3_8eon3"]
 [ext_resource type="AudioStream" uid="uid://b1fjhrjadycb" path="res://Assets/SFX/creepy_bg_menu.mp3" id="3_uiyl4"]
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="3_vhy0u"]
 [ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="4_84wh2"]
 [ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="5_ocv3l"]
 [ext_resource type="Texture2D" uid="uid://bqoq0e7frhe6h" path="res://Assets/QUIT_BUTTON.png" id="8_36vc8"]
 [ext_resource type="Texture2D" uid="uid://b2k0jly80j8ff" path="res://Assets/Objects/Menu_Objects/signboard.png" id="8_bsca3"]
-[ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/YUHUM.png" id="10_7cgei"]
+[ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/Icons/YUHUM-removebg-preview.png" id="10_7cgei"]
 [ext_resource type="Texture2D" uid="uid://dxcvwm2firef" path="res://Assets/Characters/scary smile.png" id="11_7ol4k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocglv"]
@@ -343,12 +343,10 @@ scale = Vector2(0.781755, 0.850087)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
 modulate = Color(1, 1, 1, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7mu7w")
 
 [node name="ScarySmile" type="Sprite2D" parent="Area2D3/CollisionShape2D"]
 position = Vector2(-14.7104, -55.8766)
-scale = Vector2(1, 1)
 texture = ExtResource("11_7ol4k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D3/CollisionShape2D"]
