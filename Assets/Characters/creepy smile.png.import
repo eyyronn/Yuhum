@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8mw80ovgynak"
-path="res://.godot/imported/YUHUM-removebg-preview.png-c0b4faff84ef49d7128e7ba0f3ec42f6.ctex"
+uid="uid://dq5lk2oju4fhk"
+path="res://.godot/imported/creepy smile.png-7629405c3f1297df8b13a1594086fa0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/YUHUM-removebg-preview.png"
-dest_files=["res://.godot/imported/YUHUM-removebg-preview.png-c0b4faff84ef49d7128e7ba0f3ec42f6.ctex"]
+source_file="res://Assets/Characters/creepy smile.png"
+dest_files=["res://.godot/imported/creepy smile.png-7629405c3f1297df8b13a1594086fa0c.ctex"]
 
 [params]
 
