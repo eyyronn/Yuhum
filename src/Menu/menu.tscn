@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c3faceq82vcje"]
+[gd_scene load_steps=37 format=3 uid="uid://c3faceq82vcje"]
 
 [ext_resource type="Script" path="res://src/Menu/menu.gd" id="1_phxts"]
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="2_7llur"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bqoq0e7frhe6h" path="res://Assets/QUIT_BUTTON.png" id="8_36vc8"]
 [ext_resource type="Texture2D" uid="uid://b2k0jly80j8ff" path="res://Assets/Objects/Menu_Objects/signboard.png" id="8_bsca3"]
 [ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/YUHUM.png" id="10_7cgei"]
+[ext_resource type="Texture2D" uid="uid://dxcvwm2firef" path="res://Assets/Characters/scary smile.png" id="11_7ol4k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocglv"]
 texture = ExtResource("2_7llur")
@@ -177,6 +178,47 @@ fill = 1
 fill_from = Vector2(0.495413, 0.5)
 fill_to = Vector2(0.885321, 0.188073)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mu7w"]
+size = Vector2(492.482, 372.903)
+
+[sub_resource type="Animation" id="Animation_j13ou"]
+resource_name = "FADE"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lgcba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivm1f"]
+_data = {
+"FADE": SubResource("Animation_j13ou"),
+"RESET": SubResource("Animation_lgcba")
+}
+
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_phxts")
 
@@ -294,6 +336,26 @@ texture = ExtResource("10_7cgei")
 position = Vector2(-7.45081, -6.3359)
 scale = Vector2(11.9524, 6.27933)
 texture = SubResource("GradientTexture2D_oar3m")
+
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(759.5, 383.5)
+scale = Vector2(0.781755, 0.850087)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7mu7w")
+
+[node name="ScarySmile" type="Sprite2D" parent="Area2D3/CollisionShape2D"]
+position = Vector2(-14.7104, -55.8766)
+scale = Vector2(1, 1)
+texture = ExtResource("11_7ol4k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D3/CollisionShape2D"]
+root_node = NodePath("../ScarySmile")
+libraries = {
+"": SubResource("AnimationLibrary_ivm1f")
+}
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

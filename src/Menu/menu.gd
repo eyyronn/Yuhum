@@ -29,3 +29,9 @@ func _on_area_2d_2_mouse_exited():
 func _on_area_2d_2_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("left_click"):
 		get_tree().quit()
+		
+func _ready():
+	get_node("Area2D3/CollisionShape2D/AnimationPlayer").play("FADE")
+		
+
+
