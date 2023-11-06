@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://baxi5hqiun74k" path="res://Assets/Characters/close.png" id="25_blc42"]
 [ext_resource type="Script" path="res://src/couch.gd" id="25_rmwr0"]
 [ext_resource type="Texture2D" uid="uid://durishaueidx6" path="res://Assets/Background/_3adb6daf-0223-471b-972f-e6a01eb755d4.jpg" id="27_mrtg7"]
+[ext_resource type="PackedScene" uid="uid://dxawneldxbpas" path="res://src/Menu/pause/Paused_.tscn" id="36_1cxxt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -282,9 +283,6 @@ shader_parameter/vignette_opacity = 0.0
 blend_mode = 1
 light_mode = 1
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqsvb"]
-light_mode = 1
-
 [node name="World" type="Node2D"]
 script = ExtResource("1_lspb6")
 
@@ -303,6 +301,7 @@ layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 9
 
 [node name="BG Music" type="AudioStreamPlayer" parent="Static"]
 stream = ExtResource("24_duyu8")
+volume_db = -7.0
 autoplay = true
 
 [node name="Floor" type="StaticBody2D" parent="Static"]
@@ -499,7 +498,6 @@ script = ExtResource("23_by1u5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Peephole"]
 position = Vector2(-1.52588e-05, -21.95)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1oiw1")
 
 [node name="Bookshelf" type="Area2D" parent="Interactive"]
@@ -614,15 +612,8 @@ blend_mode = 2
 z_index = 0
 z_as_relative = true
 material = SubResource("CanvasItemMaterial_hmxhg")
-position = Vector2(-0.000244141, -0.000244141)
 
-[node name="Button" type="Button" parent="."]
-material = SubResource("CanvasItemMaterial_sqsvb")
-offset_left = 1067.0
-offset_top = 20.0
-offset_right = 1127.0
-offset_bottom = 51.0
-text = "MENU"
+[node name="Paused_" parent="." instance=ExtResource("36_1cxxt")]
 
 [connection signal="mouse_entered" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
@@ -661,4 +652,3 @@ text = "MENU"
 [connection signal="mouse_entered" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_exited"]
 [connection signal="animation_finished" from="Player/CollisionShape2D/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

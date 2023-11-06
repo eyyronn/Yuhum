@@ -4,5 +4,24 @@ func _ready():
 	print_tree_pretty()
 #	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-func _on_button_pressed():
-	get_tree().change_scene_to_file("res://src/Menu/menu.tscn")
+@onready var is_paused = $Paused_
+		
+var paused = false
+
+@warning_ignore("unused_parameter")
+func _process(delta):
+	if Input.is_action_just_pressed("Pause"):
+		pause()
+
+	
+func pause():
+	if paused:
+		is_paused.hide()
+		Engine.time_scale = 1
+	else:
+		is_paused.show()
+		Engine.time_scale = 0
+	
+	paused = !paused
+	
+	
