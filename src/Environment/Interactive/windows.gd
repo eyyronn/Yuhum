@@ -1,5 +1,8 @@
 extends Area2D
 
+signal window_is_closed
+signal window_is_open
+
 const PLAYER = "Player"
 const TIMER_CLOSED_PREFIX = "TimerClosed"
 const TIMER_OPEN_PREFIX = "TimerOpen"
@@ -28,7 +31,6 @@ func _ready():
 			
 	open_window("First")
 
-
 func change_tooltip():
 	if mouse_in_area:
 		tooltip.set_tooltip_text(tooltip_text)
@@ -43,7 +45,7 @@ func _on_mouse_exited():
 
 func _process(delta):
 	change_tooltip()
-	
+		
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
 
@@ -62,9 +64,10 @@ func _on_timeout_closed():
 	open_window("_")
 
 func _on_timeout_open():
-	print("Game Over")
+	print("Game Over", )
 
 func open_window(state):
+	emit_signal('window_is_open')
 	for child in get_children():
 		if child.name.begins_with(TIMER_OPEN_PREFIX):
 			child.set_wait_time(randf_range(15, 30))
@@ -77,9 +80,16 @@ func open_window(state):
 	start_timer_open()
 
 func close_window():
+	emit_signal('window_is_closed')
+	
 	for child in get_children():
 			if child.name.begins_with(TIMER_CLOSED_PREFIX):
 				child.set_wait_time(randf_range(30, 100))
+				
+	for child in get_children():
+		if child.name.begins_with(TIMER_OPEN_PREFIX):
+			child.stop()
+			
 	tooltip_text = TOOLTIP_CLOSED
 	sfx_slide.play()
 	anim.play("Close")

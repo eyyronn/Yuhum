@@ -62,6 +62,7 @@ func open_door(state):
 	$TimerOpenDoor.start()
 	
 func close_door():
+	$TimerOpenDoor.stop()
 	$TimerClosedDoor.set_wait_time(randf_range(30, 100))
 	sfx_shut.play()
 	anim.play("Close")

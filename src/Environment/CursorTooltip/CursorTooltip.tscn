@@ -26,4 +26,4 @@ material = SubResource("CanvasItemMaterial_y6g83")
 offset_right = 184.0
 offset_bottom = 88.0
 theme_override_fonts/font = ExtResource("2_xd102")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 60

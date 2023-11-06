@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dijwucncn8nyf"]
+
+[ext_resource type="Script" path="res://src/Cutscenes/cutscenes.gd" id="1_3lpid"]
+[ext_resource type="VideoStream" path="res://Assets/Cutscenes/Intro.ogv" id="1_ak7qk"]
+[ext_resource type="Shader" path="res://src/vhs.gdshader" id="3_n5cpl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xisj3"]
+shader = ExtResource("3_n5cpl")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.056
+shader_parameter/scanlines_width = 0.5
+shader_parameter/grille_opacity = 0.005
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = -4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.001
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="Cutscenes" type="Node2D"]
+scale = Vector2(1, 1.01015)
+script = ExtResource("1_3lpid")
+
+[node name="Intro" type="VideoStreamPlayer" parent="."]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 640.0
+stream = ExtResource("1_ak7qk")
+autoplay = true
+expand = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_xisj3")
+offset_left = -0.00012207
+offset_top = -0.00012207
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="finished" from="Intro" to="." method="_on_intro_finished"]

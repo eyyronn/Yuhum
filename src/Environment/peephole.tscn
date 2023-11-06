@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://hsurepud3ilc"]
+
+[ext_resource type="Texture2D" uid="uid://diiog64dogr5m" path="res://Assets/Background/porch.png" id="1_1hmae"]
+[ext_resource type="Script" path="res://src/Environment/peephole.gd" id="1_76jns"]
+[ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="3_4fcoe"]
+[ext_resource type="Shader" path="res://src/vhs.gdshader" id="3_337ig"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx5x4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h14m7"]
+shader = ExtResource("3_337ig")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.056
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1152, 600)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = -4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.006
+shader_parameter/noise_opacity = 0.654
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.179
+shader_parameter/aberration = -0.00999995
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 22.472
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 3.385
+shader_parameter/vignette_opacity = 0.0
+
+[node name="Peephole" type="Node2D"]
+script = ExtResource("1_76jns")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bx5x4")
+position = Vector2(576, 320)
+scale = Vector2(0.764448, 0.762117)
+texture = ExtResource("1_1hmae")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_h14m7")
+offset_left = -6.10352e-05
+offset_top = -3.05176e-05
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 32.0
+offset_top = 520.0
+offset_right = 88.0
+offset_bottom = 553.0
+scale = Vector2(2.92, 2.95489)
+theme_override_fonts/font = ExtResource("3_4fcoe")
+theme_override_font_sizes/font_size = 31
+text = "BACK"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
