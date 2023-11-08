@@ -252,7 +252,7 @@ texture = SubResource("GradientTexture2D_ivo4p")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TV"]
 stream = ExtResource("4_84wh2")
-volume_db = -27.071
+volume_db = -27.532
 autoplay = true
 max_distance = 400.0
 attenuation = 1.68179
@@ -275,7 +275,7 @@ texture = SubResource("GradientTexture2D_r0bqe")
 position = Vector2(-105.25, -81)
 scale = Vector2(0.0875, 0.1875)
 stream = ExtResource("3_uiyl4")
-volume_db = 9.432
+volume_db = -10.0
 autoplay = true
 
 [node name="Area2D" type="Area2D" parent="."]
