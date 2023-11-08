@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="3_vhy0u"]
 [ext_resource type="AudioStream" uid="uid://6j1o7vxlp5qv" path="res://Assets/Background/35291__jace__continuous-static.wav" id="4_84wh2"]
 [ext_resource type="Shader" path="res://src/Environment/Interactive/static.gdshader" id="5_ocv3l"]
-[ext_resource type="Texture2D" uid="uid://bqoq0e7frhe6h" path="res://Assets/QUIT_BUTTON.png" id="8_36vc8"]
 [ext_resource type="Texture2D" uid="uid://b2k0jly80j8ff" path="res://Assets/Objects/Menu_Objects/signboard.png" id="8_bsca3"]
+[ext_resource type="Texture2D" uid="uid://bqoq0e7frhe6h" path="res://Assets/Objects/Menu_Objects/QUIT_BUTTON.png" id="8_rx5am"]
 [ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/Icons/YUHUM-removebg-preview.png" id="10_7cgei"]
 [ext_resource type="Texture2D" uid="uid://dxcvwm2firef" path="res://Assets/Characters/scary smile.png" id="11_7ol4k"]
 
@@ -306,7 +306,7 @@ shape = SubResource("RectangleShape2D_0rnig")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D2/CollisionShape2D"]
 modulate = Color(0.513726, 0.513726, 0.513726, 1)
 scale = Vector2(0.251061, 0.239377)
-texture = ExtResource("8_36vc8")
+texture = ExtResource("8_rx5am")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Area2D2/CollisionShape2D"]
 libraries = {

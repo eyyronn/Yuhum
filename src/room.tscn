@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=74 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -24,7 +24,9 @@
 [ext_resource type="AudioStream" uid="uid://cf2lpl6vww4bj" path="res://Assets/SFX/window_close.wav" id="11_tceh5"]
 [ext_resource type="AudioStream" uid="uid://qpbapdmiotka" path="res://Assets/SFX/Footsteps/Steps_carpet-001.ogg" id="12_de7t3"]
 [ext_resource type="Texture2D" uid="uid://3vcueyaycf2n" path="res://Assets/Objects/Doors_Windows/Door1.png" id="12_r6hhf"]
+[ext_resource type="PackedScene" uid="uid://cctuy6spgqs3b" path="res://window_1.tscn" id="12_xeiby"]
 [ext_resource type="AudioStream" uid="uid://bm0g4bop73uif" path="res://Assets/SFX/creak.wav" id="16_iosfm"]
+[ext_resource type="Script" path="res://src/addons/game_state_helper/game_state_helper.gd" id="17_a16ik"]
 [ext_resource type="AudioStream" uid="uid://cslms3uv6ac2m" path="res://Assets/SFX/shut.wav" id="17_eebf0"]
 [ext_resource type="Script" path="res://src/peephole.gd" id="23_by1u5"]
 [ext_resource type="Script" path="res://src/bookshelf.gd" id="23_us12y"]
@@ -35,6 +37,9 @@
 [ext_resource type="Texture2D" uid="uid://baxi5hqiun74k" path="res://Assets/Characters/close.png" id="25_blc42"]
 [ext_resource type="Script" path="res://src/couch.gd" id="25_rmwr0"]
 [ext_resource type="Texture2D" uid="uid://durishaueidx6" path="res://Assets/Background/_3adb6daf-0223-471b-972f-e6a01eb755d4.jpg" id="27_mrtg7"]
+[ext_resource type="Script" path="res://src/Environment/peephole.gd" id="37_jip2h"]
+[ext_resource type="Texture2D" uid="uid://diiog64dogr5m" path="res://Assets/Background/porch.png" id="37_mqbij"]
+[ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="39_sb6aw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -74,40 +79,6 @@ colors = PackedColorArray(0.435192, 0.435192, 0.435192, 1, 1, 1, 1, 1, 0.332881,
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
 gradient = SubResource("Gradient_kpelk")
 fill_from = Vector2(0, 0.481651)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wln2i"]
-size = Vector2(96, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_eiycq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_odd18")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_lyhk0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_gy7wj")
-}],
-"loop": false,
-"name": &"Close",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_gy7wj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_lyhk0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_odd18")
-}],
-"loop": false,
-"name": &"Open",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guv8b"]
 size = Vector2(96, 128)
@@ -285,6 +256,15 @@ light_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqsvb"]
 light_mode = 1
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3p0ay"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dc6s7"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ehd1d"]
+light_mode = 1
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_lspb6")
 
@@ -383,30 +363,7 @@ position = Vector2(-4.23856e-07, -3.27229e-05)
 scale = Vector2(1, 0.999999)
 texture = SubResource("GradientTexture2D_r0bqe")
 
-[node name="Window1" type="Area2D" parent="Interactive"]
-position = Vector2(176, 549)
-script = ExtResource("4_srpae")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Window1"]
-position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_wln2i")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interactive/Window1/CollisionShape2D"]
-sprite_frames = SubResource("SpriteFrames_eiycq")
-animation = &"Close"
-autoplay = "Open"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactive/Window1"]
-position = Vector2(0, -29)
-stream = ExtResource("11_tceh5")
-volume_db = -9.8
-
-[node name="TimerOpenW1" type="Timer" parent="Interactive/Window1"]
-one_shot = true
-
-[node name="TimerClosedW1" type="Timer" parent="Interactive/Window1"]
-wait_time = 30.0
-one_shot = true
+[node name="Window1" parent="Interactive" instance=ExtResource("12_xeiby")]
 
 [node name="Window2" type="Area2D" parent="Interactive"]
 position = Vector2(448, 549)
@@ -433,6 +390,10 @@ one_shot = true
 wait_time = 30.0
 one_shot = true
 
+[node name="GameStateHelper" type="Node" parent="Interactive/Window2"]
+script = ExtResource("17_a16ik")
+dynamic_instance = true
+
 [node name="Window3" type="Area2D" parent="Interactive"]
 position = Vector2(1008, 549)
 script = ExtResource("4_srpae")
@@ -457,6 +418,10 @@ one_shot = true
 [node name="TimerClosedW3" type="Timer" parent="Interactive/Window3"]
 wait_time = 30.0
 one_shot = true
+
+[node name="GameStateHelper" type="Node" parent="Interactive/Window3"]
+script = ExtResource("17_a16ik")
+global = true
 
 [node name="Door" type="Area2D" parent="Interactive"]
 position = Vector2(776, 600)
@@ -492,6 +457,10 @@ one_shot = true
 wait_time = 30.0
 one_shot = true
 
+[node name="GameStateHelper" type="Node" parent="Interactive/Door"]
+script = ExtResource("17_a16ik")
+global = true
+
 [node name="Peephole" type="Area2D" parent="Interactive"]
 position = Vector2(776, 600)
 scale = Vector2(5, 5)
@@ -499,7 +468,6 @@ script = ExtResource("23_by1u5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Peephole"]
 position = Vector2(-1.52588e-05, -21.95)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1oiw1")
 
 [node name="Bookshelf" type="Area2D" parent="Interactive"]
@@ -583,6 +551,11 @@ volume_db = -18.0
 [node name="Timer" type="Timer" parent="Player"]
 one_shot = true
 
+[node name="GameStateHelper" type="Node" parent="Player"]
+script = ExtResource("17_a16ik")
+save_properties = Array[String](["position"])
+dynamic_instance = true
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(576, 178)
@@ -624,14 +597,33 @@ offset_right = 1127.0
 offset_bottom = 51.0
 text = "MENU"
 
+[node name="Peephole" type="Node2D" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_3p0ay")
+script = ExtResource("37_jip2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Peephole"]
+material = SubResource("CanvasItemMaterial_dc6s7")
+position = Vector2(576, 324)
+scale = Vector2(1.30909, 0.695279)
+texture = ExtResource("37_mqbij")
+
+[node name="Button" type="Button" parent="Peephole"]
+material = SubResource("CanvasItemMaterial_ehd1d")
+offset_left = 32.0
+offset_top = 520.0
+offset_right = 88.0
+offset_bottom = 553.0
+scale = Vector2(2.92, 2.95489)
+theme_override_fonts/font = ExtResource("39_sb6aw")
+theme_override_font_sizes/font_size = 31
+text = "BACK"
+flat = true
+
 [connection signal="mouse_entered" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
-[connection signal="body_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_entered"]
-[connection signal="body_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_exited"]
-[connection signal="mouse_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_entered"]
@@ -643,13 +635,13 @@ text = "MENU"
 [connection signal="mouse_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_exited"]
 [connection signal="timeout" from="Interactive/Window3/TimerClosedW3" to="Interactive/Window3" method="_on_TimerW3_timeout"]
 [connection signal="body_entered" from="Interactive/Door" to="Interactive/Door" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Interactive/Door" to="Interactive/Peephole" method="_on_door_body_entered"]
 [connection signal="body_exited" from="Interactive/Door" to="Interactive/Door" method="_on_body_exited"]
+[connection signal="body_exited" from="Interactive/Door" to="Interactive/Peephole" method="_on_door_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Door" to="Interactive/Door" method="_on_mouse_exited"]
 [connection signal="timeout" from="Interactive/Door/TimerOpenDoor" to="Interactive/Door" method="_on_timeout_open"]
 [connection signal="timeout" from="Interactive/Door/TimerClosedDoor" to="Interactive/Door" method="_on_timeout_closed"]
-[connection signal="body_entered" from="Interactive/Peephole" to="Interactive/Peephole" method="_on_body_entered"]
-[connection signal="body_exited" from="Interactive/Peephole" to="Interactive/Peephole" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Peephole" to="Interactive/Peephole" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Peephole" to="Interactive/Peephole" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_body_entered"]
@@ -662,3 +654,4 @@ text = "MENU"
 [connection signal="mouse_exited" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_exited"]
 [connection signal="animation_finished" from="Player/CollisionShape2D/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Peephole/Button" to="Peephole" method="_on_button_pressed" flags=18]

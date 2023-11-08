@@ -18,6 +18,7 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 Global="*res://Global.gd"
+GameStateService="*res://src/addons/game_state_helper/game_state_service.gd"
 
 [display]
 

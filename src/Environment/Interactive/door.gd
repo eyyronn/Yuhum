@@ -1,33 +1,37 @@
 extends Area2D
 
-var tooltip_text = "close"
 @onready var tooltip = get_node("/root/World/Post-Process/CursorTooltip")
 @onready var anim = get_node("CollisionShape2D/AnimatedSprite2D")
-@onready var can_close = true
 @onready var sfx_creak = get_node("Creak")
 @onready var sfx_shut = get_node("Shut")
 
-var mouse_in_area = false
-var player_in_area = false
-var area_clicked = false
-var door_open = true
+@export var tooltip_text := "close"
+@export var can_close := true
+@export var mouse_in_area := false
+@export var player_in_area := false
+@export var area_clicked := false
+@export var door_open := true
+
 
 
 func _ready():
-	open_door("First")
+	if Global.door_instance == 1:
+		open_door("First")
+		Global.door_instance += 1
 	
 func change_tooltip():
 	if mouse_in_area:
-		tooltip.set_tooltip_text(tooltip_text)
+		tooltip.set_tooltip_text(Global.door_tooltip)
 
 func _on_mouse_entered():
-	tooltip.set_tooltip_text(tooltip_text)
+	tooltip.set_tooltip_text(Global.door_tooltip)
 	mouse_in_area = true
 
 func _on_mouse_exited():
 	tooltip.set_tooltip_text("")
 	mouse_in_area = false
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	change_tooltip()
 	
@@ -52,13 +56,13 @@ func _on_timeout_open():
 	print("Game Over Door")
 	
 func open_door(state):
-	$TimerOpenDoor.set_wait_time(randf_range(15, 30))
+	$TimerOpenDoor.set_wait_time(randf_range(30, 60))
 	anim.play("Open")
 	if state != "First":
 		sfx_creak.play()
 	door_open = true
 	can_close = true
-	tooltip_text = "close"
+	Global.door_tooltip = "close"
 	$TimerOpenDoor.start()
 	
 func close_door():
@@ -68,6 +72,6 @@ func close_door():
 	anim.play("Close")
 	door_open = false
 	area_clicked = false
-	tooltip_text = "closed"
+	Global.door_tooltip = "closed"
 	can_close = false
 	$TimerClosedDoor.start()

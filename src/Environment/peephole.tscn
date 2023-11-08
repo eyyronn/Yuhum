@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://hsurepud3ilc"]
+[gd_scene load_steps=8 format=3 uid="uid://hsurepud3ilc"]
 
 [ext_resource type="Texture2D" uid="uid://diiog64dogr5m" path="res://Assets/Background/porch.png" id="1_1hmae"]
 [ext_resource type="Script" path="res://src/Environment/peephole.gd" id="1_76jns"]
 [ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="3_4fcoe"]
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="3_337ig"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx5x4"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dc6s7"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ehd1d"]
+light_mode = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h14m7"]
 shader = ExtResource("3_337ig")
@@ -35,21 +39,13 @@ shader_parameter/vignette_opacity = 0.0
 script = ExtResource("1_76jns")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_bx5x4")
-position = Vector2(576, 320)
-scale = Vector2(0.764448, 0.762117)
+material = SubResource("CanvasItemMaterial_dc6s7")
+position = Vector2(576, 324)
+scale = Vector2(1.30909, 0.695279)
 texture = ExtResource("1_1hmae")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_h14m7")
-offset_left = -6.10352e-05
-offset_top = -3.05176e-05
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
-
 [node name="Button" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_ehd1d")
 offset_left = 32.0
 offset_top = 520.0
 offset_right = 88.0
@@ -59,5 +55,15 @@ theme_override_fonts/font = ExtResource("3_4fcoe")
 theme_override_font_sizes/font_size = 31
 text = "BACK"
 flat = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_h14m7")
+offset_left = -6.10352e-05
+offset_top = -3.05176e-05
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

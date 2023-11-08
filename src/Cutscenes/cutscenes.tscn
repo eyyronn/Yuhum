@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dijwucncn8nyf"]
+[gd_scene load_steps=6 format=3 uid="uid://dijwucncn8nyf"]
 
 [ext_resource type="Script" path="res://src/Cutscenes/cutscenes.gd" id="1_3lpid"]
 [ext_resource type="VideoStream" path="res://Assets/Cutscenes/Intro.ogv" id="1_ak7qk"]
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="3_n5cpl"]
+[ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="3_pg7r5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xisj3"]
 shader = ExtResource("3_n5cpl")
@@ -49,4 +50,17 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 32.0001
+offset_top = 520.0
+offset_right = 114.0
+offset_bottom = 553.0
+scale = Vector2(2.92, 2.95489)
+theme_override_fonts/font = ExtResource("3_pg7r5")
+theme_override_font_sizes/font_size = 31
+text = "-> SKIP"
+flat = true
+
 [connection signal="finished" from="Intro" to="." method="_on_intro_finished"]
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]

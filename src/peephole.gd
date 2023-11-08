@@ -4,7 +4,7 @@ var tooltip_text = "peep"
 @onready var tooltip = get_node("/root/World/Post-Process/CursorTooltip")
 @onready var anim = get_node("CollisionShape2D/AnimatedSprite2D")
 @onready var can_read = true
-
+@onready var peephole = $"../../Peephole"
 var mouse_in_area = false
 var player_in_area = false
 var area_clicked = false
@@ -31,13 +31,14 @@ func _process(delta):
 		area_clicked = true
 		
 	if area_clicked and player_in_area:
-		get_tree().change_scene_to_file("res://src/Environment/peephole.tscn")
-
-func _on_body_entered(body):
+		peephole.show()
+#		GameStateService.on_scene_transitioning("res://src/Environment/peephole.tscn")b
+#		get_tree().change_scene_to_file("res://src/Environment/peephole.tscn")
+	
+func _on_door_body_entered(body):
 	if body.name == "Player":
 		player_in_area = true
 
-func _on_body_exited(body):
+func _on_door_body_exited(body):
 	if body.name == "Player":
 		player_in_area = false
-	
