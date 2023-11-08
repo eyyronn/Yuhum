@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=78 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -18,13 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://cf4vcff8w4us5" path="res://Assets/Objects/Doors_Windows/Window3.png" id="8_odd18"]
 [ext_resource type="PackedScene" uid="uid://dkhjsh7huwxdy" path="res://src/Environment/Interactive/music_box.tscn" id="8_wrrbm"]
 [ext_resource type="Texture2D" uid="uid://py4o6nwk20h0" path="res://Assets/Objects/Doors_Windows/Window1.png" id="9_gy7wj"]
+[ext_resource type="AudioStream" uid="uid://cmsddmfrogpsv" path="res://Assets/SFX/Ting.wav" id="10_fuaph"]
 [ext_resource type="Texture2D" uid="uid://bp4sy4jkaqfoq" path="res://Assets/Objects/Doors_Windows/Door3.png" id="10_rap4l"]
 [ext_resource type="Texture2D" uid="uid://dokogki8m6xkx" path="res://Assets/Characters/Male.png" id="11_4ccbv"]
 [ext_resource type="Texture2D" uid="uid://bf7ktj848ti2y" path="res://Assets/Objects/Doors_Windows/Door2.png" id="11_6daxe"]
 [ext_resource type="AudioStream" uid="uid://cf2lpl6vww4bj" path="res://Assets/SFX/window_close.wav" id="11_tceh5"]
 [ext_resource type="AudioStream" uid="uid://qpbapdmiotka" path="res://Assets/SFX/Footsteps/Steps_carpet-001.ogg" id="12_de7t3"]
 [ext_resource type="Texture2D" uid="uid://3vcueyaycf2n" path="res://Assets/Objects/Doors_Windows/Door1.png" id="12_r6hhf"]
-[ext_resource type="PackedScene" uid="uid://cctuy6spgqs3b" path="res://window_1.tscn" id="12_xeiby"]
 [ext_resource type="AudioStream" uid="uid://bm0g4bop73uif" path="res://Assets/SFX/creak.wav" id="16_iosfm"]
 [ext_resource type="Script" path="res://src/addons/game_state_helper/game_state_helper.gd" id="17_a16ik"]
 [ext_resource type="AudioStream" uid="uid://cslms3uv6ac2m" path="res://Assets/SFX/shut.wav" id="17_eebf0"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" path="res://src/Environment/peephole.gd" id="37_jip2h"]
 [ext_resource type="Texture2D" uid="uid://diiog64dogr5m" path="res://Assets/Background/porch.png" id="37_mqbij"]
 [ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="39_sb6aw"]
+[ext_resource type="Texture2D" uid="uid://ddi6wfrlktrb4" path="res://Assets/Icons/exclamation.png" id="41_xvrjf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -61,6 +62,9 @@ size = Vector2(1148, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wro"]
 size = Vector2(80, 64)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2uccv"]
+light_mode = 1
+
 [sub_resource type="Gradient" id="Gradient_rnmp8"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
@@ -79,6 +83,40 @@ colors = PackedColorArray(0.435192, 0.435192, 0.435192, 1, 1, 1, 1, 1, 0.332881,
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r0bqe"]
 gradient = SubResource("Gradient_kpelk")
 fill_from = Vector2(0, 0.481651)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wln2i"]
+size = Vector2(96, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eiycq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_odd18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyhk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gy7wj")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gy7wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyhk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_odd18")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guv8b"]
 size = Vector2(96, 128)
@@ -345,25 +383,62 @@ shadow_filter = 2
 texture = ExtResource("25_3i0kg")
 texture_scale = 0.08
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactive/TV"]
+[node name="Ting" type="AudioStreamPlayer2D" parent="Interactive/TV"]
+stream = ExtResource("10_fuaph")
+
+[node name="Static Noise" type="AudioStreamPlayer2D" parent="Interactive/TV"]
 stream = ExtResource("5_vem14")
 volume_db = -28.0
 autoplay = true
 max_distance = 1000.0
 attenuation = 1.68179
 
-[node name="Wall2" type="Sprite2D" parent="Interactive/TV"]
+[node name="Exclamation" type="Sprite2D" parent="Interactive/TV"]
+visible = false
+material = SubResource("CanvasItemMaterial_2uccv")
+position = Vector2(57.0001, -77)
+scale = Vector2(0.239995, 0.32)
+texture = ExtResource("41_xvrjf")
+
+[node name="Static" type="Sprite2D" parent="Interactive/TV"]
 position = Vector2(-10, -33)
 scale = Vector2(0.75, 0.625)
 texture = SubResource("GradientTexture2D_g04dg")
 
-[node name="Static" type="Sprite2D" parent="Interactive/TV/Wall2"]
+[node name="Static" type="Sprite2D" parent="Interactive/TV/Static"]
 material = SubResource("ShaderMaterial_t7n40")
 position = Vector2(-4.23856e-07, -3.27229e-05)
 scale = Vector2(1, 0.999999)
 texture = SubResource("GradientTexture2D_r0bqe")
 
-[node name="Window1" parent="Interactive" instance=ExtResource("12_xeiby")]
+[node name="Window1" type="Area2D" parent="Interactive"]
+position = Vector2(176, 549)
+script = ExtResource("4_srpae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Window1"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_wln2i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interactive/Window1/CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_eiycq")
+animation = &"Close"
+autoplay = "Open"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactive/Window1"]
+position = Vector2(0, -29)
+stream = ExtResource("11_tceh5")
+volume_db = -9.8
+
+[node name="TimerOpenW1" type="Timer" parent="Interactive/Window1"]
+one_shot = true
+
+[node name="TimerClosedW1" type="Timer" parent="Interactive/Window1"]
+wait_time = 30.0
+one_shot = true
+
+[node name="GameStateHelper" type="Node" parent="Interactive/Window1"]
+script = ExtResource("17_a16ik")
+dynamic_instance = true
 
 [node name="Window2" type="Area2D" parent="Interactive"]
 position = Vector2(448, 549)
@@ -624,16 +699,18 @@ flat = true
 [connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_exited" flags=18]
+[connection signal="mouse_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_exited" flags=18]
 [connection signal="body_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Window2/TimerClosedW2" to="Interactive/Window2" method="_on_TimerW2_timeout"]
 [connection signal="body_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_exited"]
-[connection signal="timeout" from="Interactive/Window3/TimerClosedW3" to="Interactive/Window3" method="_on_TimerW3_timeout"]
 [connection signal="body_entered" from="Interactive/Door" to="Interactive/Door" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Interactive/Door" to="Interactive/Peephole" method="_on_door_body_entered"]
 [connection signal="body_exited" from="Interactive/Door" to="Interactive/Door" method="_on_body_exited"]
@@ -653,5 +730,4 @@ flat = true
 [connection signal="mouse_entered" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_exited"]
 [connection signal="animation_finished" from="Player/CollisionShape2D/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Peephole/Button" to="Peephole" method="_on_button_pressed" flags=18]

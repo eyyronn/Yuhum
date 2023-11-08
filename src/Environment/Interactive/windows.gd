@@ -77,6 +77,9 @@ func open_window(state):
 		sfx_slide.play()
 	window_open = true
 	can_close = true
+	Global.closed_windows -= 1
+	print_debug(Global.closed_windows)
+	
 	start_timer_open()
 
 func close_window():
@@ -96,6 +99,9 @@ func close_window():
 	window_open = false
 	area_clicked = false
 	can_close = false
+	Global.closed_windows += 1
+	print_debug(Global.closed_windows)
+	
 	start_timer_closed()
 
 func start_timer_closed():

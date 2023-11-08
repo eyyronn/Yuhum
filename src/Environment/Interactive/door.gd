@@ -12,19 +12,15 @@ extends Area2D
 @export var area_clicked := false
 @export var door_open := true
 
-
-
 func _ready():
-	if Global.door_instance == 1:
-		open_door("First")
-		Global.door_instance += 1
+	open_door("First")
 	
 func change_tooltip():
 	if mouse_in_area:
-		tooltip.set_tooltip_text(Global.door_tooltip)
+		tooltip.set_tooltip_text(tooltip_text)
 
 func _on_mouse_entered():
-	tooltip.set_tooltip_text(Global.door_tooltip)
+	tooltip.set_tooltip_text(tooltip_text)
 	mouse_in_area = true
 
 func _on_mouse_exited():
@@ -62,7 +58,7 @@ func open_door(state):
 		sfx_creak.play()
 	door_open = true
 	can_close = true
-	Global.door_tooltip = "close"
+	tooltip_text = "close"
 	$TimerOpenDoor.start()
 	
 func close_door():
@@ -72,6 +68,6 @@ func close_door():
 	anim.play("Close")
 	door_open = false
 	area_clicked = false
-	Global.door_tooltip = "closed"
+	tooltip_text = "closed"
 	can_close = false
 	$TimerClosedDoor.start()

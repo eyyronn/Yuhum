@@ -5,10 +5,10 @@ func _ready():
 #	print_tree_pretty()
 #	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-@onready var is_paused = $Paused_
+#@onready var is_paused = $Paused_
 @onready var is_hear = $Player/AudioListener2D
 @onready var bg_music = $"Static/BG Music"
-@onready var tv_static = $Interactive/TV/AudioStreamPlayer2D
+@onready var tv_static = $"Interactive/TV/Static Noise"
 		
 var paused = false
 
@@ -20,18 +20,17 @@ func _process(delta):
 	
 func pause():
 	if paused:
-		is_paused.hide()
+#		is_paused.hide()
 		is_hear.make_current()
 		tv_static.play()
 		bg_music.play()
 		Engine.time_scale = 1
 	else:
-		is_paused.show()
+#		is_paused.show()
 		is_hear.clear_current()
 		tv_static.stop()
 		bg_music.stop()
 		Engine.time_scale = 0
 	
 	paused = !paused
-	
 	
