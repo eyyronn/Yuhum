@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=96 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -37,10 +37,21 @@
 [ext_resource type="Texture2D" uid="uid://baxi5hqiun74k" path="res://Assets/Characters/close.png" id="25_blc42"]
 [ext_resource type="Script" path="res://src/couch.gd" id="25_rmwr0"]
 [ext_resource type="Texture2D" uid="uid://durishaueidx6" path="res://Assets/Background/_3adb6daf-0223-471b-972f-e6a01eb755d4.jpg" id="27_mrtg7"]
+[ext_resource type="Texture2D" uid="uid://cfplcyievl6y8" path="res://Assets/Objects/nino.png" id="32_dy0p2"]
+[ext_resource type="Texture2D" uid="uid://buqht2rgafgxy" path="res://Assets/Objects/cabinet.png" id="32_eq8fb"]
+[ext_resource type="Script" path="res://src/desk.gd" id="32_v2hqg"]
+[ext_resource type="Script" path="res://src/nino.gd" id="33_0ddak"]
+[ext_resource type="Texture2D" uid="uid://bpchm1khryk0g" path="res://Assets/Objects/boracay.png" id="36_gghst"]
+[ext_resource type="Texture2D" uid="uid://b71qxoagijry" path="res://Assets/Objects/ruins.png" id="37_5rca2"]
 [ext_resource type="Script" path="res://src/Environment/peephole.gd" id="37_jip2h"]
 [ext_resource type="Texture2D" uid="uid://diiog64dogr5m" path="res://Assets/Background/porch.png" id="37_mqbij"]
+[ext_resource type="Script" path="res://src/araneta.gd" id="39_2b50c"]
 [ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="39_sb6aw"]
+[ext_resource type="Texture2D" uid="uid://ctevdurkr0c74" path="res://Assets/Objects/smilearaneta.png" id="40_od815"]
 [ext_resource type="Texture2D" uid="uid://ddi6wfrlktrb4" path="res://Assets/Icons/exclamation.png" id="41_xvrjf"]
+[ext_resource type="Texture2D" uid="uid://42wr8bynvncd" path="res://Assets/Objects/masskara_painting.png" id="42_6mjfl"]
+[ext_resource type="Texture2D" uid="uid://ysmxv6ak0am6" path="res://Assets/Objects/piaya.png" id="48_81f10"]
+[ext_resource type="Texture2D" uid="uid://bqi5atqoaiwiu" path="res://Assets/Objects/araneta.png" id="49_0s6b8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -194,6 +205,43 @@ size = Vector2(56.5587, 93.2288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0202"]
 size = Vector2(95, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwvea"]
+size = Vector2(141, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqfsk"]
+size = Vector2(204.569, 177.946)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a78yu"]
+size = Vector2(178.43, 119.408)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jegh3"]
+size = Vector2(68, 95)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxggs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_0s6b8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("40_od815")
+}],
+"loop": false,
+"name": &"Smile",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6i7r3"]
+size = Vector2(141, 163)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6c8t"]
+size = Vector2(37, 82.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4ckt"]
 size = Vector2(29, 65)
@@ -375,7 +423,7 @@ texture = ExtResource("4_sr1gg")
 
 [node name="PointLight2D" type="PointLight2D" parent="Interactive/TV"]
 position = Vector2(0, -48)
-scale = Vector2(12.875, 11.629)
+scale = Vector2(11.5, 10.387)
 energy = 0.95
 blend_mode = 2
 shadow_enabled = true
@@ -562,13 +610,13 @@ scale = Vector2(0.61645, 0.61645)
 texture = ExtResource("24_466ax")
 
 [node name="Couch" type="Area2D" parent="Interactive"]
-position = Vector2(1112, 600)
+position = Vector2(1152, 600)
 scale = Vector2(2, 2)
 script = ExtResource("25_rmwr0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Couch"]
-position = Vector2(-400.5, -19)
-scale = Vector2(0.759999, 0.759999)
+position = Vector2(-420, -21.5)
+scale = Vector2(0.859998, 0.859998)
 shape = SubResource("RectangleShape2D_c0202")
 
 [node name="Couch" type="Sprite2D" parent="Interactive/Couch/CollisionShape2D"]
@@ -579,6 +627,87 @@ texture = ExtResource("25_8erfo")
 [node name="Radio" parent="Interactive" instance=ExtResource("8_wrrbm")]
 position = Vector2(1112, 600)
 scale = Vector2(2, 2)
+
+[node name="Desk" type="Area2D" parent="Interactive"]
+script = ExtResource("32_v2hqg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Desk"]
+position = Vector2(126.5, 550.5)
+shape = SubResource("RectangleShape2D_xwvea")
+
+[node name="Cabinet" type="Sprite2D" parent="Interactive/Desk"]
+position = Vector2(126, 556)
+texture = ExtResource("32_eq8fb")
+
+[node name="Boracay" type="Area2D" parent="Interactive"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Boracay"]
+position = Vector2(1018.36, 173.25)
+rotation = -3.14159
+scale = Vector2(0.834526, 0.834526)
+shape = SubResource("RectangleShape2D_oqfsk")
+
+[node name="Boracay" type="Sprite2D" parent="Interactive/Boracay/CollisionShape2D"]
+texture_filter = 1
+position = Vector2(0.430176, 0.299866)
+rotation = 3.14159
+scale = Vector2(1.14977, 1.14977)
+texture = ExtResource("36_gghst")
+
+[node name="MasskaraPainting" type="Area2D" parent="Interactive"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/MasskaraPainting"]
+position = Vector2(608.5, 168.5)
+scale = Vector2(1.91111, 1.8843)
+shape = SubResource("RectangleShape2D_a78yu")
+
+[node name="MasskaraPainting" type="Sprite2D" parent="Interactive/MasskaraPainting/CollisionShape2D"]
+texture_filter = 5
+position = Vector2(-0.261658, -0.265343)
+scale = Vector2(1, 1)
+texture = ExtResource("42_6mjfl")
+
+[node name="Araneta" type="Area2D" parent="Interactive"]
+position = Vector2(293, 167)
+script = ExtResource("39_2b50c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Araneta"]
+position = Vector2(639, 189.5)
+shape = SubResource("RectangleShape2D_jegh3")
+
+[node name="Araneta" type="AnimatedSprite2D" parent="Interactive/Araneta/CollisionShape2D"]
+position = Vector2(0, -0.5)
+scale = Vector2(0.58913, 0.58913)
+sprite_frames = SubResource("SpriteFrames_vxggs")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Ruins" type="Area2D" parent="Interactive"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Ruins"]
+position = Vector2(228, 167.5)
+shape = SubResource("RectangleShape2D_6i7r3")
+
+[node name="Ruins" type="Sprite2D" parent="Interactive/Ruins/CollisionShape2D"]
+position = Vector2(-5, -0.5)
+texture = ExtResource("37_5rca2")
+
+[node name="Nino" type="Area2D" parent="Interactive"]
+script = ExtResource("33_0ddak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Nino"]
+position = Vector2(88.5, 471.125)
+shape = SubResource("RectangleShape2D_w6c8t")
+
+[node name="Nino" type="Sprite2D" parent="Interactive/Nino"]
+position = Vector2(89, 471)
+scale = Vector2(0.454651, 0.454651)
+texture = ExtResource("32_dy0p2")
+
+[node name="Piaya" type="Sprite2D" parent="."]
+position = Vector2(152, 502.875)
+scale = Vector2(0.284616, 0.280769)
+texture = ExtResource("48_81f10")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 texture_filter = 1
@@ -729,5 +858,18 @@ flat = true
 [connection signal="body_exited" from="Interactive/Couch" to="Interactive/Couch" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/Desk" to="Interactive/Desk" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Desk" to="Interactive/Desk" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Interactive/Desk" to="Interactive/Desk" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Desk" to="Interactive/Desk" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/Araneta" to="Interactive/Araneta" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Araneta" to="Interactive/Araneta" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Interactive/Araneta" to="Interactive/Araneta" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Araneta" to="Interactive/Araneta" method="_on_mouse_exited"]
+[connection signal="animation_finished" from="Interactive/Araneta/CollisionShape2D/Araneta" to="Interactive/Araneta" method="_on_araneta_animation_finished"]
+[connection signal="body_entered" from="Interactive/Nino" to="Interactive/Nino" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Nino" to="Interactive/Nino" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Interactive/Nino" to="Interactive/Nino" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Nino" to="Interactive/Nino" method="_on_mouse_exited"]
 [connection signal="animation_finished" from="Player/CollisionShape2D/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="pressed" from="Peephole/Button" to="Peephole" method="_on_button_pressed" flags=18]

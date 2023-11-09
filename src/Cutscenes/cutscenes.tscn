@@ -38,6 +38,7 @@ texture_filter = 1
 offset_right = 1152.0
 offset_bottom = 640.0
 stream = ExtResource("1_ak7qk")
+volume_db = -20.0
 autoplay = true
 expand = true
 
