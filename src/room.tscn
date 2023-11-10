@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=107 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -50,8 +50,16 @@
 [ext_resource type="Texture2D" uid="uid://ctevdurkr0c74" path="res://Assets/Objects/smilearaneta.png" id="40_od815"]
 [ext_resource type="Texture2D" uid="uid://ddi6wfrlktrb4" path="res://Assets/Icons/exclamation.png" id="41_xvrjf"]
 [ext_resource type="Texture2D" uid="uid://42wr8bynvncd" path="res://Assets/Objects/masskara_painting.png" id="42_6mjfl"]
+[ext_resource type="Script" path="res://src/piaya.gd" id="42_8n1ak"]
+[ext_resource type="Texture2D" uid="uid://n3us06kdfof4" path="res://Assets/Characters/sit.png" id="46_m2osy"]
+[ext_resource type="Texture2D" uid="uid://5w2dilmfq0n8" path="res://Assets/Characters/read.png" id="47_s2ej5"]
 [ext_resource type="Texture2D" uid="uid://ysmxv6ak0am6" path="res://Assets/Objects/piaya.png" id="48_81f10"]
 [ext_resource type="Texture2D" uid="uid://bqi5atqoaiwiu" path="res://Assets/Objects/araneta.png" id="49_0s6b8"]
+[ext_resource type="Shader" path="res://src/Environment/fisheye.gdshader" id="50_bqcgj"]
+[ext_resource type="Script" path="res://src/Cutscenes/cutscenes.gd" id="57_d7cvh"]
+[ext_resource type="VideoStream" path="res://Assets/Cutscenes/Intro.ogv" id="58_7bv8e"]
+[ext_resource type="VideoStream" path="res://Assets/Cutscenes/2nd scene_OGV.ogv" id="58_ew3wo"]
+[ext_resource type="Texture2D" uid="uid://dkc1jb8ru5ns8" path="res://Assets/Objects/book.png" id="60_115hn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -200,14 +208,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1oiw1"]
 size = Vector2(14.8, 6.7)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q7n7"]
-size = Vector2(56.5587, 93.2288)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0202"]
-size = Vector2(95, 50)
+size = Vector2(84.3025, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwvea"]
-size = Vector2(141, 77)
+size = Vector2(125, 73)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqfsk"]
 size = Vector2(204.569, 177.946)
@@ -240,8 +245,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6i7r3"]
 size = Vector2(141, 163)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p8u0"]
+size = Vector2(182.703, 64.1096)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6c8t"]
-size = Vector2(37, 82.25)
+size = Vector2(33, 82.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q7n7"]
+size = Vector2(56.5587, 93.2288)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_683s6"]
+light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4ckt"]
 size = Vector2(29, 65)
@@ -292,6 +306,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("47_s2ej5")
+}],
+"loop": true,
+"name": &"Read",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_htg1r")
 }, {
 "duration": 1.0,
@@ -305,6 +327,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_m2osy")
+}],
+"loop": false,
+"name": &"Sit",
 "speed": 5.0
 }]
 
@@ -342,11 +372,40 @@ light_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sqsvb"]
 light_mode = 1
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3p0ay"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xisj3"]
+shader = ExtResource("1_0hrf7")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.056
+shader_parameter/scanlines_width = 0.5
+shader_parameter/grille_opacity = 0.005
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = -4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.001
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hb3k8"]
 light_mode = 1
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dc6s7"]
-light_mode = 1
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcmg2"]
+shader = ExtResource("50_bqcgj")
+shader_parameter/effect = -1.15
+shader_parameter/effect_scale = 1.375
+shader_parameter/dynamic_crop = false
+shader_parameter/manual_crop = false
+shader_parameter/manual_amount = 0.95
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ehd1d"]
 light_mode = 1
@@ -369,7 +428,6 @@ layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 9
 
 [node name="BG Music" type="AudioStreamPlayer" parent="Static"]
 stream = ExtResource("24_duyu8")
-autoplay = true
 
 [node name="Floor" type="StaticBody2D" parent="Static"]
 
@@ -593,34 +651,19 @@ script = ExtResource("23_by1u5")
 position = Vector2(-1.52588e-05, -21.95)
 shape = SubResource("RectangleShape2D_1oiw1")
 
-[node name="Bookshelf" type="Area2D" parent="Interactive"]
-position = Vector2(907, 539)
-scale = Vector2(1.60895, 1.60895)
-script = ExtResource("23_us12y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Bookshelf"]
-texture_filter = 1
-position = Vector2(17.4027, -17.4027)
-scale = Vector2(1.17403, 1.17403)
-shape = SubResource("RectangleShape2D_2q7n7")
-
-[node name="Bookshelf" type="Sprite2D" parent="Interactive/Bookshelf/CollisionShape2D"]
-position = Vector2(0.310608, 0.621552)
-scale = Vector2(0.61645, 0.61645)
-texture = ExtResource("24_466ax")
-
 [node name="Couch" type="Area2D" parent="Interactive"]
 position = Vector2(1152, 600)
 scale = Vector2(2, 2)
 script = ExtResource("25_rmwr0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Couch"]
-position = Vector2(-420, -21.5)
+position = Vector2(-420.25, -21.5)
 scale = Vector2(0.859998, 0.859998)
 shape = SubResource("RectangleShape2D_c0202")
 
 [node name="Couch" type="Sprite2D" parent="Interactive/Couch/CollisionShape2D"]
 texture_filter = 1
+position = Vector2(0.290695, 0)
 scale = Vector2(0.573864, 0.573864)
 texture = ExtResource("25_8erfo")
 
@@ -632,11 +675,12 @@ scale = Vector2(2, 2)
 script = ExtResource("32_v2hqg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Desk"]
-position = Vector2(126.5, 550.5)
+position = Vector2(118.5, 562.5)
 shape = SubResource("RectangleShape2D_xwvea")
 
 [node name="Cabinet" type="Sprite2D" parent="Interactive/Desk"]
-position = Vector2(126, 556)
+position = Vector2(120, 563)
+scale = Vector2(0.84, 0.84)
 texture = ExtResource("32_eq8fb")
 
 [node name="Boracay" type="Area2D" parent="Interactive"]
@@ -664,7 +708,6 @@ shape = SubResource("RectangleShape2D_a78yu")
 [node name="MasskaraPainting" type="Sprite2D" parent="Interactive/MasskaraPainting/CollisionShape2D"]
 texture_filter = 5
 position = Vector2(-0.261658, -0.265343)
-scale = Vector2(1, 1)
 texture = ExtResource("42_6mjfl")
 
 [node name="Araneta" type="Area2D" parent="Interactive"]
@@ -692,22 +735,53 @@ shape = SubResource("RectangleShape2D_6i7r3")
 position = Vector2(-5, -0.5)
 texture = ExtResource("37_5rca2")
 
+[node name="Piaya" type="Area2D" parent="Interactive"]
+position = Vector2(146, 517)
+scale = Vector2(0.284616, 0.280769)
+script = ExtResource("42_8n1ak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Piaya"]
+position = Vector2(-10.5408, 0.000244141)
+shape = SubResource("RectangleShape2D_8p8u0")
+
+[node name="Piaya" type="Sprite2D" parent="Interactive/Piaya/CollisionShape2D"]
+position = Vector2(10.5408, -0.000244141)
+texture = ExtResource("48_81f10")
+
 [node name="Nino" type="Area2D" parent="Interactive"]
 script = ExtResource("33_0ddak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Nino"]
-position = Vector2(88.5, 471.125)
+position = Vector2(89.5, 485)
 shape = SubResource("RectangleShape2D_w6c8t")
 
-[node name="Nino" type="Sprite2D" parent="Interactive/Nino"]
-position = Vector2(89, 471)
+[node name="Nino" type="Sprite2D" parent="Interactive/Nino/CollisionShape2D"]
+position = Vector2(-0.499992, 0)
 scale = Vector2(0.454651, 0.454651)
 texture = ExtResource("32_dy0p2")
 
-[node name="Piaya" type="Sprite2D" parent="."]
-position = Vector2(152, 502.875)
-scale = Vector2(0.284616, 0.280769)
-texture = ExtResource("48_81f10")
+[node name="Bookshelf" type="Area2D" parent="Interactive"]
+position = Vector2(907, 539)
+scale = Vector2(1.60895, 1.60895)
+script = ExtResource("23_us12y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Bookshelf"]
+texture_filter = 1
+position = Vector2(17.4027, -17.4027)
+scale = Vector2(1.17403, 1.17403)
+shape = SubResource("RectangleShape2D_2q7n7")
+
+[node name="Bookshelf" type="Sprite2D" parent="Interactive/Bookshelf/CollisionShape2D"]
+position = Vector2(0.310638, 0.621552)
+scale = Vector2(0.61645, 0.61645)
+texture = ExtResource("24_466ax")
+
+[node name="Book" type="Sprite2D" parent="Interactive/Bookshelf"]
+visible = false
+material = SubResource("CanvasItemMaterial_683s6")
+position = Vector2(19.2673, -55.3156)
+scale = Vector2(0.621523, 0.621523)
+texture = ExtResource("60_115hn")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 texture_filter = 1
@@ -725,7 +799,7 @@ shape = SubResource("RectangleShape2D_b4ckt")
 position = Vector2(0.5, -32.5)
 shape = SubResource("RectangleShape2D_5cpnl")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/CollisionShape2D"]
+[node name="Player" type="AnimatedSprite2D" parent="Player/CollisionShape2D"]
 texture_filter = 1
 position = Vector2(-0.5, -0.500004)
 scale = Vector2(3.29371, 3.3)
@@ -734,7 +808,7 @@ animation = &"Idle"
 autoplay = "Idle"
 speed_scale = 2.0
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Player/CollisionShape2D/AnimatedSprite2D"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Player/CollisionShape2D/Player"]
 occluder = SubResource("OccluderPolygon2D_ouvvt")
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
@@ -767,6 +841,7 @@ scale = Vector2(0.56, 0.28)
 texture = ExtResource("27_mrtg7")
 
 [node name="Post-Process" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -793,7 +868,7 @@ z_as_relative = true
 material = SubResource("CanvasItemMaterial_hmxhg")
 position = Vector2(-0.000244141, -0.000244141)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="Post-Process"]
 material = SubResource("CanvasItemMaterial_sqsvb")
 offset_left = 1067.0
 offset_top = 20.0
@@ -801,13 +876,55 @@ offset_right = 1127.0
 offset_bottom = 51.0
 text = "MENU"
 
+[node name="Cutscenes" type="Node2D" parent="."]
+visible = false
+scale = Vector2(1, 1.01015)
+script = ExtResource("57_d7cvh")
+
+[node name="IntroCS" type="VideoStreamPlayer" parent="Cutscenes"]
+texture_filter = 1
+offset_right = 1152.0
+offset_bottom = 640.0
+stream = ExtResource("58_7bv8e")
+volume_db = -10.0
+expand = true
+
+[node name="Task1CS" type="VideoStreamPlayer" parent="Cutscenes"]
+offset_right = 1152.0
+offset_bottom = 648.0
+stream = ExtResource("58_ew3wo")
+volume_db = -10.0
+expand = true
+
+[node name="ColorRect" type="ColorRect" parent="Cutscenes"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_xisj3")
+offset_left = -0.00012207
+offset_top = -0.00012207
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="Cutscenes/ColorRect"]
+layout_mode = 0
+offset_left = 32.0001
+offset_top = 520.0
+offset_right = 114.0
+offset_bottom = 553.0
+scale = Vector2(2.92, 2.95489)
+theme_override_fonts/font = ExtResource("39_sb6aw")
+theme_override_font_sizes/font_size = 31
+text = "-> SKIP"
+flat = true
+
 [node name="Peephole" type="Node2D" parent="."]
 visible = false
-material = SubResource("CanvasItemMaterial_3p0ay")
+material = SubResource("CanvasItemMaterial_hb3k8")
+use_parent_material = true
 script = ExtResource("37_jip2h")
 
 [node name="Sprite2D" type="Sprite2D" parent="Peephole"]
-material = SubResource("CanvasItemMaterial_dc6s7")
+material = SubResource("ShaderMaterial_wcmg2")
 position = Vector2(576, 324)
 scale = Vector2(1.30909, 0.695279)
 texture = ExtResource("37_mqbij")
@@ -826,8 +943,11 @@ flat = true
 
 [connection signal="mouse_entered" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/TV" to="Interactive/TV" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/TV" to="Interactive/TV" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]
+[connection signal="task_available" from="Interactive/TV" to="Interactive/TV" method="_on_task_available"]
 [connection signal="body_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_exited" flags=18]
 [connection signal="mouse_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_entered" flags=18]
@@ -850,12 +970,9 @@ flat = true
 [connection signal="timeout" from="Interactive/Door/TimerClosedDoor" to="Interactive/Door" method="_on_timeout_closed"]
 [connection signal="mouse_entered" from="Interactive/Peephole" to="Interactive/Peephole" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Peephole" to="Interactive/Peephole" method="_on_mouse_exited"]
-[connection signal="body_entered" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_body_entered"]
-[connection signal="body_exited" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_body_exited"]
-[connection signal="mouse_entered" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Couch" to="Interactive/Couch" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Couch" to="Interactive/Couch" method="_on_body_exited"]
+[connection signal="body_exited" from="Interactive/Couch" to="Player" method="_on_couch_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Couch" to="Interactive/Couch" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Desk" to="Interactive/Desk" method="_on_body_entered"]
@@ -871,5 +988,18 @@ flat = true
 [connection signal="body_exited" from="Interactive/Nino" to="Interactive/Nino" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Nino" to="Interactive/Nino" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Nino" to="Interactive/Nino" method="_on_mouse_exited"]
-[connection signal="animation_finished" from="Player/CollisionShape2D/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_body_exited"]
+[connection signal="body_exited" from="Interactive/Bookshelf" to="Player" method="_on_bookshelf_body_exited"]
+[connection signal="mouse_entered" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_mouse_exited"]
+[connection signal="read_player" from="Interactive/Bookshelf" to="Player" method="_on_bookshelf_read_player"]
+[connection signal="animation_finished" from="Player/CollisionShape2D/Player" to="Player" method="_on_player_animation_finished"]
+[connection signal="intro_done" from="Cutscenes" to="Interactive/Window1" method="_on_cutscenes_intro_done"]
+[connection signal="intro_done" from="Cutscenes" to="Interactive/Window2" method="_on_cutscenes_intro_done"]
+[connection signal="intro_done" from="Cutscenes" to="Interactive/Window3" method="_on_cutscenes_intro_done"]
+[connection signal="task1_done" from="Cutscenes" to="Interactive/TV" method="_on_cutscenes_task_1_done"]
+[connection signal="finished" from="Cutscenes/IntroCS" to="Cutscenes" method="_on_intro_finished"]
+[connection signal="finished" from="Cutscenes/Task1CS" to="Cutscenes" method="_on_task_1cs_finished"]
+[connection signal="pressed" from="Cutscenes/ColorRect/Button" to="Cutscenes" method="_on_button_pressed"]
 [connection signal="pressed" from="Peephole/Button" to="Peephole" method="_on_button_pressed" flags=18]

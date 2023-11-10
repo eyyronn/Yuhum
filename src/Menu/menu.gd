@@ -15,7 +15,7 @@ func _on_area_2d_mouse_exited():
 		
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("left_click"):
-		get_tree().change_scene_to_file("res://src/Cutscenes/cutscenes.tscn")
+		get_tree().change_scene_to_file("res://src/room.tscn")
 		
 
 func _on_area_2d_2_mouse_entered():

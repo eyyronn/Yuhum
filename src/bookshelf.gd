@@ -1,5 +1,7 @@
 extends Area2D
 
+signal read_player
+
 var tooltip_text = "read"
 @onready var tooltip = get_node("/root/World/Post-Process/CursorTooltip")
 @onready var anim = get_node("CollisionShape2D/AnimatedSprite2D")
@@ -30,8 +32,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
 		
-	if area_clicked and player_in_area:
-		pass # insert read function
+	if area_clicked and player_in_area and mouse_in_area:
+		emit_signal("read_player")
 
 func _on_body_entered(body):
 	if body.name == "Player":

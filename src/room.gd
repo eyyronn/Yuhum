@@ -1,11 +1,6 @@
 extends Node2D
 
-func _ready():
-	pass
-#	print_tree_pretty()
-#	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-#@onready var is_paused = $Paused_
 @onready var is_hear = $Player/AudioListener2D
 @onready var bg_music = $"Static/BG Music"
 @onready var tv_static = $"Interactive/TV/Static Noise"
@@ -16,8 +11,14 @@ var paused = false
 func _process(delta):
 	if Input.is_action_just_pressed("Pause"):
 		pause()
+		
+func _ready():
+	$"Post-Process".hide()
+	$Cutscenes.show()
+	$Cutscenes/IntroCS.play()
+	$Cutscenes/IntroCS.set_volume_db(-5.0)
+			
 
-	
 func pause():
 	if paused:
 #		is_paused.hide()

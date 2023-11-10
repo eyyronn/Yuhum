@@ -12,5 +12,6 @@ func _process(delta):
 func _on_button_pressed():
 	exit = true
 	$".".hide()
+	$"../Post-Process".show()
 #	GameStateService.on_scene_transitioning("res://src/room.tscn")
 #	get_tree().change_scene_to_file("res://src/room.tscn")

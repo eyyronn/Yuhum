@@ -14,6 +14,7 @@ var tooltip_text = TOOLTIP_CLOSE
 @onready var anim = get_node("CollisionShape2D/AnimatedSprite2D") 
 @onready var sfx_slide = get_node("AudioStreamPlayer2D")
 @onready var can_close = true
+@onready var init = true
 
 var mouse_in_area = false
 var player_in_area = false
@@ -29,7 +30,7 @@ func _ready():
 		if child.name.begins_with(TIMER_OPEN_PREFIX):
 			child.timeout.connect(_on_timeout_open.bind())
 			
-	open_window("First")
+	open_window()
 
 func change_tooltip():
 	if mouse_in_area:
@@ -61,26 +62,26 @@ func _on_body_exited(body):
 		player_in_area = false
 
 func _on_timeout_closed():
-	open_window("_")
+	open_window()
 
 func _on_timeout_open():
 	print("Game Over", )
 
-func open_window(state):
-	emit_signal('window_is_open')
-	for child in get_children():
-		if child.name.begins_with(TIMER_OPEN_PREFIX):
-			child.set_wait_time(randf_range(15, 30))
-	tooltip_text = TOOLTIP_CLOSE
-	anim.play("Open")
-	if state != "First":
+func open_window():
+	if not init:
+		emit_signal('window_is_open')
+		for child in get_children():
+			if child.name.begins_with(TIMER_OPEN_PREFIX):
+				child.set_wait_time(randf_range(15, 30))
+		tooltip_text = TOOLTIP_CLOSE
+		anim.play("Open")
 		sfx_slide.play()
-	window_open = true
-	can_close = true
-	Global.closed_windows -= 1
-	print_debug(Global.closed_windows)
-	
-	start_timer_open()
+		print_debug(init)
+		Global.closed_windows -= 1
+		window_open = true
+		can_close = true
+		print_debug(Global.closed_windows)
+		start_timer_open()
 
 func close_window():
 	emit_signal('window_is_closed')
@@ -113,3 +114,7 @@ func start_timer_open():
 	for child in get_children():
 		if child.name.begins_with(TIMER_OPEN_PREFIX):
 			child.start()
+
+func _on_cutscenes_intro_done():
+	init = false
+

@@ -27,11 +27,13 @@ func _on_mouse_exited():
 func _process(delta):
 	change_tooltip()
 	
-	if Input.is_action_just_pressed("left_click") and mouse_in_area:
-		area_clicked = true
-		
-	if area_clicked and player_in_area:
+	if Input.is_action_just_pressed("left_click") and mouse_in_area and player_in_area:
+		$"../../Post-Process".hide()
 		peephole.show()
+		
+		
+	if area_clicked:
+		pass
 #		GameStateService.on_scene_transitioning("res://src/Environment/peephole.tscn")b
 #		get_tree().change_scene_to_file("res://src/Environment/peephole.tscn")
 	
