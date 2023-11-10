@@ -33,6 +33,7 @@ func _process(delta):
 		area_clicked = true
 		
 	if area_clicked and mouse_in_area:
+		if task1_is_running:
 			if not is_clicked:
 				Global.located_items += 1
 				is_clicked = true
