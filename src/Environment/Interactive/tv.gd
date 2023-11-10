@@ -5,7 +5,8 @@ signal task_available
 var tooltip_text = "finish tasks"
 @onready var tooltip = get_node("/root/World/Post-Process/CursorTooltip")
 @onready var mouse_in_area = false
-@onready var alarm_has_played = false
+@onready var first_done = false
+@onready var second_done = false
 @onready var task1_has_played = false
 @onready var area_clicked = false
 @onready var player_in_area = false
@@ -16,13 +17,18 @@ func _ready():
 func _process(delta):
 	change_tooltip()
 	
-	if not alarm_has_played:
+	if not first_done:
 		first()
+	elif first_done and not second_done:
+		second()
+	
+	pass
 		
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
+		print_debug(Global.located_items)
 		area_clicked = true
 
-	if area_clicked and player_in_area and alarm_has_played:
+	if area_clicked and player_in_area and first_done:
 		emit_signal("task_available", 1)
 		task1_has_played = true
 		
@@ -40,12 +46,19 @@ func _on_mouse_exited():
 	
 func first():
 	if Global.closed_windows == 3:
-		print_debug("TV")
 		$Static.hide()
 		$Ting.play()
 		$Exclamation.show()
 		tooltip_text = "watch"
-		alarm_has_played = true
+		first_done = true
+
+func second():
+	if Global.located_items == 6:
+		$Static.hide()
+		$Ting.play()
+		$Exclamation.show()
+		tooltip_text = "watch"
+		second_done = true
 
 func _on_body_entered(body):
 	if body.name == "Player":

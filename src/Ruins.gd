@@ -4,7 +4,6 @@ var tooltip_text = "admire"
 @onready var tooltip = get_node("/root/World/Post-Process/CursorTooltip")
 @onready var anim = get_node("CollisionShape2D/AnimatedSprite2D")
 @onready var can_read = true
-@onready var task1_is_running = false
 
 var mouse_in_area = false
 var player_in_area = false
@@ -32,7 +31,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
 		
-	if area_clicked and player_in_area and mouse_in_area:
+	if area_clicked and mouse_in_area:
 		if not is_clicked:
 			Global.located_items += 1
 			is_clicked = true

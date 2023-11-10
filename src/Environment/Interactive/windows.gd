@@ -15,6 +15,7 @@ var tooltip_text = TOOLTIP_CLOSE
 @onready var sfx_slide = get_node("AudioStreamPlayer2D")
 @onready var can_close = true
 @onready var init = true
+@onready var task1_is_running = false
 
 var mouse_in_area = false
 var player_in_area = false
@@ -117,4 +118,10 @@ func start_timer_open():
 
 func _on_cutscenes_intro_done():
 	init = false
+	
+func _on_task1_done(node):
+	task1_is_running = true
+	
+	
+
 

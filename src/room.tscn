@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=120 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -37,14 +37,17 @@
 [ext_resource type="Texture2D" uid="uid://baxi5hqiun74k" path="res://Assets/Characters/close.png" id="25_blc42"]
 [ext_resource type="Script" path="res://src/couch.gd" id="25_rmwr0"]
 [ext_resource type="Texture2D" uid="uid://durishaueidx6" path="res://Assets/Background/_3adb6daf-0223-471b-972f-e6a01eb755d4.jpg" id="27_mrtg7"]
+[ext_resource type="Script" path="res://src/Boracay.gd" id="32_0rckk"]
 [ext_resource type="Texture2D" uid="uid://cfplcyievl6y8" path="res://Assets/Objects/nino.png" id="32_dy0p2"]
 [ext_resource type="Texture2D" uid="uid://buqht2rgafgxy" path="res://Assets/Objects/cabinet.png" id="32_eq8fb"]
 [ext_resource type="Script" path="res://src/desk.gd" id="32_v2hqg"]
 [ext_resource type="Script" path="res://src/nino.gd" id="33_0ddak"]
+[ext_resource type="Script" path="res://src/MasskaraPainting.gd" id="33_n343t"]
 [ext_resource type="Texture2D" uid="uid://bpchm1khryk0g" path="res://Assets/Objects/boracay.png" id="36_gghst"]
 [ext_resource type="Texture2D" uid="uid://b71qxoagijry" path="res://Assets/Objects/ruins.png" id="37_5rca2"]
 [ext_resource type="Script" path="res://src/Environment/peephole.gd" id="37_jip2h"]
 [ext_resource type="Texture2D" uid="uid://diiog64dogr5m" path="res://Assets/Background/porch.png" id="37_mqbij"]
+[ext_resource type="Script" path="res://src/Ruins.gd" id="37_ubuyt"]
 [ext_resource type="Script" path="res://src/araneta.gd" id="39_2b50c"]
 [ext_resource type="FontFile" uid="uid://dkjmri2ehyowu" path="res://Assets/Fonts/Habbo.ttf" id="39_sb6aw"]
 [ext_resource type="Texture2D" uid="uid://ctevdurkr0c74" path="res://Assets/Objects/smilearaneta.png" id="40_od815"]
@@ -56,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://ysmxv6ak0am6" path="res://Assets/Objects/piaya.png" id="48_81f10"]
 [ext_resource type="Texture2D" uid="uid://bqi5atqoaiwiu" path="res://Assets/Objects/araneta.png" id="49_0s6b8"]
 [ext_resource type="Shader" path="res://src/Environment/fisheye.gdshader" id="50_bqcgj"]
+[ext_resource type="Texture2D" uid="uid://ty7171goax2j" path="res://Assets/Characters/monster.png" id="55_or587"]
 [ext_resource type="Script" path="res://src/Cutscenes/cutscenes.gd" id="57_d7cvh"]
 [ext_resource type="VideoStream" path="res://Assets/Cutscenes/Intro.ogv" id="58_7bv8e"]
 [ext_resource type="VideoStream" path="res://Assets/Cutscenes/2nd scene_OGV.ogv" id="58_ew3wo"]
@@ -340,6 +344,70 @@ animations = [{
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ouvvt"]
 polygon = PackedVector2Array(-2.12526, 9.69697, -2.12526, 16.0606, 3.03609, 15.7576, 3.03609, 9.69697, 2.12526, 9.69697, 2.12526, 14.2424, -1.21443, 14.5455, -0.910826, 9.69697)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poffd"]
+atlas = ExtResource("55_or587")
+region = Rect2(0, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk4if"]
+atlas = ExtResource("55_or587")
+region = Rect2(201, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6jh"]
+atlas = ExtResource("55_or587")
+region = Rect2(402, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06tn4"]
+atlas = ExtResource("55_or587")
+region = Rect2(603, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jqya"]
+atlas = ExtResource("55_or587")
+region = Rect2(804, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ed4t"]
+atlas = ExtResource("55_or587")
+region = Rect2(1005, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih6rv"]
+atlas = ExtResource("55_or587")
+region = Rect2(1206, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh8a5"]
+atlas = ExtResource("55_or587")
+region = Rect2(1407, 0, 201, 145)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7x8cw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poffd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk4if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06tn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jqya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ed4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih6rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh8a5")
+}],
+"loop": true,
+"name": &"Crawl",
+"speed": 7.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sg7m"]
 shader = ExtResource("1_0hrf7")
@@ -684,6 +752,7 @@ scale = Vector2(0.84, 0.84)
 texture = ExtResource("32_eq8fb")
 
 [node name="Boracay" type="Area2D" parent="Interactive"]
+script = ExtResource("32_0rckk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Boracay"]
 position = Vector2(1018.36, 173.25)
@@ -699,6 +768,7 @@ scale = Vector2(1.14977, 1.14977)
 texture = ExtResource("36_gghst")
 
 [node name="MasskaraPainting" type="Area2D" parent="Interactive"]
+script = ExtResource("33_n343t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/MasskaraPainting"]
 position = Vector2(608.5, 168.5)
@@ -726,6 +796,7 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Ruins" type="Area2D" parent="Interactive"]
+script = ExtResource("37_ubuyt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive/Ruins"]
 position = Vector2(228, 167.5)
@@ -840,6 +911,14 @@ position = Vector2(576, 178)
 scale = Vector2(0.56, 0.28)
 texture = ExtResource("27_mrtg7")
 
+[node name="Monster" type="AnimatedSprite2D" parent="."]
+position = Vector2(439, 562)
+scale = Vector2(0.519999, 0.519999)
+sprite_frames = SubResource("SpriteFrames_7x8cw")
+animation = &"Crawl"
+autoplay = "Crawl"
+frame_progress = 0.0575529
+
 [node name="Post-Process" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -905,9 +984,8 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
-[node name="Button" type="Button" parent="Cutscenes/ColorRect"]
-layout_mode = 0
-offset_left = 32.0001
+[node name="Button" type="Button" parent="Cutscenes"]
+offset_left = 32.0
 offset_top = 520.0
 offset_right = 114.0
 offset_bottom = 553.0
@@ -979,11 +1057,27 @@ flat = true
 [connection signal="body_exited" from="Interactive/Desk" to="Interactive/Desk" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Desk" to="Interactive/Desk" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Desk" to="Interactive/Desk" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/Boracay" to="Interactive/Boracay" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Boracay" to="Interactive/Boracay" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Interactive/Boracay" to="Interactive/Boracay" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Boracay" to="Interactive/Boracay" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/MasskaraPainting" to="Interactive/MasskaraPainting" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/MasskaraPainting" to="Interactive/MasskaraPainting" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Interactive/MasskaraPainting" to="Interactive/MasskaraPainting" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/MasskaraPainting" to="Interactive/MasskaraPainting" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Araneta" to="Interactive/Araneta" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Araneta" to="Interactive/Araneta" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Araneta" to="Interactive/Araneta" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Araneta" to="Interactive/Araneta" method="_on_mouse_exited"]
 [connection signal="animation_finished" from="Interactive/Araneta/CollisionShape2D/Araneta" to="Interactive/Araneta" method="_on_araneta_animation_finished"]
+[connection signal="body_entered" from="Interactive/Ruins" to="Interactive/Ruins" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Ruins" to="Interactive/Ruins" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Interactive/Ruins" to="Interactive/Ruins" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Ruins" to="Interactive/Ruins" method="_on_mouse_exited"]
+[connection signal="body_entered" from="Interactive/Piaya" to="Interactive/Piaya" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactive/Piaya" to="Interactive/Piaya" method="_on_body_exited"]
+[connection signal="mouse_entered" from="Interactive/Piaya" to="Interactive/Piaya" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Interactive/Piaya" to="Interactive/Piaya" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Nino" to="Interactive/Nino" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Nino" to="Interactive/Nino" method="_on_body_exited"]
 [connection signal="mouse_entered" from="Interactive/Nino" to="Interactive/Nino" method="_on_mouse_entered"]
@@ -1001,5 +1095,5 @@ flat = true
 [connection signal="task1_done" from="Cutscenes" to="Interactive/TV" method="_on_cutscenes_task_1_done"]
 [connection signal="finished" from="Cutscenes/IntroCS" to="Cutscenes" method="_on_intro_finished"]
 [connection signal="finished" from="Cutscenes/Task1CS" to="Cutscenes" method="_on_task_1cs_finished"]
-[connection signal="pressed" from="Cutscenes/ColorRect/Button" to="Cutscenes" method="_on_button_pressed"]
+[connection signal="pressed" from="Cutscenes/Button" to="Cutscenes" method="_on_button_pressed"]
 [connection signal="pressed" from="Peephole/Button" to="Peephole" method="_on_button_pressed" flags=18]

@@ -8,6 +8,7 @@ var tooltip_text = "keep"
 var mouse_in_area = false
 var player_in_area = false
 var area_clicked = false
+var is_clicked = false
 
 func _ready():
 	pass
@@ -31,7 +32,9 @@ func _process(delta):
 		area_clicked = true
 		
 	if area_clicked and player_in_area and mouse_in_area:
-		pass # insert read function
+		if not is_clicked:
+			Global.located_items += 1
+			is_clicked = true
 
 func _on_body_entered(body):
 	if body.name == "Player":

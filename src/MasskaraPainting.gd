@@ -32,10 +32,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
 		
-	if area_clicked and player_in_area and mouse_in_area:
+	if area_clicked and mouse_in_area:
 		if not is_clicked:
-			Global.located_items += 1
-			is_clicked = true
+				Global.located_items += 1
+				is_clicked = true
 
 func _on_body_entered(body):
 	if body.name == "Player":
@@ -44,4 +44,6 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.name == "Player":
 		player_in_area = false
-	
+		
+#func _on_task1_done(node):
+#	task1_is_running = true
