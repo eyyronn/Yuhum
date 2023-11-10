@@ -2,6 +2,8 @@ extends Area2D
 
 signal window_is_closed
 signal window_is_open
+signal jumpscare
+signal jumpscare_done
 
 const PLAYER = "Player"
 const TIMER_CLOSED_PREFIX = "TimerClosed"
@@ -17,6 +19,7 @@ var tooltip_text = TOOLTIP_CLOSE
 @onready var init = true
 @onready var task1_is_running = false
 
+var jumpscares_played = false
 var mouse_in_area = false
 var player_in_area = false
 var area_clicked = false
@@ -53,6 +56,9 @@ func _process(delta):
 
 	if area_clicked and player_in_area and can_close:
 		close_window()
+		
+	if jumpscares_played:
+		get_tree().change_scene_to_file("res://src/game_over.tscn")
 
 func _on_body_entered(body):
 	if body.name == PLAYER:
@@ -122,6 +128,22 @@ func _on_cutscenes_intro_done():
 func _on_task1_done(node):
 	task1_is_running = true
 	
+func _on_peephole_end_game():
+	$"../../Peephole/TheEnd".set_wait_time(4)
+	$"../../Peephole/TheEnd".start()
+
+func _on_the_end_timeout():
+	open_window()
+	emit_signal("jumpscare")
+	$"../../Static/JumpscareTimer".set_wait_time(1)
+	$"../../Static/JumpscareTimer".start()
 	
 
+func _on_jumpscare_timer_timeout():
+	$"../../Static/JumpscareSound".play()
+	$"../../Scare".show()
+	$"../../Static/MenuTimer".set_wait_time(2)
+	$"../../Static/MenuTimer".start()
 
+func _on_menu_timer_timeout():
+	get_tree().change_scene_to_file("res://src/game_over.tscn")

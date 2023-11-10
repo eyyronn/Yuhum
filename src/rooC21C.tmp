@@ -1,12 +1,10 @@
-[gd_scene load_steps=121 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=118 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
 [ext_resource type="Texture2D" uid="uid://cg8odh0ifb0nl" path="res://Assets/Objects/floor.png" id="1_o4dcc"]
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="1_wj3vc"]
-[ext_resource type="AudioStream" uid="uid://canw88l8gi4nr" path="res://Assets/SFX/onlymp3.to - Idea sound effect Tung -wWAE5uA2UU8-192k-1699616897.mp3" id="2_1nkn1"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="2_3mdw3"]
-[ext_resource type="AudioStream" uid="uid://qmjk6bkgs8me" path="res://Assets/SFX/20230605_Fnaf Jumpscare Sound Effect.mp3" id="2_hi1ou"]
 [ext_resource type="PackedScene" uid="uid://xghtbstmtywi" path="res://src/Environment/CursorTooltip/CursorTooltip.tscn" id="3_kli53"]
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="4_sr1gg"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/windows.gd" id="4_srpae"]
@@ -62,7 +60,6 @@
 [ext_resource type="Texture2D" uid="uid://bqi5atqoaiwiu" path="res://Assets/Objects/araneta.png" id="49_0s6b8"]
 [ext_resource type="Shader" path="res://src/Environment/fisheye.gdshader" id="50_bqcgj"]
 [ext_resource type="Script" path="res://src/Cutscenes/cutscenes.gd" id="57_d7cvh"]
-[ext_resource type="Texture2D" uid="uid://dq5lk2oju4fhk" path="res://Assets/Characters/creepy smile.png" id="57_y6mxm"]
 [ext_resource type="VideoStream" path="res://Assets/Cutscenes/Intro.ogv" id="58_7bv8e"]
 [ext_resource type="VideoStream" path="res://Assets/Cutscenes/2nd scene_OGV.ogv" id="58_ew3wo"]
 [ext_resource type="VideoStream" path="res://src/Cutscenes/last_OGV.ogv" id="59_yhc81"]
@@ -568,20 +565,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MenuTimer" type="Timer" parent="Static"]
-
-[node name="JumpscareTimer" type="Timer" parent="Static"]
-one_shot = true
-
-[node name="JumpscareSound" type="AudioStreamPlayer2D" parent="Static"]
-scale = Vector2(0.5, 1.5)
-stream = ExtResource("2_hi1ou")
-
-[node name="Correct" type="AudioStreamPlayer2D" parent="Static"]
-scale = Vector2(0.5, 1.5)
-stream = ExtResource("2_1nkn1")
-volume_db = 5.0
-
 [node name="Background" type="TileMap" parent="Static"]
 modulate = Color(0.92549, 0.92549, 0.92549, 1)
 scale = Vector2(0.5, 1.5)
@@ -1045,12 +1028,6 @@ offset_right = 1127.0
 offset_bottom = 51.0
 text = "MENU"
 
-[node name="Scare" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(582, 180)
-scale = Vector2(0.720002, 0.519507)
-texture = ExtResource("57_y6mxm")
-
 [node name="Cutscenes" type="Node2D" parent="."]
 visible = false
 scale = Vector2(1, 1.01015)
@@ -1098,11 +1075,7 @@ theme_override_font_sizes/font_size = 31
 text = "-> SKIP"
 flat = true
 
-[node name="Ghosts" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Ghosts" type="Node" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ghosts"]
 root_node = NodePath("Head1")
@@ -1158,8 +1131,6 @@ theme_override_font_sizes/font_size = 31
 text = "OPEN"
 flat = true
 
-[connection signal="timeout" from="Static/MenuTimer" to="Interactive/Window1" method="_on_menu_timer_timeout"]
-[connection signal="timeout" from="Static/JumpscareTimer" to="Interactive/Window1" method="_on_jumpscare_timer_timeout"]
 [connection signal="mouse_entered" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Floor" to="Interactive/Floor" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/TV" to="Interactive/TV" method="_on_body_entered"]
@@ -1171,20 +1142,14 @@ flat = true
 [connection signal="task_available" from="Interactive/TV" to="Interactive/TV" method="_on_task_available"]
 [connection signal="body_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_body_exited" flags=18]
-[connection signal="jumpscare" from="Interactive/Window1" to="Interactive/Window1" method="_on_jumpscare"]
-[connection signal="jumpscare_done" from="Interactive/Window1" to="Interactive/Window1" method="_on_jumpscare_done"]
 [connection signal="mouse_entered" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="Interactive/Window1" to="Interactive/Window1" method="_on_mouse_exited" flags=18]
 [connection signal="body_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_body_exited"]
-[connection signal="jumpscare" from="Interactive/Window2" to="Interactive/Window2" method="_on_jumpscare"]
-[connection signal="jumpscare_done" from="Interactive/Window2" to="Interactive/Window2" method="_on_jumpscare_done"]
 [connection signal="mouse_entered" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window2" to="Interactive/Window2" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_body_exited"]
-[connection signal="jumpscare" from="Interactive/Window3" to="Interactive/Window3" method="_on_jumpscare"]
-[connection signal="jumpscare_done" from="Interactive/Window3" to="Interactive/Window3" method="_on_jumpscare_done"]
 [connection signal="mouse_entered" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/Window3" to="Interactive/Window3" method="_on_mouse_exited"]
 [connection signal="body_entered" from="Interactive/Door" to="Interactive/Door" method="_on_body_entered" flags=18]

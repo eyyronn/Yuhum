@@ -1,6 +1,7 @@
 extends Node2D
 signal intro_done
 signal task1_done
+signal last_done
 
 @onready var play := false
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +29,14 @@ func _on_button_pressed():
 				$".".hide()
 				$"../Post-Process".show()
 				child.set_paused(true)
+				child.stop()
+			
+			elif child.name == "LastCS" and child.is_playing():
+				child.set_volume_db(-9999.9999)
+				emit_signal("last_done")
+				$".".hide()
+				$"../Post-Process".show()
+				child.set_paused(true)
 
 func _on_intro_finished():
 	print_debug("Intro")
@@ -50,6 +59,15 @@ func _on_task_1cs_finished():
 			$"../Post-Process".show()
 			if child.is_playing():
 				child.set_paused(true)
-				
+				child.stop()
 	
-
+func _on_last_cs_finished():
+	print_debug("Last")
+	for child in get_children():
+		if child.name == "LastCS":
+			child.set_volume_db(-9999.9999)
+			emit_signal("last_done")
+			$".".hide()
+			$"../Post-Process".show()
+			if child.is_playing():
+				child.set_paused(true)

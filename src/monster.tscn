@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://t6x8q0poh8f5"]
+
+[ext_resource type="Texture2D" uid="uid://ty7171goax2j" path="res://Assets/Characters/monster.png" id="1_6ebw8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poffd"]
+atlas = ExtResource("1_6ebw8")
+region = Rect2(0, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk4if"]
+atlas = ExtResource("1_6ebw8")
+region = Rect2(201, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np6jh"]
+atlas = ExtResource("1_6ebw8")
+region = Rect2(402, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06tn4"]
+atlas = ExtResource("1_6ebw8")
+region = Rect2(603, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jqya"]
+atlas = ExtResource("1_6ebw8")
+region = Rect2(804, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ed4t"]
+atlas = ExtResource("1_6ebw8")
+region = Rect2(1005, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih6rv"]
+atlas = ExtResource("1_6ebw8")
+region = Rect2(1206, 0, 201, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh8a5"]
+atlas = ExtResource("1_6ebw8")
+region = Rect2(1407, 0, 201, 145)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7x8cw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poffd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk4if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np6jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06tn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jqya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ed4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih6rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh8a5")
+}],
+"loop": true,
+"name": &"Crawl",
+"speed": 7.0
+}]
+
+[node name="Monster" type="AnimatedSprite2D"]
+visible = false
+position = Vector2(439, 562)
+scale = Vector2(0.519999, 0.519999)
+sprite_frames = SubResource("SpriteFrames_7x8cw")
+animation = &"Crawl"
+autoplay = "Crawl"
+frame_progress = 0.0575529

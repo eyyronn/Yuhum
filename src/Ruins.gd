@@ -35,7 +35,7 @@ func _process(delta):
 	if area_clicked and mouse_in_area:
 		if task1_is_running:
 			if not is_clicked:
-				print_debug("Helloo")
+				$"../../Static/Correct".play()
 				Global.located_items += 1
 				is_clicked = true
 
@@ -49,4 +49,6 @@ func _on_body_exited(body):
 		
 func _on_task1_done(node):
 	task1_is_running = true
+	
+
 

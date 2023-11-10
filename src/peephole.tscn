@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce6btqho0jeeq"]
+
+[ext_resource type="Script" path="res://src/peephole.gd" id="1_2ufxa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oiw1"]
+size = Vector2(14.8, 6.7)
+
+[node name="Peephole" type="Area2D"]
+position = Vector2(776, 600)
+scale = Vector2(5, 5)
+script = ExtResource("1_2ufxa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.52588e-05, -21.95)
+shape = SubResource("RectangleShape2D_1oiw1")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

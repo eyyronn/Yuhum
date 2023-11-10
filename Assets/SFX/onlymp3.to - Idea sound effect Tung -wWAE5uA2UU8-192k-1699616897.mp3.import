@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://canw88l8gi4nr"
+path="res://.godot/imported/onlymp3.to - Idea sound effect Tung -wWAE5uA2UU8-192k-1699616897.mp3-7d9074a97f3b6728e282d0ced5a07a41.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/onlymp3.to - Idea sound effect Tung -wWAE5uA2UU8-192k-1699616897.mp3"
+dest_files=["res://.godot/imported/onlymp3.to - Idea sound effect Tung -wWAE5uA2UU8-192k-1699616897.mp3-7d9074a97f3b6728e282d0ced5a07a41.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

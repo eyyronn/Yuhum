@@ -37,6 +37,7 @@ func _process(delta):
 	if area_clicked and player_in_area and mouse_in_area:
 		if task1_is_running:
 			if not is_clicked:
+				$"../../Static/Correct".play()
 				Global.located_items += 1
 				is_clicked = true
 		emit_signal("read_player")

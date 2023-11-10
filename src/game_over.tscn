@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://dapbjehlpwp8"]
+
+[ext_resource type="Script" path="res://src/game_over.gd" id="1_8t0wl"]
+[ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_l4hdi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78evp"]
+shader = ExtResource("1_l4hdi")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.056
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1152, 600)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = -4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.006
+shader_parameter/noise_opacity = 0.654
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.179
+shader_parameter/aberration = -0.00999995
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.67
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 3.385
+shader_parameter/vignette_opacity = 0.0
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_8t0wl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.9829, 16.3829)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 464.0
+offset_top = 272.0
+offset_right = 526.0
+offset_bottom = 298.0
+scale = Vector2(3.76, 3.76)
+text = "The end"
+
+[node name="Post-Process" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Post-Process"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_78evp")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 424.0
+offset_top = 360.0
+offset_right = 581.0
+offset_bottom = 391.0
+scale = Vector2(2.08, 2.08)
+text = "Back to Main Menu"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

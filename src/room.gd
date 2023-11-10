@@ -8,17 +8,19 @@ extends Node2D
 var paused = false
 
 @warning_ignore("unused_parameter")
-func _process(delta):
-	if Input.is_action_just_pressed("Pause"):
-		pause()
-		
+
 func _ready():
+	for child in $Ghosts/AnimationPlayer.get_children():
+		child.hide()
 	$"Post-Process".hide()
 	$Cutscenes.show()
 	$Cutscenes/IntroCS.play()
 	$Cutscenes/IntroCS.set_volume_db(-5.0)
 	
-
+func _process(delta):
+	if Input.is_action_just_pressed("Pause"):
+		pause()
+		
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://src/Menu/menu.tscn")
 			

@@ -11,6 +11,8 @@ extends Area2D
 @export var player_in_area := false
 @export var area_clicked := false
 @export var door_open := true
+@export var last_scene := false
+var last_has_started := false
 
 func _ready():
 	open_door("First")
@@ -36,7 +38,16 @@ func _process(delta):
 		
 	if area_clicked and player_in_area and can_close:
 		close_door()
-
+	
+	
+	if last_scene:
+		if not last_has_started:
+			knock_door()
+			last_has_started = true
+		if area_clicked and player_in_area:
+			$"../../Peephole".show()
+			$"../../Post-Process".hide()
+			
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_in_area = true
@@ -71,3 +82,22 @@ func close_door():
 	tooltip_text = "closed"
 	can_close = false
 	$TimerClosedDoor.start()
+	
+func knock_door():
+	$TimerOpenDoor.stop()
+	$TimerClosedDoor.stop()
+	$TimerKnock.set_wait_time(3.5)
+#	sfx_shut.play()
+#	anim.play("Close")
+	door_open = false
+	area_clicked = false
+	tooltip_text = "peep"
+	$TimerKnock.start()
+
+func _on_tv_last_scene():
+	anim.play("Close")
+	last_scene = true
+
+func _on_timer_knock_timeout():
+	print_debug("oy")
+	$Knock.play()
