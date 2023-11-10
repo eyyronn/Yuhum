@@ -17,8 +17,12 @@ func _ready():
 	$Cutscenes.show()
 	$Cutscenes/IntroCS.play()
 	$Cutscenes/IntroCS.set_volume_db(-5.0)
-			
+	
 
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://src/Menu/menu.tscn")
+			
+			
 func pause():
 	if paused:
 #		is_paused.hide()
@@ -32,6 +36,9 @@ func pause():
 		tv_static.stop()
 		bg_music.stop()
 		Engine.time_scale = 0
-	
+		
 	paused = !paused
 	
+
+
+

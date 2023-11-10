@@ -949,6 +949,7 @@ position = Vector2(-0.000244141, -0.000244141)
 
 [node name="Button" type="Button" parent="Post-Process"]
 material = SubResource("CanvasItemMaterial_sqsvb")
+layout_mode = 0
 offset_left = 1067.0
 offset_top = 20.0
 offset_right = 1127.0
@@ -1089,6 +1090,7 @@ flat = true
 [connection signal="mouse_exited" from="Interactive/Bookshelf" to="Interactive/Bookshelf" method="_on_mouse_exited"]
 [connection signal="read_player" from="Interactive/Bookshelf" to="Player" method="_on_bookshelf_read_player"]
 [connection signal="animation_finished" from="Player/CollisionShape2D/Player" to="Player" method="_on_player_animation_finished"]
+[connection signal="pressed" from="Post-Process/Button" to="." method="_on_button_pressed"]
 [connection signal="intro_done" from="Cutscenes" to="Interactive/Window1" method="_on_cutscenes_intro_done"]
 [connection signal="intro_done" from="Cutscenes" to="Interactive/Window2" method="_on_cutscenes_intro_done"]
 [connection signal="intro_done" from="Cutscenes" to="Interactive/Window3" method="_on_cutscenes_intro_done"]
