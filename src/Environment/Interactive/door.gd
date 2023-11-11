@@ -110,3 +110,6 @@ func play_jumpscare():
 	
 func _on_cutscenes_intro_done():
 	Global.init = false
+
+func _on_tv_last_available():
+	$TimerOpenDoor.stop()

@@ -941,6 +941,7 @@ scale = Vector2(0.849454, 0.612911)
 texture = ExtResource("57_y6mxm")
 
 [node name="Cutscenes" type="Node2D" parent="."]
+visible = false
 scale = Vector2(1, 1.01015)
 script = ExtResource("57_d7cvh")
 
@@ -1086,6 +1087,10 @@ flat = true
 [connection signal="body_entered" from="Interactive/TV" to="Interactive/TV" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactive/TV" to="Interactive/TV" method="_on_body_exited"]
 [connection signal="last_available" from="Interactive/TV" to="Interactive/TV" method="_on_last_available"]
+[connection signal="last_available" from="Interactive/TV" to="Interactive/Window1" method="_on_tv_last_available"]
+[connection signal="last_available" from="Interactive/TV" to="Interactive/Window2" method="_on_tv_last_available"]
+[connection signal="last_available" from="Interactive/TV" to="Interactive/Window3" method="_on_tv_last_available"]
+[connection signal="last_available" from="Interactive/TV" to="Interactive/Door" method="_on_tv_last_available"]
 [connection signal="last_scene" from="Interactive/TV" to="Interactive/Door" method="_on_tv_last_scene"]
 [connection signal="mouse_entered" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Interactive/TV" to="Interactive/TV" method="_on_mouse_exited"]

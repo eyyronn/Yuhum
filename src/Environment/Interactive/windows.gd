@@ -121,6 +121,11 @@ func start_timer_open():
 	for child in get_children():
 		if child.name.begins_with(TIMER_OPEN_PREFIX):
 			child.start()
+			
+func start_timer_stop():
+	for child in get_children():
+		if child.name.begins_with(TIMER_OPEN_PREFIX):
+			child.stop()
 
 func _on_cutscenes_intro_done():
 	Global.init = false
@@ -152,3 +157,8 @@ func play_jumpscare():
 	$"../../Post-Process".hide()
 	$"../../Cutscenes".hide()
 	$"../../game_over1".show()
+
+func _on_tv_last_available():
+	start_timer_stop()
+	
+	

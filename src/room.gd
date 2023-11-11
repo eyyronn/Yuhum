@@ -16,7 +16,7 @@ func _ready():
 	$Cutscenes/IntroCS.set_volume_db(-5.0)
 	Global.closed_windows = 0
 	Global.located_items = 0
-	Global.init = 0
+	Global.init = true
 	
 func _process(delta):
 	if Input.is_action_just_pressed("Pause"):

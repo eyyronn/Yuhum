@@ -35,6 +35,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="GameOver"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(28.9829, 16.3829)
@@ -51,6 +52,7 @@ text = "You failed to close a door or window :)"
 
 [node name="Game Over" type="Label" parent="GameOver"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 432.0
 offset_top = 272.0
 offset_right = 517.0
@@ -73,6 +75,7 @@ offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="GameOver"]
+layout_mode = 0
 offset_left = 424.0
 offset_top = 360.0
 offset_right = 581.0

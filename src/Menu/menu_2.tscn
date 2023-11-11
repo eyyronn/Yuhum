@@ -1,4 +1,17 @@
-/*
+[gd_scene load_steps=8 format=3 uid="uid://dqaus6nuwucdq"]
+
+[ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="2_07xqp"]
+
+[sub_resource type="Gradient" id="Gradient_8ijo3"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.567742, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.165656, 0.165656, 0.165656, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wnm6y"]
+gradient = SubResource("Gradient_8ijo3")
+
+[sub_resource type="Shader" id="Shader_ukkee"]
+code = "/*
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/VHS-and-CRT-monitor-effect
 
@@ -14,8 +27,8 @@ shader_type canvas_item;
 // - If you are using this shader as an overlay, and want the shader to affect the nodes below in the Scene hierarchy,
 //   set 'overlay' to true (checked in the inspector).
 // On Mac there is potentially a bug causing this to not work properly. If that is the case and you want to use the shader as an overlay
-// change all "overlay  ? SCREEN_TEXTURE : TEXTURE" to only "SCREEN_TEXTURE" on lines 129-140, and "vec2 uv = overlay ? warp(SCREEN_UV) : warp(UV);"
-// to "vec2 uv = warp(SCREEN_UV);" on line 98.
+// change all \"overlay  ? SCREEN_TEXTURE : TEXTURE\" to only \"SCREEN_TEXTURE\" on lines 129-140, and \"vec2 uv = overlay ? warp(SCREEN_UV) : warp(UV);\"
+// to \"vec2 uv = warp(SCREEN_UV);\" on line 98.
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform bool overlay = false;
 
@@ -24,7 +37,7 @@ uniform float scanlines_width : hint_range(0.0, 0.5) = 0.25;
 uniform float grille_opacity : hint_range(0.0, 1.0) = 0.3;
 uniform vec2 resolution = vec2(640.0, 480.0); // Set the number of rows and columns the texture will be divided in. Scanlines and grille will make a square based on these values
 
-uniform bool pixelate = true; // Fill each square ("pixel") with a sampled color, creating a pixel look and a more accurate representation of how a CRT monitor would work.
+uniform bool pixelate = true; // Fill each square (\"pixel\") with a sampled color, creating a pixel look and a more accurate representation of how a CRT monitor would work.
 
 uniform bool roll = true;
 uniform float roll_speed = 8.0; // Positive values are down, negative are up
@@ -188,7 +201,7 @@ void fragment()
 		// We use roll_line (set above) to define how big the noise should be vertically (multiplying cuts off all black parts).
 		// We also add in some basic noise with random() to break up the noise pattern above. The noise is sized according to 
 		// the resolution value set in the inspector. If you don't like this look you can 
-		// change "ceil(uv * resolution) / resolution" to only "uv" to make it less pixelated. Or multiply resolution with som value
+		// change \"ceil(uv * resolution) / resolution\" to only \"uv\" to make it less pixelated. Or multiply resolution with som value
 		// greater than 1.0 to make them smaller.
 		roll_line *= noise * scanlines * clamp(random((ceil(uv * resolution) / resolution) + vec2(TIME * 0.8, 0.0)).x + 0.8, 0.0, 1.0);
 		// Add it to the texture based on noise_opacity
@@ -227,4 +240,67 @@ void fragment()
 	}
 	
 	COLOR = text;
-}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0j1m4"]
+shader = SubResource("Shader_ukkee")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.056
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1152, 600)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = -4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.006
+shader_parameter/noise_opacity = 0.654
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.078
+shader_parameter/aberration = -0.00999995
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.67
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 3.385
+shader_parameter/vignette_opacity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocglv"]
+texture = ExtResource("2_07xqp")
+texture_region_size = Vector2i(480, 480)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3wl86"]
+sources/0 = SubResource("TileSetAtlasSource_ocglv")
+
+[node name="menu2" type="Node2D"]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_right = 1158.0
+offset_bottom = 652.0
+color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 1
+position = Vector2(585, 300)
+scale = Vector2(19.0131, 11.015)
+energy = 1.46
+blend_mode = 1
+texture = SubResource("GradientTexture2D_wnm6y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_0j1m4")
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-221, 0)
+scale = Vector2(2.43634, 1.36988)
+tile_set = SubResource("TileSet_3wl86")
+format = 2
+layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 917608, 0, 0)
