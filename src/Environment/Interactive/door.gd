@@ -35,10 +35,6 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("left_click") and mouse_in_area:
 		area_clicked = true
-		
-	if area_clicked and player_in_area and can_close:
-		close_door()
-	
 	
 	if last_scene:
 		if not last_has_started:
@@ -47,6 +43,12 @@ func _process(delta):
 		if area_clicked and player_in_area:
 			$"../../Peephole".show()
 			$"../../Post-Process".hide()
+			
+	elif area_clicked and player_in_area and can_close:
+		close_door()
+	
+	
+	
 			
 func _on_body_entered(body):
 	if body.name == "Player":
