@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3faceq82vcje"]
+[gd_scene load_steps=39 format=3 uid="uid://c3faceq82vcje"]
 
 [ext_resource type="Script" path="res://src/Menu/menu.gd" id="1_phxts"]
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="2_7llur"]
@@ -12,13 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/Icons/YUHUM-removebg-preview.png" id="10_7cgei"]
 [ext_resource type="Texture2D" uid="uid://dxcvwm2firef" path="res://Assets/Characters/scary smile.png" id="11_7ol4k"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocglv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkqd7"]
 texture = ExtResource("2_7llur")
 texture_region_size = Vector2i(480, 480)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_u016e"]
-sources/0 = SubResource("TileSetAtlasSource_ocglv")
+sources/1 = SubResource("TileSetAtlasSource_fkqd7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wro"]
 size = Vector2(78, 64)
@@ -219,6 +219,12 @@ _data = {
 "RESET": SubResource("Animation_lgcba")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1803"]
+size = Vector2(80.2381, 20.6349)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kuduq"]
+light_mode = 1
+
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_phxts")
 
@@ -226,7 +232,7 @@ script = ExtResource("1_phxts")
 scale = Vector2(4.3, 1.5)
 tile_set = SubResource("TileSet_u016e")
 format = 2
-layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 917608, 0, 0)
+layer_0/tile_data = PackedInt32Array(917518, 0, 0, 917548, 0, 0, 917578, 0, 0, 917608, 0, 0, 917517, 1, 0)
 
 [node name="TV" type="Area2D" parent="."]
 texture_filter = 1
@@ -350,9 +356,28 @@ libraries = {
 "": SubResource("AnimationLibrary_ivm1f")
 }
 
+[node name="Credits" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Credits"]
+position = Vector2(234.9, 508)
+scale = Vector2(2.52, 2.52)
+shape = SubResource("RectangleShape2D_c1803")
+
+[node name="Label" type="Label" parent="Credits"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_kuduq")
+offset_left = 159.0
+offset_top = 483.0
+offset_right = 223.0
+offset_bottom = 509.0
+scale = Vector2(2.52, 2.52)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "CREDITS"
+
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="input_event" from="Area2D2" to="." method="_on_area_2d_2_input_event"]
 [connection signal="mouse_entered" from="Area2D2" to="." method="_on_area_2d_2_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D2" to="." method="_on_area_2d_2_mouse_exited"]
+[connection signal="input_event" from="Credits" to="." method="_on_credits_input_event"]

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://baehncy2paduw"
-path="res://.godot/imported/TV_STATIC.wav-ddca383a4213bfa248cb535a9a6e4c89.sample"
+path="res://.godot/imported/TV_STATIC.wav-66cb346e2cafb3f2784cb827089a64ad.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/TV_STATIC.wav"
-dest_files=["res://.godot/imported/TV_STATIC.wav-ddca383a4213bfa248cb535a9a6e4c89.sample"]
+source_file="res://src/addons/TV_STATIC.wav"
+dest_files=["res://.godot/imported/TV_STATIC.wav-66cb346e2cafb3f2784cb827089a64ad.sample"]
 
 [params]
 
