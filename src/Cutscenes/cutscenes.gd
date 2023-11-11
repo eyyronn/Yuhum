@@ -17,6 +17,7 @@ func _on_button_pressed():
 	for child in get_children():
 		if child.name.ends_with("CS"):
 			if child.name == "IntroCS":
+				Global.init = false
 				child.set_volume_db(-9999.9999)
 				emit_signal("intro_done")
 				$".".hide()
@@ -42,6 +43,7 @@ func _on_intro_finished():
 	print_debug("Intro")
 	for child in get_children():
 		if child.name == "IntroCS":
+			Global.init = false
 			child.set_volume_db(-9999.9999)
 			emit_signal("intro_done")
 			$".".hide()

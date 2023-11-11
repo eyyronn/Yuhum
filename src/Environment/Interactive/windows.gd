@@ -16,7 +16,6 @@ var tooltip_text = TOOLTIP_CLOSE
 @onready var anim = get_node("CollisionShape2D/AnimatedSprite2D") 
 @onready var sfx_slide = get_node("AudioStreamPlayer2D")
 @onready var can_close = true
-@onready var init = true
 @onready var task1_is_running = false
 
 var jumpscares_played = false
@@ -72,10 +71,11 @@ func _on_timeout_closed():
 	open_window()
 
 func _on_timeout_open():
-	print("Game Over", )
+	print_debug("Game over")
+	play_jumpscare()
 
 func open_window():
-	if not init:
+	if not Global.init:
 		emit_signal('window_is_open')
 		for child in get_children():
 			if child.name.begins_with(TIMER_OPEN_PREFIX):
@@ -83,7 +83,7 @@ func open_window():
 		tooltip_text = TOOLTIP_CLOSE
 		anim.play("Open")
 		sfx_slide.play()
-		print_debug(init)
+		print_debug(Global.init)
 		Global.closed_windows -= 1
 		window_open = true
 		can_close = true
@@ -123,7 +123,7 @@ func start_timer_open():
 			child.start()
 
 func _on_cutscenes_intro_done():
-	init = false
+	Global.init = false
 	
 func _on_task1_done(node):
 	task1_is_running = true
@@ -147,3 +147,8 @@ func _on_jumpscare_timer_timeout():
 
 func _on_menu_timer_timeout():
 	get_tree().change_scene_to_file("res://src/game_over.tscn")
+	
+func play_jumpscare():
+	$"../../Post-Process".hide()
+	$"../../Cutscenes".hide()
+	$"../../game_over1".show()

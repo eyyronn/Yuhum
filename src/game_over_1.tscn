@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5ho0xyei4vi"]
+
+[ext_resource type="Shader" path="res://src/vhs.gdshader" id="2_kqgxl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78evp"]
+shader = ExtResource("2_kqgxl")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.056
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1152, 600)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = -4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.006
+shader_parameter/noise_opacity = 0.654
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.179
+shader_parameter/aberration = -0.00999995
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.67
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 3.385
+shader_parameter/vignette_opacity = 0.0
+
+[node name="game_over1" type="Node2D"]
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.9829, 16.3829)
+color = Color(0, 0, 0, 1)
+
+[node name="You failed to" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 120.0
+offset_right = 917.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 36
+text = "You failed to close a door or window :)"
+
+[node name="Game Over" type="Label" parent="GameOver"]
+texture_filter = 1
+offset_left = 432.0
+offset_top = 272.0
+offset_right = 517.0
+offset_bottom = 298.0
+scale = Vector2(3.76, 3.76)
+text = "Game over"
+
+[node name="Post-Process" type="Control" parent="GameOver"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="GameOver/Post-Process"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_78evp")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="GameOver"]
+offset_left = 424.0
+offset_top = 360.0
+offset_right = 581.0
+offset_bottom = 391.0
+scale = Vector2(2.08, 2.08)
+text = "Back to Main Menu"
+flat = true

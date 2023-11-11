@@ -15,7 +15,7 @@ extends Area2D
 var last_has_started := false
 
 func _ready():
-	open_door("First")
+	open_door()
 	
 func change_tooltip():
 	if mouse_in_area:
@@ -57,20 +57,22 @@ func _on_body_exited(body):
 		player_in_area = false
 
 func _on_timeout_closed():
-	open_door("_")
+	open_door()
 	
 func _on_timeout_open():
-	print("Game Over Door")
+	print_debug("Game over")
+	play_jumpscare()
 	
-func open_door(state):
-	$TimerOpenDoor.set_wait_time(randf_range(30, 60))
-	anim.play("Open")
-	if state != "First":
+func open_door():
+	if not Global.init:
+		print_debug("Ey")
+		$TimerOpenDoor.set_wait_time(randf_range(30, 50))
+		anim.play("Open")
 		sfx_creak.play()
-	door_open = true
-	can_close = true
-	tooltip_text = "close"
-	$TimerOpenDoor.start()
+		door_open = true
+		can_close = true
+		tooltip_text = "close"
+		$TimerOpenDoor.start()
 	
 func close_door():
 	$TimerOpenDoor.stop()
@@ -99,5 +101,12 @@ func _on_tv_last_scene():
 	last_scene = true
 
 func _on_timer_knock_timeout():
-	print_debug("oy")
 	$Knock.play()
+	
+func play_jumpscare():
+	$"../../Post-Process".hide()
+	$"../../Cutscenes".hide()
+	$"../../game_over1".show()
+	
+func _on_cutscenes_intro_done():
+	Global.init = false

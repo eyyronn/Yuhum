@@ -5,3 +5,4 @@ const SPEED = 100
 
 var closed_windows := 0
 var located_items := 0
+var init = true

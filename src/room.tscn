@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://b8k7y3at6oeuu"]
+[gd_scene load_steps=117 format=3 uid="uid://b8k7y3at6oeuu"]
 
 [ext_resource type="Shader" path="res://src/vhs.gdshader" id="1_0hrf7"]
 [ext_resource type="Script" path="res://src/room.gd" id="1_lspb6"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0flytf2h4iso" path="res://Assets/Background/Tile.png" id="1_wj3vc"]
 [ext_resource type="AudioStream" uid="uid://canw88l8gi4nr" path="res://Assets/SFX/onlymp3.to - Idea sound effect Tung -wWAE5uA2UU8-192k-1699616897.mp3" id="2_1nkn1"]
 [ext_resource type="Script" path="res://src/Player/Player.gd" id="2_3mdw3"]
-[ext_resource type="AudioStream" uid="uid://qmjk6bkgs8me" path="res://Assets/SFX/20230605_Fnaf Jumpscare Sound Effect.mp3" id="2_hi1ou"]
+[ext_resource type="AudioStream" uid="uid://257d57wb3e8d" path="res://Assets/SFX/jump.mp3" id="2_n7gyj"]
 [ext_resource type="PackedScene" uid="uid://xghtbstmtywi" path="res://src/Environment/CursorTooltip/CursorTooltip.tscn" id="3_kli53"]
 [ext_resource type="Texture2D" uid="uid://bg4k5tn4k7r37" path="res://Assets/Objects/tv.png" id="4_sr1gg"]
 [ext_resource type="Script" path="res://src/Environment/Interactive/windows.gd" id="4_srpae"]
@@ -63,14 +63,12 @@
 [ext_resource type="Shader" path="res://src/Environment/fisheye.gdshader" id="50_bqcgj"]
 [ext_resource type="Script" path="res://src/Cutscenes/cutscenes.gd" id="57_d7cvh"]
 [ext_resource type="Texture2D" uid="uid://dq5lk2oju4fhk" path="res://Assets/Characters/creepy smile.png" id="57_y6mxm"]
-[ext_resource type="VideoStream" path="res://Assets/Cutscenes/Intro.ogv" id="58_7bv8e"]
-[ext_resource type="VideoStream" path="res://Assets/Cutscenes/2nd scene_OGV.ogv" id="58_ew3wo"]
-[ext_resource type="VideoStream" path="res://src/Cutscenes/last_OGV.ogv" id="59_yhc81"]
 [ext_resource type="Texture2D" uid="uid://dkc1jb8ru5ns8" path="res://Assets/Objects/book.png" id="60_115hn"]
-[ext_resource type="Texture2D" uid="uid://c8vattnkug750" path="res://Assets/Characters/head2.png" id="62_wdsdi"]
-[ext_resource type="Texture2D" uid="uid://ccyqcxyvr3uop" path="res://Assets/Characters/head3.png" id="63_pduwh"]
-[ext_resource type="Texture2D" uid="uid://3vhp4emyvbm2" path="res://Assets/Characters/head1.png" id="64_kriny"]
+[ext_resource type="VideoStream" path="res://Assets/Cutscenes/Intro_OGV.ogv" id="61_8nx6g"]
+[ext_resource type="VideoStream" path="res://Assets/Cutscenes/Task_OGV.ogv" id="62_tc2pd"]
+[ext_resource type="VideoStream" path="res://Assets/Cutscenes/Last_OGV.ogv" id="63_0gkae"]
 [ext_resource type="Texture2D" uid="uid://crbftktum3wh2" path="res://Assets/Characters/smile.png" id="66_og7vs"]
+[ext_resource type="Script" path="res://src/game_over1.gd" id="69_vi2nh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwf0m"]
 texture = ExtResource("1_wj3vc")
@@ -404,139 +402,6 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 
-[sub_resource type="Animation" id="Animation_jxy5h"]
-resource_name = "Jumpscare"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.033, 0.033), Vector2(1.393, 1.393)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Head2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.033, 0.033), Vector2(1.708, 1.708)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Head3:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.033, 0.033), Vector2(1.463, 1.463)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(427, 516), Vector2(560, 286)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Head2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1062, 511), Vector2(1138, 271)]
-}
-
-[sub_resource type="Animation" id="Animation_c25ad"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Head3:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.033, 0.033)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Head2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.033, 0.033)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.033, 0.033)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(560, 286)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Head2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1138, 271)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_22omj"]
-_data = {
-"Jumpscare": SubResource("Animation_jxy5h"),
-"RESET": SubResource("Animation_c25ad")
-}
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hb3k8"]
 light_mode = 1
 
@@ -559,6 +424,30 @@ shader_parameter/manual_amount = 0.95
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ehd1d"]
 light_mode = 1
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78evp"]
+shader = ExtResource("1_0hrf7")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.056
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(1152, 600)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = -4.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.006
+shader_parameter/noise_opacity = 0.654
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.179
+shader_parameter/aberration = -0.00999995
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.67
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 3.385
+shader_parameter/vignette_opacity = 0.0
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_lspb6")
 
@@ -575,7 +464,7 @@ one_shot = true
 
 [node name="JumpscareSound" type="AudioStreamPlayer2D" parent="Static"]
 scale = Vector2(0.5, 1.5)
-stream = ExtResource("2_hi1ou")
+stream = ExtResource("2_n7gyj")
 
 [node name="Correct" type="AudioStreamPlayer2D" parent="Static"]
 scale = Vector2(0.5, 1.5)
@@ -1048,11 +937,10 @@ text = "MENU"
 [node name="Scare" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(582, 180)
-scale = Vector2(0.720002, 0.519507)
+scale = Vector2(0.849454, 0.612911)
 texture = ExtResource("57_y6mxm")
 
 [node name="Cutscenes" type="Node2D" parent="."]
-visible = false
 scale = Vector2(1, 1.01015)
 script = ExtResource("57_d7cvh")
 
@@ -1060,22 +948,21 @@ script = ExtResource("57_d7cvh")
 texture_filter = 1
 offset_right = 1152.0
 offset_bottom = 640.0
-stream = ExtResource("58_7bv8e")
+stream = ExtResource("61_8nx6g")
 volume_db = -10.0
 expand = true
 
 [node name="Task1CS" type="VideoStreamPlayer" parent="Cutscenes"]
 offset_right = 1152.0
 offset_bottom = 648.0
-stream = ExtResource("58_ew3wo")
+stream = ExtResource("62_tc2pd")
 volume_db = -10.0
 expand = true
 
 [node name="LastCS" type="VideoStreamPlayer" parent="Cutscenes"]
 offset_right = 1152.0
 offset_bottom = 648.0
-stream = ExtResource("59_yhc81")
-volume_db = -10.0
+stream = ExtResource("63_0gkae")
 expand = true
 
 [node name="ColorRect" type="ColorRect" parent="Cutscenes"]
@@ -1089,41 +976,14 @@ color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="Cutscenes"]
 offset_left = 32.0
-offset_top = 520.0
+offset_top = 557.343
 offset_right = 114.0
-offset_bottom = 553.0
-scale = Vector2(2.92, 2.95489)
+offset_bottom = 590.343
+scale = Vector2(1.68, 1.70007)
 theme_override_fonts/font = ExtResource("39_sb6aw")
 theme_override_font_sizes/font_size = 31
 text = "-> SKIP"
 flat = true
-
-[node name="Ghosts" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Ghosts"]
-root_node = NodePath("Head1")
-libraries = {
-"": SubResource("AnimationLibrary_22omj")
-}
-
-[node name="Head2" type="Sprite2D" parent="Ghosts/AnimationPlayer"]
-position = Vector2(1138, 271)
-scale = Vector2(0.033, 0.033)
-texture = ExtResource("62_wdsdi")
-
-[node name="Head3" type="Sprite2D" parent="Ghosts/AnimationPlayer"]
-position = Vector2(194, 520)
-scale = Vector2(0.033, 0.033)
-texture = ExtResource("63_pduwh")
-
-[node name="Head1" type="Sprite2D" parent="Ghosts/AnimationPlayer"]
-position = Vector2(560, 286)
-scale = Vector2(0.033, 0.033)
-texture = ExtResource("64_kriny")
 
 [node name="Peephole" type="Node2D" parent="."]
 visible = false
@@ -1156,6 +1016,67 @@ scale = Vector2(2.92, 2.95489)
 theme_override_fonts/font = ExtResource("39_sb6aw")
 theme_override_font_sizes/font_size = 31
 text = "OPEN"
+flat = true
+
+[node name="game_over1" type="Node2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.764706)
+script = ExtResource("69_vi2nh")
+
+[node name="GameOver" type="Control" parent="game_over1"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="game_over1/GameOver"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.9829, 16.3829)
+color = Color(0, 0, 0, 1)
+
+[node name="You failed to" type="Label" parent="game_over1/GameOver"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 120.0
+offset_right = 917.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 36
+text = "You failed to close a door or window :)"
+
+[node name="Game Over" type="Label" parent="game_over1/GameOver"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 432.0
+offset_top = 272.0
+offset_right = 517.0
+offset_bottom = 298.0
+scale = Vector2(3.76, 3.76)
+text = "Game over"
+
+[node name="Post-Process" type="Control" parent="game_over1/GameOver"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="game_over1/GameOver/Post-Process"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_78evp")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="game_over1/GameOver"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 360.0
+offset_right = 581.0
+offset_bottom = 391.0
+scale = Vector2(2.08, 2.08)
+text = "Back to Main Menu"
 flat = true
 
 [connection signal="timeout" from="Static/MenuTimer" to="Interactive/Window1" method="_on_menu_timer_timeout"]
@@ -1239,6 +1160,7 @@ flat = true
 [connection signal="intro_done" from="Cutscenes" to="Interactive/Window1" method="_on_cutscenes_intro_done"]
 [connection signal="intro_done" from="Cutscenes" to="Interactive/Window2" method="_on_cutscenes_intro_done"]
 [connection signal="intro_done" from="Cutscenes" to="Interactive/Window3" method="_on_cutscenes_intro_done"]
+[connection signal="intro_done" from="Cutscenes" to="Interactive/Door" method="_on_cutscenes_intro_done"]
 [connection signal="last_done" from="Cutscenes" to="Interactive/TV" method="_on_cutscenes_last_done"]
 [connection signal="task1_done" from="Cutscenes" to="Interactive/TV" method="_on_cutscenes_task_1_done"]
 [connection signal="finished" from="Cutscenes/IntroCS" to="Cutscenes" method="_on_intro_finished"]
@@ -1252,3 +1174,4 @@ flat = true
 [connection signal="timeout" from="Peephole/TheEnd" to="Interactive/Window2" method="_on_the_end_timeout"]
 [connection signal="timeout" from="Peephole/TheEnd" to="Interactive/Window3" method="_on_the_end_timeout"]
 [connection signal="pressed" from="Peephole/Button" to="Peephole" method="_on_button_pressed" flags=18]
+[connection signal="pressed" from="game_over1/GameOver/Button" to="game_over1" method="_on_button_pressed"]
