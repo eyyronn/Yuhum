@@ -79,7 +79,7 @@ func open_window():
 		emit_signal('window_is_open')
 		for child in get_children():
 			if child.name.begins_with(TIMER_OPEN_PREFIX):
-				child.set_wait_time(randf_range(15, 30))
+				child.set_wait_time(25)
 		tooltip_text = TOOLTIP_CLOSE
 		anim.play("Open")
 		sfx_slide.play()

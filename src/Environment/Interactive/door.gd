@@ -68,7 +68,7 @@ func _on_timeout_open():
 func open_door():
 	if not Global.init:
 		print_debug("Ey")
-		$TimerOpenDoor.set_wait_time(randf_range(30, 50))
+		$TimerOpenDoor.set_wait_time(35)
 		anim.play("Open")
 		sfx_creak.play()
 		door_open = true

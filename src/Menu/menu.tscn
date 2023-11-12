@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bqoq0e7frhe6h" path="res://Assets/Objects/Menu_Objects/QUIT_BUTTON.png" id="8_rx5am"]
 [ext_resource type="Texture2D" uid="uid://c8mw80ovgynak" path="res://Assets/Icons/YUHUM-removebg-preview.png" id="10_7cgei"]
 [ext_resource type="Texture2D" uid="uid://dxcvwm2firef" path="res://Assets/Characters/scary smile.png" id="11_7ol4k"]
+[ext_resource type="Texture2D" uid="uid://dqe6ng3tpv6i8" path="res://Assets/Icons/CREDITS_BUTTON-removebg-preview.png" id="12_ujofv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fkqd7"]
 texture = ExtResource("2_7llur")
@@ -220,10 +221,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1803"]
-size = Vector2(80.2381, 20.6349)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kuduq"]
-light_mode = 1
+size = Vector2(87.3413, 29.7619)
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_phxts")
@@ -359,20 +357,14 @@ libraries = {
 [node name="Credits" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Credits"]
-position = Vector2(234.9, 508)
+position = Vector2(251, 505)
 scale = Vector2(2.52, 2.52)
 shape = SubResource("RectangleShape2D_c1803")
 
-[node name="Label" type="Label" parent="Credits"]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_kuduq")
-offset_left = 159.0
-offset_top = 483.0
-offset_right = 223.0
-offset_bottom = 509.0
-scale = Vector2(2.52, 2.52)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "CREDITS"
+[node name="CreditsButton-removebg-preview" type="Sprite2D" parent="Credits/CollisionShape2D"]
+position = Vector2(1.64677, 0)
+scale = Vector2(0.0812205, 0.0812205)
+texture = ExtResource("12_ujofv")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

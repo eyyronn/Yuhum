@@ -25,7 +25,6 @@ func _process(delta):
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://src/Menu/menu.tscn")
 			
-			
 func pause():
 	if paused:
 #		is_paused.hide()
